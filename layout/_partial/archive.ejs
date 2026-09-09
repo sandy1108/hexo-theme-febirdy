@@ -1,29 +1,16 @@
-<% var last; %>
-<% page.posts.each(function(post, i){ %>
-    <% var year = post.date.year(); %>
-    <% if (last != year){ %>
-    <% if (last != null){ %>
-        </div></section>
-    <% } %>
-    <% last = year; %>
-    <section class="archives-wrap">
-        <div class="archive-year-wrap">
-        <a href="<%- url_for(config.archive_dir + '/' + year) %>" class="archive-year"><%= year %></a>
-        </div>
-        <div class="archives">
-    <% } %>
-    <%- partial('archive-post', {post: post, even: i % 2 == 0}) %>
-<% }) %>
-<% if (page.posts.length){ %>
-    </div></section>
-<% } %>
-
-<% if (page.total > 1){ %>
-  <nav class="pagination">
-    <% var prev_text = __('prev');var next_text = __('next') %>
-    <%- paginator({
-      prev_text: prev_text,
-      next_text: next_text
-    }) %>
-  </nav>
-<% } %>
+<%
+const isCategoryPage = is_category();
+const isTagPage = is_tag();
+const heading = isCategoryPage ? page.category : (isTagPage ? page.tag : '文章归档');
+const eyebrow = isCategoryPage ? 'CATEGORY INDEX' : (isTagPage ? 'TAG INDEX' : 'HISTORICAL ARCHIVE');
+%>
+<section class="fb-taxonomy-head">
+  <span class="fb-eyebrow"><%= eyebrow %></span>
+  <h1><%= heading %></h1>
+  <p><% if (isCategoryPage){ %>当前分类下的技术文章与实践记录。<% } else if (isTagPage){ %>使用这个标签筛选相关技术文章。<% } else { %>共收录 <b><%= site.posts.length %></b> 篇技术沉淀，按年份与时间倒序排列。<% } %></p>
+</section>
+<div class="fb-archive-list">
+  <% var last; page.posts.each(function(post, i){ var year = post.date.year(); if (last !== year){ if (last !== undefined){ %></section><% } last = year; %><section class="fb-archive-year"><div class="fb-year-label"><strong><%= year %></strong><span>YEAR RECORD</span></div><div class="fb-year-posts"><% } %><%- partial('archive-post', {post: post}) %><% }) %>
+  <% if (page.posts.length){ %></section><% } %>
+</div>
+<% if (page.total > 1){ %><nav class="pagination"><%- paginator({prev_text:'上一页', next_text:'下一页'}) %></nav><% } %>

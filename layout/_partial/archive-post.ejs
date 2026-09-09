@@ -1,3 +1,5 @@
-<article class="archive-article archive-type-<%= post.layout %>">
-  <%- partial('post/title', {class_name: 'archive-article-title'}) %>
+<article class="fb-archive-item">
+  <time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'MM-DD') %></time>
+  <a href="<%- url_for(post.path) %>"><%= post.title || '(无标题)' %></a>
+  <% if (post.categories && post.categories.length){ %><span><%- list_categories(post.categories, {show_count:false, style:'none', separator:'', depth:1}) %></span><% } %>
 </article>
