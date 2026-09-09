@@ -8,6 +8,7 @@
     </div>
     <%- partial('post/title', {class_name: 'fb-post-title'}) %>
     <% if (post.tags && post.tags.length){ %><div class="fb-post-tags"><%- list_tags(post.tags, {show_count:false, amount:8}) %></div><% } %>
+    <% if (post.layout !== 'tweet'){ %><button class="fb-mobile-toc-trigger" type="button" aria-controls="fb-toc-panel" aria-expanded="false">☷ 文章目录</button><% } %>
   </header>
   <div class="fb-post-grid">
     <div class="fb-post-content post-inner-html" itemprop="articleBody"><%- post.content %></div>

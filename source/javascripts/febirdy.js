@@ -56,4 +56,22 @@ document.addEventListener('DOMContentLoaded', () => {
       if (empty) empty.hidden = visible !== 0;
     });
   });
+
+  // 移动端复用桌面目录节点，以抽屉方式提供目录，不重复运行 Tocbot。
+  const tocTriggers = document.querySelectorAll('.fb-mobile-toc-trigger');
+  const tocClose = document.querySelector('.fb-toc-close');
+  const closeToc = () => {
+    document.body.classList.remove('fb-toc-open');
+    tocTriggers.forEach((trigger) => trigger.setAttribute('aria-expanded', 'false'));
+  };
+  tocTriggers.forEach((trigger) => {
+    trigger.addEventListener('click', () => {
+      const open = document.body.classList.toggle('fb-toc-open');
+      trigger.setAttribute('aria-expanded', String(open));
+    });
+  });
+  if (tocClose) tocClose.addEventListener('click', closeToc);
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && document.body.classList.contains('fb-toc-open')) closeToc();
+  });
 });

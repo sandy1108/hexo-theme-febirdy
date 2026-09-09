@@ -1,6 +1,6 @@
 <aside class="fb-sidebar-inner">
   <% if (is_post() && page.layout !== 'tweet'){ %>
-    <section class="fb-toc-panel"><div class="fb-side-title">文章目录</div><div class="toc post-toc-html"></div></section>
+    <section class="fb-toc-panel" id="fb-toc-panel"><div class="fb-toc-panel-head"><div class="fb-side-title">文章目录</div><button class="fb-toc-close" type="button" aria-label="关闭文章目录">×</button></div><div class="toc post-toc-html"></div></section>
   <% } %>
   <section class="fb-profile">
     <span class="fb-profile-mark">FB</span>
