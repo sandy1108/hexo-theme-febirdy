@@ -1,4 +1,7 @@
 <aside class="fb-sidebar-inner">
+  <% if (is_post() && page.layout !== 'tweet'){ %>
+    <section class="fb-toc-panel"><div class="fb-side-title">文章目录</div><div class="toc post-toc-html"></div></section>
+  <% } %>
   <section class="fb-profile">
     <span class="fb-profile-mark">FB</span>
     <div><strong>FEBIRDY</strong><small><%= config.author %> · 技术博客</small></div>
