@@ -1,0 +1,40 @@
+<%
+  // 分类总览只消费 Hexo 的分类集合，不在主题中维护第二份文章数据。
+  const categories = [];
+  site.categories.sort('count', -1).each(function (category) {
+    categories.push(category);
+  });
+%>
+<div class="fb-taxonomy-overview">
+  <header class="fb-overview-head">
+    <div>
+      <span class="fb-eyebrow">SYSTEM TAXONOMY / ARCHIVE INDEX</span>
+      <h1>专题分类</h1>
+      <p>按技术方向浏览文章，把零散的实践记录整理成可以回看的知识路径。</p>
+    </div>
+    <div class="fb-overview-stats" aria-label="分类统计">
+      <strong><%= categories.length %></strong>
+      <span>个专题</span>
+      <strong><%= site.posts.length %></strong>
+      <span>篇文章</span>
+    </div>
+  </header>
+
+  <% if (categories.length) { %>
+    <section class="fb-taxonomy-grid" aria-label="分类列表">
+      <% categories.forEach(function (category, index) { %>
+        <a class="fb-taxonomy-card" href="<%- url_for(category.path) %>">
+          <div class="fb-taxonomy-card-top">
+            <span class="fb-taxonomy-index"><%= String(index + 1).padStart(2, '0') %></span>
+            <span class="fb-taxonomy-count"><%= category.length %> 篇</span>
+          </div>
+          <h2><%= category.name %></h2>
+          <p>查看该专题下的技术文章、问题排查和实践记录。</p>
+          <span class="fb-taxonomy-link">查看专题 →</span>
+        </a>
+      <% }); %>
+    </section>
+  <% } else { %>
+    <div class="fb-empty-state">还没有可展示的分类。</div>
+  <% } %>
+</div>

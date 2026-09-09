@@ -1,9 +1,27 @@
-<div class="search">
-    <div class="has-icon-right">
-        <input type="text" class="form-input" id="search" placeholder="SEARCH" autocomplete="off">
-        <div class="form-icon">
-            <ion-icon name="search"></ion-icon>
-        </div>
-    </div>
-    <div class="search-result" id="search-ps"></div>
+<div class="fb-search-modal" id="fb-search-modal" hidden>
+    <button class="fb-search-backdrop" type="button" aria-label="关闭搜索" data-search-close></button>
+    <section class="fb-search-dialog" role="dialog" aria-modal="true" aria-labelledby="fb-search-title">
+        <header class="fb-search-dialog-head">
+            <div>
+                <span class="fb-eyebrow">COMMAND PALETTE</span>
+                <h2 id="fb-search-title">搜索文章</h2>
+            </div>
+            <button class="fb-search-close" type="button" aria-label="关闭搜索" data-search-close>×</button>
+        </header>
+        <% if (config.aomori_search_algolia) { %>
+            <div class="search fb-search-box">
+                <div class="has-icon-right">
+                    <input type="search" class="form-input" id="search" placeholder="输入关键词搜索…" autocomplete="off">
+                    <div class="form-icon" aria-hidden="true">⌕</div>
+                </div>
+                <div class="search-result" id="search-ps"></div>
+            </div>
+            <p class="fb-search-hint">输入关键词后由 Algolia 返回匹配文章，按 Esc 关闭。</p>
+        <% } else { %>
+            <div class="fb-search-unavailable">
+                <strong>搜索尚未启用</strong>
+                <p>当前博客没有配置 Algolia。主题保留了搜索入口，接入 Algolia 后即可在这里使用全文搜索。</p>
+            </div>
+        <% } %>
+    </section>
 </div>

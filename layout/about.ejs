@@ -1,0 +1,72 @@
+<%
+  // 关于页不预设个人隐私资料；站点作者、正文和可选主题配置由博客维护者提供。
+  const about = theme.febirdy_about || {};
+  const focus = Array.isArray(about.focus) ? about.focus : [];
+  const tools = Array.isArray(about.tools) ? about.tools : [];
+  const links = Array.isArray(about.links) ? about.links : [];
+  const author = about.name || config.author || 'FEBIRDY';
+  const tagline = about.tagline || config.description || '记录代码、踩坑，以及每一次认真折腾的过程。';
+  const quote = about.quote || '把真实问题记录下来，让下一次排查少走一点弯路。';
+%>
+<div class="fb-about">
+  <header class="fb-about-hero">
+    <span class="fb-about-mark">FB</span>
+    <div>
+      <span class="fb-eyebrow">DEV LOG</span>
+      <h1>关于 <%= author %></h1>
+      <p><%= tagline %></p>
+    </div>
+  </header>
+
+  <blockquote class="fb-about-quote">“<%= quote %>”</blockquote>
+
+  <section class="fb-about-section">
+    <h2><span>♙</span> 关于博主</h2>
+    <div class="fb-about-card fb-about-content post-inner-html">
+      <% if (page.content) { %>
+        <%- page.content %>
+      <% } else { %>
+        <p><%= config.description || '这里是一个以技术实践和问题排查为主的个人博客。' %></p>
+      <% } %>
+    </div>
+  </section>
+
+  <% if (focus.length || site.categories.length) { %>
+    <section class="fb-about-section">
+      <h2><span>▣</span> 技术方向</h2>
+      <div class="fb-about-card fb-about-focus">
+        <% if (focus.length) { %>
+          <% focus.forEach(function (item, index) { %>
+            <div><b><%= String(index + 1).padStart(2, '0') %>.</b><span><%= item %></span></div>
+          <% }); %>
+        <% } else { %>
+          <% site.categories.sort('count', -1).limit(4).each(function (category, index) { %>
+            <div><b><%= String(index + 1).padStart(2, '0') %>.</b><span><%= category.name %></span><small><%= category.length %> 篇文章</small></div>
+          <% }); %>
+        <% } %>
+      </div>
+    </section>
+  <% } %>
+
+  <% if (tools.length) { %>
+    <section class="fb-about-section">
+      <h2><span>⌘</span> 常用工具</h2>
+      <div class="fb-about-card fb-about-tools">
+        <% tools.forEach(function (tool) { %><span><%= tool %></span><% }); %>
+      </div>
+    </section>
+  <% } %>
+
+  <% if (links.length || config.rss || config.url) { %>
+    <section class="fb-about-section">
+      <h2><span>@</span> 找到我</h2>
+      <div class="fb-about-links">
+        <% links.forEach(function (link) { %>
+          <% if (link.url && link.label) { %><a href="<%- link.url %>" target="_blank" rel="noopener"><strong><%= link.label %></strong><small><%= link.url %></small><span>↗</span></a><% } %>
+        <% }); %>
+        <% if (config.rss) { %><a href="<%- url_for(config.rss) %>"><strong>RSS 订阅</strong><small><%= url_for(config.rss) %></small><span>↗</span></a><% } %>
+        <% if (config.url) { %><a href="<%- config.url %>" target="_blank" rel="noopener"><strong>博客地址</strong><small><%= config.url %></small><span>↗</span></a><% } %>
+      </div>
+    </section>
+  <% } %>
+</div>

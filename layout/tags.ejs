@@ -1,0 +1,41 @@
+<%
+  // 标签总览与分类总览保持同一数据边界，但提供本地筛选以便快速定位标签。
+  const tags = [];
+  site.tags.sort('count', -1).each(function (tag) {
+    tags.push(tag);
+  });
+%>
+<div class="fb-taxonomy-overview fb-tag-overview">
+  <header class="fb-overview-head">
+    <div>
+      <span class="fb-eyebrow">INDEX / TAXONOMY SYSTEM / TAGS_MATRIX</span>
+      <h1>标签索引</h1>
+      <p>用更细的关键词切分文章，快速找到同一技术问题的不同实践记录。</p>
+    </div>
+    <div class="fb-overview-stats" aria-label="标签统计">
+      <strong><%= tags.length %></strong>
+      <span>个标签</span>
+      <strong><%= site.posts.length %></strong>
+      <span>篇文章</span>
+    </div>
+  </header>
+
+  <% if (tags.length) { %>
+    <div class="fb-tag-toolbar">
+      <label for="fb-tag-filter">筛选标签</label>
+      <input id="fb-tag-filter" type="search" data-taxonomy-filter placeholder="输入 Kotlin、Binder、AOSP…" autocomplete="off">
+      <span class="fb-tag-toolbar-hint">按出现次数排序</span>
+    </div>
+    <section class="fb-tag-list" aria-label="标签列表">
+      <% tags.forEach(function (tag) { %>
+        <a class="fb-tag-pill" data-taxonomy-item data-taxonomy-name="<%= tag.name.toLowerCase() %>" href="<%- url_for(tag.path) %>">
+          <span>#<%= tag.name %></span>
+          <b><%= tag.length %></b>
+        </a>
+      <% }); %>
+    </section>
+    <p class="fb-empty-state fb-taxonomy-no-match" data-taxonomy-empty hidden>没有匹配的标签。</p>
+  <% } else { %>
+    <div class="fb-empty-state">还没有可展示的标签。</div>
+  <% } %>
+</div>

@@ -15,6 +15,7 @@ async function main() {
   await fs.mkdir(previewRoot, { recursive: true });
   const base = await fs.mkdtemp(path.join(previewRoot, 'site-'));
   await fs.cp(path.join(blogRoot, 'source'), path.join(base, 'source'), { recursive: true });
+  await writePreviewPages(path.join(base, 'source'));
   await fs.copyFile(path.join(blogRoot, 'package.json'), path.join(base, 'package.json'));
   await fs.symlink(path.join(blogRoot, 'node_modules'), path.join(base, 'node_modules'), 'dir');
   const themeCopy = path.join(base, 'themes/febirdy');
@@ -36,7 +37,10 @@ async function main() {
     await hexo.init();
     await hexo.call('generate');
     const routes = hexo.route.list();
-    for (const route of ['index.html', 'archives/index.html', 'dist/build.css', 'dist/custom.js', 'sitemap.xml']) {
+    for (const route of [
+      'index.html', 'archives/index.html', 'categories/index.html', 'tags/index.html',
+      'about/index.html', '404.html', 'dist/build.css', 'dist/custom.js', 'sitemap.xml',
+    ]) {
       if (!routes.includes(route)) throw new Error(`缺少必要输出：${route}`);
     }
     const article = hexo.locals.get('posts').first();
@@ -49,6 +53,21 @@ async function main() {
     }, null, 2));
   } finally {
     await hexo.exit();
+  }
+}
+
+// 预览页只写入隔离副本，用于验证主题提供的入口模板，不改变真实博客的 source/。
+async function writePreviewPages(sourceRoot) {
+  const pages = {
+    'categories/index.md': `---\ntitle: 分类\nlayout: categories\nsidebar: false\n---\n`,
+    'tags/index.md': `---\ntitle: 标签\nlayout: tags\nsidebar: false\n---\n`,
+    'about/index.md': `---\ntitle: 关于\nlayout: about\nsidebar: false\n---\n这里是主题的隔离预览页，用于验证关于页布局和真实站点数据绑定。\n`,
+    '404.md': `---\ntitle: 页面不存在\nlayout: 404\nsidebar: false\n---\n`,
+  };
+  for (const [relativePath, content] of Object.entries(pages)) {
+    const filePath = path.join(sourceRoot, relativePath);
+    await fs.mkdir(path.dirname(filePath), { recursive: true });
+    await fs.writeFile(filePath, content);
   }
 }
 

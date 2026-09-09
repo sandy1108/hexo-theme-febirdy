@@ -1,0 +1,25 @@
+<%
+  // 404 只使用真实站点文章作为回退入口，不展示虚构的浏览量、trace 或索引状态。
+  const recentPosts = site.posts.sort('date', -1).limit(3);
+%>
+<div class="fb-error-page">
+  <div class="fb-error-code" aria-hidden="true">404</div>
+  <span class="fb-error-badge">ERR_HTTP_RESOURCE_VACANT</span>
+  <h1>页面似乎走失在折腾的进程中</h1>
+  <p>你访问的文章或链接可能已经变更，或者页面并不存在。可以返回首页，或从下面的最新文章继续浏览。</p>
+  <div class="fb-error-actions">
+    <a class="fb-primary-button" href="<%- url_for('/') %>">← 返回博客首页</a>
+    <button class="fb-secondary-button fb-search-trigger" type="button">⌕ 全站搜索</button>
+  </div>
+
+  <% if (recentPosts.length) { %>
+    <section class="fb-error-recent">
+      <div class="fb-error-recent-head"><h2>你可能想阅读的最新沉淀</h2><span>RECENT POSTS</span></div>
+      <div class="fb-error-posts">
+        <% recentPosts.each(function (post, index) { %>
+          <a href="<%- url_for(post.path) %>"><b><%= String(index + 1).padStart(2, '0') %></b><span><%= post.title || '(无标题)' %></span><i>→</i></a>
+        <% }); %>
+      </div>
+    </section>
+  <% } %>
+</div>

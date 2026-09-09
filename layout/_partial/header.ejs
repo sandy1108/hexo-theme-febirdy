@@ -7,7 +7,7 @@
     </a>
     <nav class="fb-nav" aria-label="主导航"><% Object.keys(menus).forEach(function(label){ %><a href="<%- url_for(menus[label]) %>"><%= label %></a><% }) %></nav>
     <div class="fb-actions">
-      <% if (config.aomori_search_algolia) { %><button class="fb-icon-button" type="button" aria-label="搜索">⌕</button><% } %>
+      <button class="fb-icon-button fb-search-trigger" type="button" aria-label="搜索">⌕ <span>搜索</span></button>
       <a class="fb-portal" href="https://febirdy.com" target="_blank" rel="noopener">传送门 ↗</a>
       <button class="fb-menu-button" type="button" aria-label="打开导航" aria-expanded="false">☰</button>
     </div>
