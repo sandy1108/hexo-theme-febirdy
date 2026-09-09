@@ -1,0 +1,13 @@
+<article id="<%= post.layout %>-<%= post.slug %>" class="article fb-article-card<% if(post.sticky){ %> is-sticky<% } %>">
+  <div class="fb-card-meta">
+    <% if(post.sticky){ %><span class="fb-pinned">置顶</span><% } %>
+    <% if (post.categories && post.categories.length){ %><%- list_categories(post.categories, {show_count:false, style:'none', separator:'', depth:1}) %><% } %>
+    <time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'YYYY-MM-DD') %></time>
+  </div>
+  <h2><a href="<%- url_for(post.path) %>"><%= post.title %></a></h2>
+  <div class="fb-excerpt"><% if (post.excerpt){ %><%- strip_html(post.excerpt) %><% } else { %><%- truncate(strip_html(post.content), {length:180}) %><% } %></div>
+  <footer class="fb-card-footer">
+    <div class="fb-tags"><% if (post.tags && post.tags.length){ %><%- list_tags(post.tags, {show_count:false, amount:4}) %><% } %></div>
+    <a class="fb-read-more" href="<%- url_for(post.path) %>">阅读全文 →</a>
+  </footer>
+</article>

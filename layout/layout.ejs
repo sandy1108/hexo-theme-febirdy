@@ -1,0 +1,27 @@
+<%- partial('_partial/head') %>
+
+<body class="fb-site <% if (is_home()){ %>fb-is-home<% } %>">
+
+    <%- partial('_partial/header') %>
+
+    <div class="container fb-container">
+        <div class="main fb-main">
+            <section class="inner">
+                <section class="inner-main">
+                    <%- body %>
+                </section>
+            </section>
+
+            <% if (page.sidebar !== false){ %>
+            <aside class="sidebar <% if (config.aomori_search_algolia){ %>sidebar-search-fix<% } %>">
+                <%- partial('_partial/sidebar') %>
+            </aside>
+            <% } %>
+        </div>
+    </div>
+
+    <%- partial('_partial/footer') %>
+
+</body>
+
+</html>

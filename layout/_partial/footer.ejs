@@ -1,0 +1,8 @@
+<footer class="fb-footer">
+  <div><strong>FEBIRDY BLOG</strong><span>不爱折腾的码农，不是好程序猿</span></div>
+  <small>© <%= date(new Date(), 'YYYY') %> <%= config.author %> · Powered by Hexo · Based on Aomori</small>
+</footer>
+<script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+<%- js('dist/build.js?' + theme.version) %>
+<%- js('dist/custom.js?' + theme.version) %>
+<%- js('javascripts/febirdy.js?' + theme.version) %>

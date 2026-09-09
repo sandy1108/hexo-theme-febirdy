@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Noto+Sans+SC:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-fixed": "#91f1ff", "secondary": "#7bd0ff", "on-secondary-container": "#00374d", "background": "#051424", "on-primary-container": "#006771", "surface-container": "#122131", "surface-dim": "#051424", "tertiary-fixed-dim": "#b4c5ff", "inverse-on-surface": "#233143", "on-tertiary": "#002a78", "on-primary-fixed-variant": "#004f57", "on-error-container": "#ffdad6", "outline": "#869395", "tertiary-container": "cad5ff", "secondary-fixed-dim": "#7bd0ff", "surface-tint": "#54d8e8", "surface-variant": "#273647", "error": "#ffb4ab", "surface-container-highest": "#273647", "on-primary": "#00363c", "surface": "#051424", "on-secondary-fixed": "#001e2c", "surface-container-lowest": "#010f1f", "secondary-container": "#00a6e0", "tertiary": "#f1f2ff", "primary": "#d5f9ff", "primary-container": "#67e8f9", "on-background": "#d4e4fa", "surface-container-high": "#1c2b3c", "inverse-surface": "#d4e4fa", "outline-variant": "#3c494b", "error-container": "#93000a", "on-error": "#690005", "on-surface-variant": "#bcc9cb", "on-primary-fixed": "#001f23", "on-secondary": "#00354a", "on-surface": "#d4e4fa", "on-tertiary-fixed": "#00174b", "on-tertiary-container": "#0051d7", "on-tertiary-fixed-variant": "#003ea8", "inverse-primary": "#006973", "on-secondary-fixed-variant": "#004c69", "tertiary-fixed": "#dbe1ff", "surface-bright": "#2c3a4c", "primary-fixed-dim": "#54d8e8", "secondary-fixed": "#c4e7ff", "surface-container-low": "#0d1c2d" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xs": "0.5rem", "space-sm": "0.75rem", "space-2xl": "3rem", "space-xxs": "0.25rem", "space-xl": "2rem", "gutter-mobile": "1rem", "space-3xl": "4.5rem", "reading-max-width": "48rem", "content-max-width": "75rem", "gutter-desktop": "1.5rem", "space-lg": "1.5rem", "space-md": "1rem" }, "fontFamily": { "headline-sm": ["Space Grotesk"], "code-block": ["JetBrains Mono"], "headline-xl": ["Space Grotesk"], "body-md": ["Noto Sans SC"], "code-inline": ["JetBrains Mono"], "headline-lg": ["Space Grotesk"], "headline-xl-mobile": ["Space Grotesk"], "label-caps": ["JetBrains Mono"], "body-sm": ["Noto Sans SC"], "display-hero-mobile": ["Space Grotesk"], "headline-md": ["Space Grotesk"], "body-lg": ["Noto Sans SC"], "display-hero": ["Space Grotesk"] }, "fontSize": { "headline-sm": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "code-block": ["14px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "body-md": ["16px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "400" }], "code-inline": ["13px", { "lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600" }], "body-sm": ["14px", { "lineHeight": "22px", "letterSpacing": "0.01em", "fontWeight": "400" }], "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-md": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "30px", "letterSpacing": "0em", "fontWeight": "400" }], "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col justify-between"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 max-w-[75rem] mx-auto px-gutter-desktop flex items-center justify-between"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-xs" href="#"><img alt="Brand logo. - Primary color: #67e8f9 - Font: spaceGrotesk - Mode: dark - Roundness: rounded-sm" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Xc-hBxJd0LeFbPV4B794wdyjmd1f7-di6i5xrpaLKJAFmdV1Gy4pYMYJmG12_Nd08YupPk8mDbpeCPVJFQoiKXnhEIKu3fFf0yQh4PHCtl6GamCzHfoKQIyQnqpHSEFEAJaYKnyuDxWpcwo_dDh6IS0lHGrddZe0hHVoR8CgOL3BKymYEJQpKt-8m-L8ceZkjsUj3MzzAGj0qM-lNMO_uKTFZcSgLN22J-S2kgP4AblWabAVQ_upFPnVb8"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight flex items-center">FEBIRDY<span class="text-primary-container ml-1">BLOG</span></span></a><nav class="hidden md:flex items-center gap-space-lg pl-space-xs" data-active-classes="text-primary-container font-headline-sm font-semibold"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="home" href="#">首页</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="archives" href="#">归档</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="categories" href="#">分类</a><a aria-current="page" class="transition-colors py-1 text-primary-container font-headline-sm font-semibold" data-path="tags" href="#">标签</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="about" href="#">关于</a></nav></div><div class="flex items-center gap-space-sm"><button class="hidden sm:flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">search</span><span class="font-body-sm text-body-sm">搜索</span><kbd class="font-code-inline text-code-inline px-1 py-0.5 rounded bg-surface-container text-on-surface-variant">⌘K</kbd></button><button aria-label="Toggle Theme" class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-[20px]">dark_mode</span></button><a aria-label="RSS Feed" class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center" href="#"><span class="material-symbols-outlined text-[20px]">rss_feed</span></a><a aria-label="External Portal" class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center" href="#"><span class="material-symbols-outlined text-[20px]">open_in_new</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xxs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface flex-1"><div class="max-w-[75rem] w-full mx-auto px-gutter-desktop py-space-xl min-h-[calc(100vh-140px)]"><div class="flex flex-col w-full gap-space-2xl">
+<!-- Interactive & Tag State Control Layer -->
+<section class="flex flex-col gap-space-lg w-full">
+<!-- Breadcrumb & Page Meta telemetry -->
+<div class="flex flex-wrap items-center justify-between gap-space-sm">
+<div class="flex items-center gap-space-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px] text-primary-container">sell</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider text-on-surface-variant">INDEX · TAXONOMY SYSTEM</span>
+<span class="text-outline-variant">/</span>
+<span class="font-code-inline text-code-inline text-primary-container">TAGS_MATRIX</span>
+</div>
+<div class="flex items-center gap-space-md">
+<div class="flex items-center gap-space-xs px-space-sm py-1 rounded-full bg-surface-container-high text-on-surface-variant">
+<span class="w-2 h-2 rounded-full bg-primary-container animate-pulse"></span>
+<span class="font-code-inline text-code-inline text-on-surface">TOTAL ENTITIES: <strong class="text-primary-container font-semibold">16 TAGS · 228 POSTS</strong></span>
+</div>
+</div>
+</div>
+<!-- Structured Tag Command Matrix Box -->
+<div class="w-full bg-surface-container-low rounded-xl p-space-lg shadow-xl relative overflow-hidden">
+<div class="absolute -top-24 -right-24 w-80 h-80 bg-primary-container/5 rounded-full blur-3xl pointer-events-none"></div>
+<!-- Top Row: Functional Search & Sorting Bar -->
+<div class="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-md mb-space-lg">
+<div class="relative flex-1 max-w-lg">
+<span class="material-symbols-outlined absolute left-space-sm top-1/2 -translate-y-1/2 text-on-surface-variant text-[18px]">filter_alt</span>
+<input class="w-full bg-surface-container-high text-on-surface placeholder-on-surface-variant pl-9 pr-space-md py-2 text-body-sm font-body-sm rounded-lg focus:outline-none focus:ring-1 focus:ring-primary-container transition-all" id="tagFilterInput" placeholder="检索系统技术标签 (如 Kotlin, Binder, AOSP...)" type="text"/>
+</div>
+<div class="flex items-center gap-space-xs self-end sm:self-auto">
+<span class="font-label-caps text-label-caps text-on-surface-variant mr-1">SORT BY:</span>
+<button class="px-space-xs py-1 rounded bg-surface-container-highest text-primary-container font-code-inline text-code-inline flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">equalizer</span> FREQUENCY
+          </button>
+<button class="px-space-xs py-1 rounded hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface font-code-inline text-code-inline transition-colors">
+            A-Z
+          </button>
+</div>
+</div>
+<!-- Weighted, Structured Technical Tag Matrix (Hierarchical Pills) -->
+<div class="flex flex-wrap items-center gap-space-xs sm:gap-space-sm pt-space-xs" id="tagsContainer">
+<!-- Selected Active Tag: Android -->
+<a class="group relative flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-highest text-primary-container shadow-[0_0_16px_rgba(103,232,249,0.18)] transition-all" href="#android">
+<span class="font-code-inline text-code-inline font-bold">#Android</span>
+<span class="px-1.5 py-0.5 rounded text-[11px] font-code-inline bg-primary-container text-on-primary font-semibold">38</span>
+<span class="material-symbols-outlined text-[14px] text-primary-container ml-0.5">check</span>
+</a>
+<!-- High Volume Nodes (>= 15) -->
+<a class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface hover:text-primary-container hover:bg-surface-container-highest transition-colors" href="#harmonyos">
+<span class="font-code-inline text-code-inline font-medium">#HarmonyOS</span>
+<span class="px-1.5 py-0.5 rounded text-[11px] font-code-inline bg-surface-container text-on-surface-variant">24</span>
+</a>
+<a class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface hover:text-primary-container hover:bg-surface-container-highest transition-colors" href="#kotlin">
+<span class="font-code-inline text-code-inline font-medium">#Kotlin</span>
+<span class="px-1.5 py-0.5 rounded text-[11px] font-code-inline bg-surface-container text-on-surface-variant">22</span>
+</a>
+<a class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface hover:text-primary-container hover:bg-surface-container-highest transition-colors" href="#ios">
+<span class="font-code-inline text-code-inline font-medium">#iOS</span>
+<span class="px-1.5 py-0.5 rounded text-[11px] font-code-inline bg-surface-container text-on-surface-variant">19</span>
+</a>
+<a class="flex items-center gap-space-xs px-space-md py-2 rounded-lg bg-surface-container-high text-on-surface hover:text-primary-container hover:bg-surface-container-highest transition-colors" href="#swift">
+<span class="font-code-inline text-code-inline font-medium">#Swift</span>
+<span class="px-1.5 py-0.5 rounded text-[11px] font-code-inline bg-surface-container text-on-surface-variant">16</span>
+</a>
+<!-- Specialized Core Technology Nodes (10-14) -->
+<a class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" href="#arkts">
+<span class="font-code-inline text-code-inline">#ArkTS</span>
+<span class="px-1 py-0.5 rounded text-[10px] font-code-inline bg-surface-container-lowest text-on-surface-variant">14</span>
+</a>
+<a class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" href="#aosp">
+<span class="font-code-inline text-code-inline">#AOSP</span>
+<span class="px-1 py-0.5 rounded text-[10px] font-code-inline bg-surface-container-lowest text-on-surface-variant">12</span>
+</a>
+<a class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" href="#appcan">
+<span class="font-code-inline text-code-inline">#AppCan</span>
+<span class="px-1 py-0.5 rounded text-[10px] font-code-inline bg-surface-container-lowest text-on-surface-variant">12</span>
+</a>
+<a class="flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" href="#ndk-jni">
+<span class="font-code-inline text-code-inline">#NDK/JNI</span>
+<span class="px-1 py-0.5 rounded text-[10px] font-code-inline bg-surface-container-lowest text-on-surface-variant">11</span>
+</a>
+<!-- Granular / Infrastructure Nodes (< 10) -->
+<a class="flex items-center gap-space-xs px-space-sm py-1 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" href="#binder">
+<span class="font-code-inline text-code-inline text-xs">#Binder</span>
+<span class="px-1 rounded text-[10px] font-code-inline bg-surface-container-high text-on-surface-variant">9</span>
+</a>
+<a class="flex items-center gap-space-xs px-space-sm py-1 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" href="#nas-docker">
+<span class="font-code-inline text-code-inline text-xs">#NAS/Docker</span>
+<span class="px-1 rounded text-[10px] font-code-inline bg-surface-container-high text-on-surface-variant">8</span>
+</a>
+<a class="flex items-center gap-space-xs px-space-sm py-1 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" href="#llm">
+<span class="font-code-inline text-code-inline text-xs">#LLM</span>
+<span class="px-1 rounded text-[10px] font-code-inline bg-surface-container-high text-on-surface-variant">7</span>
+</a>
+<a class="flex items-center gap-space-xs px-space-sm py-1 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" href="#arkweb">
+<span class="font-code-inline text-code-inline text-xs">#ArkWeb</span>
+<span class="px-1 rounded text-[10px] font-code-inline bg-surface-container-high text-on-surface-variant">8</span>
+</a>
+<a class="flex items-center gap-space-xs px-space-sm py-1 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" href="#coroutines">
+<span class="font-code-inline text-code-inline text-xs">#Coroutines</span>
+<span class="px-1 rounded text-[10px] font-code-inline bg-surface-container-high text-on-surface-variant">8</span>
+</a>
+<a class="flex items-center gap-space-xs px-space-sm py-1 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" href="#webkit">
+<span class="font-code-inline text-code-inline text-xs">#WebKit</span>
+<span class="px-1 rounded text-[10px] font-code-inline bg-surface-container-high text-on-surface-variant">6</span>
+</a>
+<a class="flex items-center gap-space-xs px-space-sm py-1 rounded-lg bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" href="#swiftui">
+<span class="font-code-inline text-code-inline text-xs">#SwiftUI</span>
+<span class="px-1 rounded text-[10px] font-code-inline bg-surface-container-high text-on-surface-variant">5</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Tag Scope Stream Header & Article Feed -->
+<section class="flex flex-col gap-space-lg w-full">
+<!-- Active Scope Summary Banner -->
+<div class="flex flex-col md:flex-row md:items-end justify-between pb-space-sm gap-space-xs">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-xs">
+<span class="w-1.5 h-4 bg-primary-container rounded-full"></span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-semibold tracking-tight">
+            当前筛选：<span class="text-primary-container">#Android</span>
+</h2>
+<span class="font-code-inline text-code-inline text-on-surface-variant ml-2">(38 篇相关技术文章)</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant pl-3">
+          涵盖 Android 运行时 (ART)、Framework 框架层机制、NDK Native 性能诊断、AOSP 深度定制及应用层工程实践。
+        </p>
+</div>
+<div class="flex items-center gap-space-sm text-on-surface-variant font-code-inline text-code-inline">
+<span>SHOWING 1 - 4 OF 38</span>
+</div>
+</div>
+<!-- Article List Stream -->
+<div class="flex flex-col gap-space-md w-full">
+<!-- Article 1 -->
+<article class="group relative bg-surface-container-low hover:bg-surface-container rounded-xl p-space-lg transition-all duration-200 shadow-sm hover:shadow-md flex flex-col md:flex-row gap-space-lg">
+<div class="md:w-56 h-36 md:h-auto rounded-lg overflow-hidden bg-surface-container-high relative shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="A futuristic abstract representation of Linux and Android Binder IPC architecture, showing luminous cyan data pipelines running through dark obsidian server nodes, high contrast minimalist technical aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCfo-icNX-Q4qSGRLTIVF_VuZRQh4nuz1irtoAa2DgxRknQyesgsDBX9T70tr-vGlz-s_I9Kl6BcH3yk-_OqQB84n-HOT7tfbiqPNuuQJCZhpbuLIoBXEM9weSscWAgdwe9_irPzYIOaS2BJZP3J0vUR9NEdMo-yBuGBCi2e07NsXP1gTUQp_CEnMeaqUSbJ8HS4owBeZwueCf_PIztDt_aBeg7JsOMGvvZdVXEiantGG9yN2E6EGRcnQ"/>
+<span class="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-surface-container-lowest/90 font-code-inline text-[11px] text-primary-container">
+            IPC / RUNTIME
+          </span>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex flex-wrap items-center gap-space-xs mb-2">
+<span class="font-code-inline text-code-inline text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> 2024-03-24
+              </span>
+<span class="text-outline-variant">·</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+                系统架构
+              </span>
+<span class="text-outline-variant">·</span>
+<span class="font-code-inline text-code-inline text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 18 min read
+              </span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary-container transition-colors mb-space-xs font-semibold leading-snug">
+<a class="focus:outline-none" href="#">
+                深入理解 Android 14 跨进程通信 Binder 机制演进与线程调度倾斜排查
+              </a>
+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 leading-relaxed">
+              聚焦 Android 14 内核驱动中 Binder 事务优先级继承算法重构。剖析在高并发密集调用场景下，由于 `sched_priority` 传播延迟与不均衡造成的关键工作线程调度饥饿（Priority Inversion）现象，并结合 Systrace 和 eBPF 给出全链路诊断方案。
+            </p>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm mt-space-md pt-space-sm bg-surface-container-low/50">
+<div class="flex flex-wrap items-center gap-space-xs">
+<a class="px-2 py-0.5 rounded bg-surface-container-highest text-primary-container font-code-inline text-[11px]" href="#android">#Android</a>
+<a class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant hover:text-on-surface font-code-inline text-[11px]" href="#binder">#Binder</a>
+<a class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant hover:text-on-surface font-code-inline text-[11px]" href="#aosp">#AOSP</a>
+</div>
+<a class="flex items-center gap-1 text-primary-container font-code-inline text-code-inline group-hover:translate-x-1 transition-transform" href="#">
+<span>阅读全文</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Article 2 -->
+<article class="group relative bg-surface-container-low hover:bg-surface-container rounded-xl p-space-lg transition-all duration-200 shadow-sm hover:shadow-md flex flex-col md:flex-row gap-space-lg">
+<div class="md:w-56 h-36 md:h-auto rounded-lg overflow-hidden bg-surface-container-high relative shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Google Pixel phone hardware chassis exposed on a dark engineering workbench with glowing cyan schematic circuit blueprints and compiler terminal logs reflecting on the glass screen." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBk-e1utHEVbeYOGOhJpPrapQVZMq-i5FtWGsnMtVdj6CchH7wsb-yKK4Xez-SM6jWQ4jEjO4ySuFBlH2eZJmfR2Fk_eJq5eISKYxAWO49KTF5qxh1siV0H8wiFqklQEXNHf-cq-oGgCwFSTogUSMzudz1bkczYctyNCKIOeEaA8DoyRtJM3dwMoQPNS2jjb7qZVjatq2VnDUw9j9Yp8I6fzSCAGgP8xYgdlTVGKc4PqezVYUg7aYtSIA"/>
+<span class="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-surface-container-lowest/90 font-code-inline text-[11px] text-secondary">
+            ROM / KERNEL
+          </span>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex flex-wrap items-center gap-space-xs mb-2">
+<span class="font-code-inline text-code-inline text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> 2024-02-18
+              </span>
+<span class="text-outline-variant">·</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+                底层编译
+              </span>
+<span class="text-outline-variant">·</span>
+<span class="font-code-inline text-code-inline text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 25 min read
+              </span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary-container transition-colors mb-space-xs font-semibold leading-snug">
+<a class="focus:outline-none" href="#">
+                Android AOSP 14 编译全纪录与 Pixel 8 定制驱动适配
+              </a>
+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 leading-relaxed">
+              基于 Ubuntu 22.04 LTS 搭建干净稳定的 AOSP 构建管道。详解专有驱动（Vendor Binaries）解包提取、Soong 构建系统 Blueprint 模块自定义注入、SELinux 宽容模式调试到强制模式合规配置的闭环步骤。
+            </p>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm mt-space-md pt-space-sm bg-surface-container-low/50">
+<div class="flex flex-wrap items-center gap-space-xs">
+<a class="px-2 py-0.5 rounded bg-surface-container-highest text-primary-container font-code-inline text-[11px]" href="#android">#Android</a>
+<a class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant hover:text-on-surface font-code-inline text-[11px]" href="#aosp">#AOSP</a>
+<a class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant hover:text-on-surface font-code-inline text-[11px]" href="#ndk-jni">#NDK/JNI</a>
+</div>
+<a class="flex items-center gap-1 text-primary-container font-code-inline text-code-inline group-hover:translate-x-1 transition-transform" href="#">
+<span>阅读全文</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Article 3 -->
+<article class="group relative bg-surface-container-low hover:bg-surface-container rounded-xl p-space-lg transition-all duration-200 shadow-sm hover:shadow-md flex flex-col md:flex-row gap-space-lg">
+<div class="md:w-56 h-36 md:h-auto rounded-lg overflow-hidden bg-surface-container-high relative shrink-0">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" data-alt="Digital memory stack visualization showing byte arrays and pointer graphs in glowing blue and cyan against a matte dark background, memory leak diagnostics." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAyOxjDJyI4CR1h8dx1QuLHJAalEwHrDn3QNasV-WA0wwlNSTatThu7y8Lb1381qOaxrZycPl7KmL8X-bPG0Whoc6hwGx3q-h3cpnNBXc8bOL2nc36n_uEno-HF1Y_Wf_g_evsqQfLXHt0sMV60jBckBM6t9mXNVCmlcFfGs6HfakjCzjOSyqwEIQFfU5hdY05AOGV6VgNtyrawLTwzTGCD76TeAZHtkb-q9L7pfM3j-T8nj2a7lrMBnQ"/>
+<span class="absolute bottom-2 left-2 px-2 py-0.5 rounded bg-surface-container-lowest/90 font-code-inline text-[11px] text-primary-container">
+            PERF / DIAGNOSTICS
+          </span>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex flex-wrap items-center gap-space-xs mb-2">
+<span class="font-code-inline text-code-inline text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> 2024-01-09
+              </span>
+<span class="text-outline-variant">·</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+                性能调优
+              </span>
+<span class="text-outline-variant">·</span>
+<span class="font-code-inline text-code-inline text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 14 min read
+              </span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary-container transition-colors mb-space-xs font-semibold leading-snug">
+<a class="focus:outline-none" href="#">
+                Android NDK 性能调优实战：JNI 内存泄露定位与 Native 崩溃分析
+              </a>
+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 leading-relaxed">
+              JNI 局部引用表溢出与全局引用遗忘是 Native 开发的隐形杀手。本文剖析 AddressSanitizer (ASan)、HWASan 与 Simpleperf 在生产环境下的嵌入式接入方式，结合 Tombstone 日志反解真实符号表。
+            </p>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm mt-space-md pt-space-sm bg-surface-container-low/50">
+<div class="flex flex-wrap items-center gap-space-xs">
+<a class="px-2 py-0.5 rounded bg-surface-container-highest text-primary-container font-code-inline text-[11px]" href="#android">#Android</a>
+<a class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant hover:text-on-surface font-code-inline text-[11px]" href="#ndk-jni">#NDK/JNI</a>
+</div>
+<a class="flex items-center gap-1 text-primary-container font-code-inline text-code-inline group-hover:translate-x-1 transition-transform" href="#">
+<span>阅读全文</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+<!-- Article 4 -->
+<article class="group relative bg-surface-container-low hover:bg-surface-container rounded-xl p-space-lg transition-all duration-200 shadow-sm hover:shadow-md flex flex-col md:flex-row gap-space-lg">
+<div class="md:w-56 h-36 md:h-auto rounded-lg overflow-hidden bg-surface-container-high relative shrink-0">
+<div class="w-full h-full flex flex-col justify-center items-center bg-surface-container-highest p-space-md text-center">
+<span class="material-symbols-outlined text-primary-container text-4xl mb-1">alt_route</span>
+<span class="font-code-inline text-code-inline text-on-surface font-semibold">Coroutines Core</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant mt-1">DISPATCHER &amp; SCHED</span>
+</div>
+</div>
+<div class="flex flex-col justify-between flex-1 min-w-0">
+<div>
+<div class="flex flex-wrap items-center gap-space-xs mb-2">
+<span class="font-code-inline text-code-inline text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">calendar_today</span> 2023-12-11
+              </span>
+<span class="text-outline-variant">·</span>
+<span class="px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-caps text-label-caps uppercase tracking-wider">
+                Kotlin 进阶
+              </span>
+<span class="text-outline-variant">·</span>
+<span class="font-code-inline text-code-inline text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">schedule</span> 20 min read
+              </span>
+</div>
+<h3 class="font-headline-md text-headline-md text-on-surface group-hover:text-primary-container transition-colors mb-space-xs font-semibold leading-snug">
+<a class="focus:outline-none" href="#">
+                Kotlin Coroutines 核心调度器原理与异常传播链深度排坑
+              </a>
+</h3>
+<p class="font-body-md text-body-md text-on-surface-variant line-clamp-2 leading-relaxed">
+              拆解 `Dispatchers.Default` 的 Work-Stealing 线程池实现细节。重点厘清 `SupervisorJob` 与根作用域中未捕获异常的处理边界，规避在 `async/await` 组合场景中因全局静默取消造成的偶发性事务中断。
+            </p>
+</div>
+<div class="flex flex-wrap items-center justify-between gap-space-sm mt-space-md pt-space-sm bg-surface-container-low/50">
+<div class="flex flex-wrap items-center gap-space-xs">
+<a class="px-2 py-0.5 rounded bg-surface-container-highest text-primary-container font-code-inline text-[11px]" href="#android">#Android</a>
+<a class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant hover:text-on-surface font-code-inline text-[11px]" href="#kotlin">#Kotlin</a>
+<a class="px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant hover:text-on-surface font-code-inline text-[11px]" href="#coroutines">#Coroutines</a>
+</div>
+<a class="flex items-center gap-1 text-primary-container font-code-inline text-code-inline group-hover:translate-x-1 transition-transform" href="#">
+<span>阅读全文</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+</article>
+</div>
+<!-- Clean Engineering Pagination -->
+<div class="flex flex-col sm:flex-row items-center justify-between gap-space-md pt-space-lg mt-space-xs">
+<div class="font-code-inline text-code-inline text-on-surface-variant flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-primary-container"></span>
+<span>PAGE 1 OF 10 · 38 ARTICLES</span>
+</div>
+<nav aria-label="Pagination" class="flex items-center gap-space-xs">
+<button class="p-2 rounded bg-surface-container text-outline-variant cursor-not-allowed flex items-center justify-center" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-9 h-9 rounded bg-primary-container text-on-primary font-code-inline text-code-inline font-bold flex items-center justify-center">
+          1
+        </button>
+<button class="w-9 h-9 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-inline text-code-inline flex items-center justify-center transition-colors">
+          2
+        </button>
+<button class="w-9 h-9 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-inline text-code-inline flex items-center justify-center transition-colors">
+          3
+        </button>
+<span class="px-1 text-on-surface-variant font-code-inline text-code-inline">...</span>
+<button class="w-9 h-9 rounded bg-surface-container hover:bg-surface-container-high text-on-surface font-code-inline text-code-inline flex items-center justify-center transition-colors">
+          10
+        </button>
+<button class="p-2 rounded bg-surface-container hover:bg-surface-container-high text-on-surface flex items-center justify-center transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</nav>
+</div>
+</section>
+</div>
+<script>
+  (function() {
+    const filterInput = document.getElementById('tagFilterInput');
+    const tagsContainer = document.getElementById('tagsContainer');
+    if (!filterInput || !tagsContainer) return;
+
+    filterInput.addEventListener('input', function(e) {
+      const term = e.target.value.toLowerCase().trim();
+      const tagLinks = tagsContainer.querySelectorAll('a');
+
+      tagLinks.forEach(link => {
+        const text = link.textContent.toLowerCase();
+        if (!term || text.includes(term)) {
+          link.style.display = 'inline-flex';
+        } else {
+          link.style.display = 'none';
+        }
+      });
+    });
+  })();
+</script></div></main><footer class="w-full bg-surface-container-lowest"><div class="max-w-[75rem] mx-auto px-gutter-desktop py-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="font-body-sm text-body-sm text-on-surface-variant text-center md:text-left"><span>© 2024 FEBIRDY BLOG</span><span class="mx-space-xs text-outline-variant">·</span><span class="font-body-sm text-body-sm text-on-surface-variant">不爱折腾的码农，不是好程序猿</span></div><div class="flex items-center gap-space-lg"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary-container transition-colors flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[16px]">code</span><span>GitHub</span></a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary-container transition-colors flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[16px]">rss_feed</span><span>RSS</span></a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary-container transition-colors flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[16px]">travel_explore</span><span>个人传送门</span></a></div></div></footer></body></html>

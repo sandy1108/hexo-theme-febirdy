@@ -1,0 +1,10 @@
+<aside class="fb-sidebar-inner">
+  <section class="fb-profile">
+    <span class="fb-profile-mark">FB</span>
+    <div><strong>FEBIRDY</strong><small><%= config.author %> · 技术博客</small></div>
+    <p>不爱折腾的码农，不是好程序猿。</p>
+    <a href="https://febirdy.com" target="_blank" rel="noopener">个人传送门 ↗</a>
+  </section>
+  <div class="widget" id="widget"><% ['category','tag','recent_posts'].forEach(function(widget){ %><%- partial('_widget/' + widget) %><% }) %></div>
+  <div id="backtop" aria-label="返回顶部">↑</div>
+</aside>

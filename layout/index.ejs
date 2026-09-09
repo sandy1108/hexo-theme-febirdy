@@ -1,0 +1,10 @@
+<div class="fb-home">
+  <section class="fb-intro">
+    <span class="fb-eyebrow">移动终端与系统底层开发笔记</span>
+    <h1>记录代码、踩坑，以及每一次认真折腾的过程。</h1>
+    <p>专注 Android、HarmonyOS、iOS 与工程实践，记录真实问题、定位过程和可复用的解决方案。</p>
+  </section>
+  <div class="fb-feed-label"><span>最新文章</span><small><%= site.posts.length %> 篇技术沉淀</small></div>
+  <div class="index fb-article-list"><% page.posts.each(function(post){ %><%- partial('_partial/article-index', {post: post, index: true}) %><% }) %></div>
+  <% if (page.total > 1){ %><nav class="pagination"><%- paginator() %></nav><% } %>
+</div>

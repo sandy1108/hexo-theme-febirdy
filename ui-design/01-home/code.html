@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="zh-CN" class="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FEBIRDY BLOG · 首页 (Desktop)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #030712;
+      --card: #0b1220;
+      --card-hover: #111827;
+      --border: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --cyan: #67e8f9;
+      --blue: #38bdf8;
+      --blue-deep: #2563eb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background-color: var(--bg) !important;
+      color: var(--text) !important;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Noto Sans SC", sans-serif;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .font-brand { font-family: 'Space Grotesk', -apple-system, sans-serif; }
+    .font-mono { font-family: 'JetBrains Mono', monospace; }
+    a { color: inherit; text-decoration: none; transition: color 0.2s; }
+    a:hover { color: var(--cyan); }
+    
+    /* Radial atmospheric glow */
+    .bg-space-glow {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100%;
+      max-width: 1200px;
+      height: 380px;
+      background: radial-gradient(circle at 50% 0%, rgba(37, 99, 235, 0.15), rgba(103, 232, 249, 0.08) 40%, transparent 70%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    
+    /* Layout */
+    .site-container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 28px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    /* Header */
+    header {
+      border-bottom: 1px solid var(--border);
+      background: rgba(3, 7, 18, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header-inner {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .brand-logo-group {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .brand-logo-group img {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+    }
+    .brand-title {
+      font-weight: 700;
+      font-size: 17px;
+      letter-spacing: 0.5px;
+      color: #fff;
+    }
+    .brand-title span { color: var(--cyan); }
+    
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .nav-link {
+      color: var(--text-muted);
+      position: relative;
+      padding: 6px 0;
+    }
+    .nav-link.active {
+      color: var(--cyan);
+      font-weight: 600;
+    }
+    .nav-link.active::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: var(--cyan);
+      box-shadow: 0 0 8px var(--cyan);
+      border-radius: 1px;
+    }
+    
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+    .search-btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #0b1220;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 14px;
+      border-radius: 6px;
+      font-size: 13px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .search-btn:hover {
+      border-color: rgba(103, 232, 249, 0.4);
+      color: var(--text);
+    }
+    .kbd-tag {
+      background: #1e293b;
+      color: #cbd5e1;
+      padding: 2px 5px;
+      border-radius: 4px;
+      font-size: 11px;
+    }
+    .theme-toggle-btn {
+      background: none;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      width: 34px;
+      height: 34px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .portal-link {
+      color: var(--cyan);
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Hero / Intro section */
+    .intro-section {
+      padding: 42px 0 32px 0;
+      border-bottom: 1px solid rgba(30, 41, 59, 0.6);
+      margin-bottom: 36px;
+    }
+    .intro-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(103, 232, 249, 0.08);
+      border: 1px solid rgba(103, 232, 249, 0.25);
+      color: var(--cyan);
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      margin-bottom: 14px;
+    }
+    .intro-badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--cyan);
+      border-radius: 50%;
+      box-shadow: 0 0 6px var(--cyan);
+    }
+    .intro-title {
+      font-size: 26px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 10px;
+      letter-spacing: -0.2px;
+    }
+    .intro-desc {
+      color: var(--text-muted);
+      font-size: 15px;
+      max-width: 680px;
+      line-height: 1.65;
+    }
+
+    /* Main Grid */
+    .main-grid {
+      display: grid;
+      grid-template-columns: 1fr 310px;
+      gap: 36px;
+      margin-bottom: 60px;
+    }
+
+    /* Filter Pills */
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 24px;
+      overflow-x: auto;
+      padding-bottom: 4px;
+    }
+    .filter-pill {
+      background: #0b1220;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      font-size: 13px;
+      padding: 6px 14px;
+      border-radius: 6px;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .filter-pill.active {
+      background: rgba(103, 232, 249, 0.1);
+      border-color: var(--cyan);
+      color: var(--cyan);
+      font-weight: 500;
+    }
+    .filter-pill:hover:not(.active) {
+      border-color: #334155;
+      color: var(--text);
+    }
+
+    /* Article Cards */
+    .article-list {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+    .article-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 24px 26px;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .article-card:hover {
+      border-color: rgba(103, 232, 249, 0.35);
+      background: var(--card-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+    }
+    .article-card.pinned {
+      border-left: 3px solid var(--cyan);
+    }
+    .article-meta-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
+    }
+    .pinned-tag {
+      background: rgba(103, 232, 249, 0.12);
+      color: var(--cyan);
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+      font-size: 11px;
+    }
+    .category-link {
+      color: var(--blue);
+      font-weight: 500;
+    }
+    .article-title {
+      font-size: 19px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 10px;
+      line-height: 1.45;
+    }
+    .article-title:hover {
+      color: var(--cyan);
+    }
+    .article-excerpt {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.65;
+      margin-bottom: 16px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .article-meta-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 12px;
+      color: var(--text-muted);
+      border-top: 1px solid rgba(30, 41, 59, 0.6);
+      padding-top: 12px;
+    }
+    .tag-list {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    .tag-item {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid #1e293b;
+      color: #94a3b8;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 11px;
+      transition: all 0.2s;
+    }
+    .tag-item:hover {
+      color: var(--cyan);
+      border-color: rgba(103, 232, 249, 0.3);
+    }
+    .read-more {
+      color: var(--cyan);
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .sidebar-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 20px;
+    }
+    .sidebar-title {
+      font-size: 14px;
+      font-weight: 600;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--border);
+    }
+    .sidebar-title::before {
+      content: '';
+      width: 3px;
+      height: 12px;
+      background: var(--cyan);
+      border-radius: 2px;
+      box-shadow: 0 0 6px var(--cyan);
+    }
+
+    /* Author card */
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+    }
+    .author-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 10px;
+      background: #111827;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--cyan);
+      font-weight: 700;
+      font-size: 16px;
+    }
+    .author-name {
+      font-size: 16px;
+      font-weight: 600;
+      color: #fff;
+    }
+    .author-bio {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }
+    .author-motto {
+      font-size: 13px;
+      color: #cbd5e1;
+      line-height: 1.55;
+      background: rgba(15, 23, 42, 0.6);
+      padding: 10px 12px;
+      border-radius: 6px;
+      border-left: 2px solid var(--cyan);
+      margin-bottom: 16px;
+    }
+    .social-links {
+      display: flex;
+      gap: 10px;
+    }
+    .social-btn {
+      flex: 1;
+      text-align: center;
+      background: #0f172a;
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 6px 0;
+      border-radius: 6px;
+      font-size: 12px;
+      transition: all 0.2s;
+    }
+    .social-btn:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+    }
+
+    /* Categories widget */
+    .cat-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .cat-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 8px;
+      border-radius: 6px;
+      font-size: 13px;
+      color: #cbd5e1;
+      transition: all 0.2s;
+    }
+    .cat-item:hover {
+      background: #111827;
+      color: var(--cyan);
+    }
+    .cat-count {
+      font-size: 11px;
+      background: #1e293b;
+      color: var(--text-muted);
+      padding: 1px 7px;
+      border-radius: 10px;
+    }
+
+    /* Tag Cloud */
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 36px;
+    }
+    .page-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text-muted);
+      font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .page-btn.active {
+      background: rgba(103, 232, 249, 0.15);
+      border-color: var(--cyan);
+      color: var(--cyan);
+      font-weight: 600;
+    }
+    .page-btn:hover:not(.active) {
+      border-color: #334155;
+      color: #fff;
+    }
+
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--border);
+      background: #020617;
+      padding: 36px 0;
+      margin-top: auto;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+    .footer-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .footer-links {
+      display: flex;
+      gap: 20px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Space glow aura -->
+  <div class="bg-space-glow"></div>
+
+  <!-- Header -->
+  <header>
+    <div class="site-container header-inner">
+      <div class="brand-logo-group">
+        <img src="https://lh3.googleusercontent.com/aida/AEtjO1Xc-hBxJd0LeFbPV4B794wdyjmd1f7-di6i5xrpaLKJAFmdV1Gy4pYMYJmG12_Nd08YupPk8mDbpeCPVJFQoiKXnhEIKu3fFf0yQh4PHCtl6GamCzHfoKQIyQnqpHSEFEAJaYKnyuDxWpcwo_dDh6IS0lHGrddZe0hHVoR8CgOL3BKymYEJQpKt-8m-L8ceZkjsUj3MzzAGj0qM-lNMO_uKTFZcSgLN22J-S2kgP4AblWabAVQ_upFPnVb8" alt="FEBIRDY Logo">
+        <a href="/" class="brand-title font-brand">FEBIRDY <span>BLOG</span></a>
+      </div>
+
+      <nav class="nav-links">
+        <a href="/" class="nav-link active">首页</a>
+        <a href="/archives" class="nav-link">归档</a>
+        <a href="/categories" class="nav-link">分类</a>
+        <a href="/tags" class="nav-link">标签</a>
+        <a href="/about" class="nav-link">关于</a>
+      </nav>
+
+      <div class="header-actions">
+        <button class="search-btn font-mono" onclick="alert('触发全站搜索弹层 (⌘K)')">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          搜索
+          <span class="kbd-tag font-mono">⌘K</span>
+        </button>
+        <a href="https://febirdy.com" class="portal-link" target="_blank">
+          <span>传送门</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="site-container">
+    <!-- Intro section -->
+    <section class="intro-section">
+      <div class="intro-badge font-mono">
+        <span class="intro-badge-dot"></span>
+        <span>移动终端与系统底层开发笔记</span>
+      </div>
+      <h1 class="intro-title">记录代码、踩坑，以及每一次认真折腾的过程。</h1>
+      <p class="intro-desc">专注 Android AOSP、鸿蒙 HarmonyOS、iOS 现代化并发与边缘计算实践，坚持写有深度的真实技术沉淀。</p>
+    </section>
+
+    <div class="main-grid">
+      <!-- Left Column: Articles -->
+      <div>
+        <!-- Filter Tabs -->
+        <div class="filter-bar">
+          <button class="filter-pill active">全部文章</button>
+          <button class="filter-pill">鸿蒙HarmonyOS应用开发</button>
+          <button class="filter-pill">Android折腾之路</button>
+          <button class="filter-pill">iOS摸索之路</button>
+          <button class="filter-pill">瞎折腾系列</button>
+        </div>
+
+        <!-- Article List -->
+        <div class="article-list">
+          <!-- Pinned Article 1 -->
+          <article class="article-card pinned">
+            <div class="article-meta-top">
+              <span class="pinned-tag">置顶</span>
+              <a href="/categories/harmonyos" class="category-link">鸿蒙HarmonyOS应用开发</a>
+              <span>·</span>
+              <time class="font-mono">2024-03-18</time>
+              <span>·</span>
+              <span class="font-mono">12 分钟阅读</span>
+            </div>
+            <h2 class="article-title">
+              <a href="/post/arkweb-cookie-sync">HarmonyOS 中 ArkWeb 与 HTTP 请求的 Cookie 双向同步实践</a>
+            </h2>
+            <p class="article-excerpt">
+              在基于纯血鸿蒙 HarmonyOS NEXT 的应用架构中，原生网络库与 Web 容器是互相隔离的内存沙箱。本文深入剖析基于 WebCookieManager 的持久化拦截机制，解决高并发与进程生命周期场景下的鉴权会话丢失痛点。
+            </p>
+            <div class="article-meta-bottom">
+              <div class="tag-list font-mono">
+                <a href="/tags/arkweb" class="tag-item">#ArkWeb</a>
+                <a href="/tags/cookie" class="tag-item">#Cookie</a>
+                <a href="/tags/harmonyos-next" class="tag-item">#HarmonyOS-NEXT</a>
+                <a href="/tags/arkts" class="tag-item">#ArkTS</a>
+              </div>
+              <a href="/post/arkweb-cookie-sync" class="read-more">阅读全文 →</a>
+            </div>
+          </article>
+
+          <!-- Article 2 -->
+          <article class="article-card">
+            <div class="article-meta-top">
+              <a href="/categories/android" class="category-link">Android折腾之路</a>
+              <span>·</span>
+              <time class="font-mono">2024-03-09</time>
+              <span>·</span>
+              <span class="font-mono">18 分钟阅读</span>
+            </div>
+            <h2 class="article-title">
+              <a href="/post/android-14-binder">深入理解 Android 14 跨进程通信 Binder 机制演进与线程调度倾斜排查</a>
+            </h2>
+            <p class="article-excerpt">
+              全面解构 Android 14 在内核驱动级驱动层（drivers/android/binder.c）针对 RT 线程调度与冻结进程（Process Freezer）协同的底层补丁，实战定位高频 IPC 下 Binder 线程耗尽导致 ANR 的监控闭环。
+            </p>
+            <div class="article-meta-bottom">
+              <div class="tag-list font-mono">
+                <a href="/tags/binder" class="tag-item">#Binder</a>
+                <a href="/tags/ipc" class="tag-item">#IPC</a>
+                <a href="/tags/kernel" class="tag-item">#内核调度</a>
+                <a href="/tags/aosp" class="tag-item">#AOSP</a>
+              </div>
+              <a href="/post/android-14-binder" class="read-more">阅读全文 →</a>
+            </div>
+          </article>
+
+          <!-- Article 3 -->
+          <article class="article-card">
+            <div class="article-meta-top">
+              <a href="/categories/ios" class="category-link">iOS摸索之路</a>
+              <span>·</span>
+              <time class="font-mono">2024-02-28</time>
+              <span>·</span>
+              <span class="font-mono">8 分钟阅读</span>
+            </div>
+            <h2 class="article-title">
+              <a href="/post/swift-concurrency">Swift 现代化并发模型实战避坑：Actor 重入与 Sendable 深度静态检查</a>
+            </h2>
+            <p class="article-excerpt">
+              从 Swift 5.9 到 6.0 彻底开启的严格并发检查（Strict Concurrency Checking），使团队中大量既有 GCD 架构暴露出 Data Race。本文系统剖析 Actor Reentrancy 带来的状态不一致陷阱与 TaskCancellation 处理规范。
+            </p>
+            <div class="article-meta-bottom">
+              <div class="tag-list font-mono">
+                <a href="/tags/swift" class="tag-item">#Swift</a>
+                <a href="/tags/concurrency" class="tag-item">#Concurrency</a>
+                <a href="/tags/actor" class="tag-item">#Actor</a>
+              </div>
+              <a href="/post/swift-concurrency" class="read-more">阅读全文 →</a>
+            </div>
+          </article>
+
+          <!-- Article 4 -->
+          <article class="article-card">
+            <div class="article-meta-top">
+              <a href="/categories/hacks" class="category-link">瞎折腾系列</a>
+              <span>·</span>
+              <time class="font-mono">2024-02-14</time>
+              <span>·</span>
+              <span class="font-mono">15 分钟阅读</span>
+            </div>
+            <h2 class="article-title">
+              <a href="/post/mac-m3-mlx-llm">在 Mac M3 Max 本地基于 MLX 框架微调并量化部署 14B 代码大模型实战</a>
+            </h2>
+            <p class="article-excerpt">
+              抛弃庞杂的 CUDA 镜像依赖，体验 Apple 原生 MLX 的统一内存架构优势。从 LoRA 微调超参分配、4-bit GGUF/ExLlama 量化转换，到使用 Ollama 提供类 OpenAI API 给开发工具链调用，全套性能实测对比报告。
+            </p>
+            <div class="article-meta-bottom">
+              <div class="tag-list font-mono">
+                <a href="/tags/apple-silicon" class="tag-item">#AppleSilicon</a>
+                <a href="/tags/mlx" class="tag-item">#MLX</a>
+                <a href="/tags/llm" class="tag-item">#LLM</a>
+              </div>
+              <a href="/post/mac-m3-mlx-llm" class="read-more">阅读全文 →</a>
+            </div>
+          </article>
+        </div>
+
+        <!-- Pagination -->
+        <div class="pagination font-mono">
+          <button class="page-btn">‹</button>
+          <button class="page-btn active">1</button>
+          <button class="page-btn">2</button>
+          <button class="page-btn">3</button>
+          <button class="page-btn">›</button>
+        </div>
+      </div>
+
+      <!-- Right Column: Clean Minimal Sidebar -->
+      <aside class="sidebar">
+        <!-- Author Profile -->
+        <div class="sidebar-card">
+          <div class="author-info">
+            <div class="author-avatar font-brand">FB</div>
+            <div>
+              <div class="author-name">FEBIRDY</div>
+              <div class="author-bio">移动终端全栈工程师</div>
+            </div>
+          </div>
+          <div class="author-motto">
+            “不爱折腾的码农，不是好程序猿。”
+          </div>
+          <div class="social-links font-mono">
+            <a href="https://github.com" class="social-btn" target="_blank">GitHub</a>
+            <a href="/atom.xml" class="social-btn">RSS</a>
+            <a href="https://febirdy.com" class="social-btn">传送门</a>
+          </div>
+        </div>
+
+        <!-- Categories Widget -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">专栏分类</div>
+          <div class="cat-list">
+            <a href="/categories/android" class="cat-item">
+              <span>Android折腾之路</span>
+              <span class="cat-count font-mono">38</span>
+            </a>
+            <a href="/categories/harmonyos" class="cat-item">
+              <span>鸿蒙HarmonyOS应用开发</span>
+              <span class="cat-count font-mono">24</span>
+            </a>
+            <a href="/categories/ios" class="cat-item">
+              <span>iOS摸索之路</span>
+              <span class="cat-count font-mono">19</span>
+            </a>
+            <a href="/categories/hacks" class="cat-item">
+              <span>瞎折腾系列</span>
+              <span class="cat-count font-mono">15</span>
+            </a>
+            <a href="/categories/appcan" class="cat-item">
+              <span>AppCan经验分享</span>
+              <span class="cat-count font-mono">12</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Popular Tags Widget -->
+        <div class="sidebar-card">
+          <div class="sidebar-title">热门标签</div>
+          <div class="tags-container font-mono">
+            <a href="/tags/android" class="tag-item">#Android (38)</a>
+            <a href="/tags/harmonyos" class="tag-item">#HarmonyOS (24)</a>
+            <a href="/tags/kotlin" class="tag-item">#Kotlin (22)</a>
+            <a href="/tags/swift" class="tag-item">#Swift (16)</a>
+            <a href="/tags/arkts" class="tag-item">#ArkTS (14)</a>
+            <a href="/tags/binder" class="tag-item">#Binder (9)</a>
+            <a href="/tags/llm" class="tag-item">#LLM (7)</a>
+            <a href="/tags/aosp" class="tag-item">#AOSP (11)</a>
+            <a href="/tags/arkweb" class="tag-item">#ArkWeb (8)</a>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="site-container footer-inner font-mono">
+      <div>
+        © 2024 FEBIRDY BLOG · 不爱折腾的码农，不是好程序猿
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com" target="_blank">GitHub</a>
+        <a href="/atom.xml">RSS</a>
+        <a href="https://febirdy.com" target="_blank">个人传送门</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

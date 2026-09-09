@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Noto+Sans+SC:wght@300;400;500;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "surface-tint": "#54d8e8", "on-tertiary-fixed-variant": "#003ea8", "primary-container": "#67e8f9", "tertiary-fixed-dim": "#b4c5ff", "on-secondary-fixed": "#001e2c", "surface-variant": "#273647", "on-secondary": "#00354a", "on-secondary-container": "#00374d", "surface": "#051424", "background": "#051424", "secondary-fixed": "#c4e7ff", "primary": "#d5f9ff", "on-primary-fixed": "#001f23", "surface-bright": "#2c3a4c", "surface-container": "#122131", "surface-container-high": "#1c2b3c", "on-primary": "#00363c", "on-background": "#d4e4fa", "on-secondary-fixed-variant": "#004c69", "surface-container-lowest": "#010f1f", "on-primary-container": "#006771", "error-container": "#93000a", "on-surface-variant": "#bcc9cb", "inverse-surface": "#d4e4fa", "inverse-primary": "#006973", "surface-container-highest": "#273647", "tertiary-fixed": "#dbe1ff", "on-tertiary": "#002a78", "on-tertiary-container": "#0051d7", "on-tertiary-fixed": "#00174b", "on-error": "#690005", "outline-variant": "#3c494b", "on-error-container": "#ffdad6", "on-surface": "#d4e4fa", "secondary-fixed-dim": "#7bd0ff", "secondary": "#7bd0ff", "tertiary-container": "#cad5ff", "on-primary-fixed-variant": "#004f57", "surface-dim": "#051424", "error": "#ffb4ab", "inverse-on-surface": "#233143", "outline": "#869395", "primary-fixed-dim": "#54d8e8", "primary-fixed": "#91f1ff", "tertiary": "#f1f2ff", "surface-container-low": "#0d1c2d", "secondary-container": "#00a6e0" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xl": "2rem", "space-2xl": "3rem", "content-max-width": "75rem", "space-md": "1rem", "gutter-mobile": "1rem", "space-xs": "0.5rem", "space-xxs": "0.25rem", "gutter-desktop": "1.5rem", "space-sm": "0.75rem", "space-3xl": "4.5rem", "reading-max-width": "48rem", "space-lg": "1.5rem" }, "fontFamily": { "display-hero": ["Space Grotesk"], "display-hero-mobile": ["Space Grotesk"], "headline-lg": ["Space Grotesk"], "headline-md": ["Space Grotesk"], "headline-xl-mobile": ["Space Grotesk"], "code-inline": ["JetBrains Mono"], "headline-xl": ["Space Grotesk"], "body-lg": ["Noto Sans SC"], "body-sm": ["Noto Sans SC"], "headline-sm": ["Space Grotesk"], "body-md": ["Noto Sans SC"], "code-block": ["JetBrains Mono"], "label-caps": ["JetBrains Mono"] }, "fontSize": { "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }], "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-md": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "code-inline": ["13px", { "lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "body-lg": ["18px", { "lineHeight": "30px", "letterSpacing": "0em", "fontWeight": "400" }], "body-sm": ["14px", { "lineHeight": "22px", "letterSpacing": "0.01em", "fontWeight": "400" }], "headline-sm": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "body-md": ["16px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "400" }], "code-block": ["14px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }], "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary-container min-h-screen flex flex-col"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 max-w-content-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md shrink-0"><a class="flex items-center gap-space-sm" data-path="home" href="#"><img alt="FEBIRDY Geometric Brand Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Xc-hBxJd0LeFbPV4B794wdyjmd1f7-di6i5xrpaLKJAFmdV1Gy4pYMYJmG12_Nd08YupPk8mDbpeCPVJFQoiKXnhEIKu3fFf0yQh4PHCtl6GamCzHfoKQIyQnqpHSEFEAJaYKnyuDxWpcwo_dDh6IS0lHGrddZe0hHVoR8CgOL3BKymYEJQpKt-8m-L8ceZkjsUj3MzzAGj0qM-lNMO_uKTFZcSgLN22J-S2kgP4AblWabAVQ_upFPnVb8"/><span class="font-headline-sm text-headline-sm tracking-tight text-on-surface hover:text-primary transition-colors">FEBIRDY BLOG</span></a><nav class="hidden md:flex items-center gap-space-xs ml-space-sm" data-active-classes="bg-surface-container text-primary-container font-medium rounded"><a aria-current="page" class="px-space-sm py-space-xs transition-colors bg-surface-container text-primary-container font-medium rounded" data-path="home" href="#">首页</a><a class="px-space-sm py-space-xs rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors font-body-sm text-body-sm" data-path="archives" href="#">归档</a><a class="px-space-sm py-space-xs rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors font-body-sm text-body-sm" data-path="categories" href="#">分类</a><a class="px-space-sm py-space-xs rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors font-body-sm text-body-sm" data-path="tags" href="#">标签</a><a class="px-space-sm py-space-xs rounded text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors font-body-sm text-body-sm" data-path="about" href="#">关于</a></nav></div><div class="flex items-center gap-space-sm shrink-0"><button class="flex items-center gap-space-sm px-space-sm py-space-xs rounded bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors font-body-sm text-body-sm" type="button"><span class="material-symbols-outlined text-[18px]">search</span><span class="hidden sm:inline">搜索</span><kbd class="font-code-inline text-code-inline px-space-xxs py-0.5 bg-surface-container-highest rounded text-on-surface-variant">⌘K</kbd></button><a class="flex items-center gap-space-xxs px-space-sm py-space-xs rounded bg-surface-container text-on-surface-variant hover:text-primary-container hover:bg-surface-container-high transition-colors font-body-sm text-body-sm" href="https://febirdy.com" rel="noopener noreferrer" target="_blank"><span class="material-symbols-outlined text-[16px]">open_in_new</span><span class="hidden sm:inline">传送门</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center shrink-0"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface flex-1"><div class="flex flex-col w-full">
+<!-- Subtle Ambient Glow -->
+<div class="relative w-full max-w-content-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop py-space-lg">
+<!-- Breadcrumb & Article Header Section -->
+<header class="mb-space-xl">
+<!-- Breadcrumb -->
+<nav class="flex items-center gap-space-xs text-on-surface-variant font-code-inline text-code-inline mb-space-md">
+<a class="hover:text-primary-container transition-colors" data-path="home" href="#">首页</a>
+<span>/</span>
+<a class="hover:text-primary-container transition-colors" data-path="categories" href="#">鸿蒙HarmonyOS应用开发</a>
+<span>/</span>
+<span class="text-on-surface truncate max-w-[280px] sm:max-w-md">ArkWeb 与 HTTP Cookie 同步</span>
+</nav>
+<!-- Main Title -->
+<h1 class="font-display-hero text-display-hero text-on-surface tracking-tight mb-space-md text-balance leading-tight">
+        HarmonyOS 中 ArkWeb 与 HTTP 请求的 Cookie 双向同步实践
+      </h1>
+<!-- Meta Bar -->
+<div class="flex flex-wrap items-center gap-y-space-xs gap-x-space-lg text-on-surface-variant font-code-inline text-code-inline pb-space-md">
+<div class="flex items-center gap-space-xxs">
+<span class="material-symbols-outlined text-[16px] text-secondary">calendar_today</span>
+<span>发布于 2024-03-18</span>
+</div>
+<div class="flex items-center gap-space-xxs">
+<span class="material-symbols-outlined text-[16px] text-surface-tint">update</span>
+<span>更新于 2024-03-20</span>
+</div>
+<div class="flex items-center gap-space-xxs">
+<span class="material-symbols-outlined text-[16px] text-primary-container">schedule</span>
+<span>阅读约 12 分钟</span>
+</div>
+<div class="flex items-center gap-space-xxs">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant">visibility</span>
+<span>3,428 次浏览</span>
+</div>
+</div>
+<!-- Tag Badges -->
+<div class="flex flex-wrap items-center gap-space-xs pt-space-xs">
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-primary-container font-label-caps text-label-caps tracking-wider">#ArkWeb</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-primary-container font-label-caps text-label-caps tracking-wider">#Cookie</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-primary-container font-label-caps text-label-caps tracking-wider">#HarmonyOS-NEXT</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container text-primary-container font-label-caps text-label-caps tracking-wider">#ArkTS</span>
+</div>
+</header>
+<!-- Content Split Layout (Left: Article 720px, Right: Sticky TOC) -->
+<div class="grid grid-cols-1 lg:grid-cols-[minmax(0,720px)_minmax(0,1fr)] gap-space-2xl items-start">
+<!-- Article Well -->
+<article class="bg-surface-container-low rounded-xl p-space-md sm:p-space-xl shadow-xl w-full">
+<!-- Lead In Paragraph -->
+<p class="font-body-lg text-body-lg text-on-surface mb-space-lg leading-relaxed">
+          在构建基于混合架构（Hybrid）的鸿蒙原生应用时，高频出现的业务挑战便是 <span class="font-code-inline text-code-inline text-primary-container px-space-xxs py-0.5 bg-surface-container rounded">ArkWeb</span> 内核与底层系统网络栈 <span class="font-code-inline text-code-inline text-primary-container px-space-xxs py-0.5 bg-surface-container rounded">@ohos.net.http</span> 之间的状态共享。若无法精准完成 Cookie 双向透传，极易导致 H5 页面登录态失效或原生接口 401 鉴权熔断。
+        </p>
+<!-- Callout Banner -->
+<div class="my-space-lg p-space-md bg-surface-container rounded-lg shadow-sm">
+<div class="flex items-start gap-space-sm">
+<span class="material-symbols-outlined text-primary-container shrink-0 text-[22px]">info</span>
+<div class="space-y-space-xxs">
+<span class="font-headline-sm text-headline-sm text-primary-container block">NEXT 架构特别注意</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                HarmonyOS NEXT 彻底移除了 Android AOSP 依赖。原先借助系统底层映射的 Cookie 桥接方案已失效，开发者必须利用官方提供的 <span class="font-code-inline text-code-inline text-primary-container">webview.WebCookieManager</span> 配合持久化内存协议显式触发同步。
+              </p>
+</div>
+</div>
+</div>
+<!-- Section 1 -->
+<section class="scroll-mt-24 mt-space-xl" id="section-1">
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-space-sm pb-space-xs flex items-center gap-space-xs">
+<span class="text-primary-container font-code-inline text-headline-sm">01.</span>
+            双向同步机制与底层全景
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed">
+            ArkWeb 内核内部运行着独立的 Chromium 网络栈，其 CookieStore 与应用级 <span class="font-code-inline text-code-inline text-primary-container px-space-xxs py-0.5 bg-surface-container rounded">rcp</span> 或 <span class="font-code-inline text-code-inline text-primary-container px-space-xxs py-0.5 bg-surface-container rounded">http</span> 模块互不相通。要保持用户会话生命周期的一致，必须在两个关键生命周期打通隧道：
+          </p>
+<!-- SVG Visual Diagram -->
+<div class="my-space-lg p-space-md bg-surface-container-lowest rounded-xl shadow-md">
+<div class="flex items-center justify-between pb-space-sm mb-space-sm text-on-surface-variant font-code-inline text-label-caps">
+<span>ARCHITECTURE DATA FLOW</span>
+<span class="text-primary-container">BILATERAL SYNC</span>
+</div>
+<div class="w-full flex justify-center py-space-xs">
+<svg class="w-full max-w-[620px] h-auto text-on-surface" fill="none" viewbox="0 0 640 180" xmlns="http://www.w3.org/2000/svg">
+<!-- Native Node -->
+<rect class="fill-surface-container" height="120" rx="8" width="160" x="20" y="30"></rect>
+<text class="fill-primary-container font-headline-sm text-sm font-semibold" text-anchor="middle" x="100" y="70">原生 HTTP 模块</text>
+<text class="fill-on-surface-variant text-[11px] font-code-inline" text-anchor="middle" x="100" y="95">@ohos.net.http</text>
+<text class="fill-secondary text-[11px] font-code-inline" text-anchor="middle" x="100" y="120">CookieJar Cache</text>
+<!-- Sync Bridge Node -->
+<rect class="fill-surface-variant" height="90" rx="8" width="160" x="240" y="45"></rect>
+<text class="fill-on-surface text-sm font-semibold" text-anchor="middle" x="320" y="85">WebCookieManager</text>
+<text class="fill-primary text-[10px] font-code-inline" text-anchor="middle" x="320" y="105">setCookieSync / fetch</text>
+<!-- ArkWeb Node -->
+<rect class="fill-surface-container" height="120" rx="8" width="160" x="460" y="30"></rect>
+<text class="fill-primary-container font-headline-sm text-sm font-semibold" text-anchor="middle" x="540" y="70">ArkWeb 容器</text>
+<text class="fill-on-surface-variant text-[11px] font-code-inline" text-anchor="middle" x="540" y="95">WebComponent</text>
+<text class="fill-secondary text-[11px] font-code-inline" text-anchor="middle" x="540" y="120">Chromium NetStore</text>
+<!-- Arrows -->
+<path class="text-primary-container" d="M 180 65 L 240 65" marker-end="url(#arrow)" stroke="currentColor" stroke-width="2"></path>
+<path class="text-primary-container" d="M 400 65 L 460 65" stroke="currentColor" stroke-width="2"></path>
+<path class="text-secondary" d="M 460 115 L 400 115" stroke="currentColor" stroke-width="2"></path>
+<path class="text-secondary" d="M 240 115 L 180 115" stroke="currentColor" stroke-width="2"></path>
+<!-- Flow Labels -->
+<text class="fill-primary-container text-[10px]" text-anchor="middle" x="210" y="58">写入</text>
+<text class="fill-primary-container text-[10px]" text-anchor="middle" x="430" y="58">透传</text>
+<text class="fill-secondary text-[10px]" text-anchor="middle" x="430" y="132">抽取</text>
+<text class="fill-secondary text-[10px]" text-anchor="middle" x="210" y="132">回填</text>
+</svg>
+</div>
+</div>
+<h3 class="font-headline-lg text-headline-lg text-on-surface mt-space-lg mb-space-xs">
+            核心职责拆解
+          </h3>
+<ul class="space-y-space-xs font-body-md text-body-md text-on-surface-variant list-disc pl-space-md mb-space-md">
+<li><strong class="text-on-surface">Native 登入 → Web 载入：</strong>将 Native 获取到的 Session-Token 及鉴权 Cookie 序列化后注入到 ArkWeb 内部。</li>
+<li><strong class="text-on-surface">Web 交互 → Native 接口：</strong>用户在 H5 端完成微信授权或手机号绑定后，ArkWeb 内产生的最新 Cookie 需即刻抽取并同步到原生网络层。</li>
+</ul>
+</section>
+<!-- Section 2 -->
+<section class="scroll-mt-24 mt-space-xl" id="section-2">
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-space-sm pb-space-xs flex items-center gap-space-xs">
+<span class="text-primary-container font-code-inline text-headline-sm">02.</span>
+            同步策略与方案选型对比
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed">
+            在实际演进过程中，我们对比了三种主要的 Cookie 维护方案。在稳定性、性能损耗与侵入性维度表现各异：
+          </p>
+<!-- Table Container -->
+<div class="overflow-x-auto my-space-md rounded-lg bg-surface-container shadow-md">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead class="bg-surface-variant text-primary-container font-headline-sm">
+<tr>
+<th class="p-space-sm">同步方案</th>
+<th class="p-space-sm">实施机制</th>
+<th class="p-space-sm">首屏耗时</th>
+<th class="p-space-sm">优势与短板</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface-variant">
+<tr class="hover:bg-surface-container-high/50 transition-colors">
+<td class="p-space-sm font-semibold text-on-surface">拦截器桥接 (OnInterceptRequest)</td>
+<td class="p-space-sm font-code-inline text-code-inline">WebComponent.onInterceptRequest</td>
+<td class="p-space-sm text-error">较慢 (+40ms)</td>
+<td class="p-space-sm">可全权掌控网络，但无法复用 Web 缓存</td>
+</tr>
+<tr class="hover:bg-surface-container-high/50 transition-colors bg-surface-container-low/40">
+<td class="p-space-sm font-semibold text-on-surface">JavaScript Bridge 注入</td>
+<td class="p-space-sm font-code-inline text-code-inline">document.cookie 脚本注入</td>
+<td class="p-space-sm text-secondary">一般</td>
+<td class="p-space-sm">易受 HttpOnly 限制，无法写入关键安全凭证</td>
+</tr>
+<tr class="hover:bg-surface-container-high/50 transition-colors">
+<td class="p-space-sm font-semibold text-primary-container">官方 WebCookieManager 方案 (推荐)</td>
+<td class="p-space-sm font-code-inline text-code-inline">setCookieSync / saveCookieSync</td>
+<td class="p-space-sm text-primary-fixed">&lt; 5ms (原生态)</td>
+<td class="p-space-sm">纯原生 API，无侵入，完美支持安全策略</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+<!-- Section 3: ArkTS Code Implementation -->
+<section class="scroll-mt-24 mt-space-xl" id="section-3">
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-space-sm pb-space-xs flex items-center gap-space-xs">
+<span class="text-primary-container font-code-inline text-headline-sm">03.</span>
+            完整 ArkTS 模块实现与落盘
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed">
+            下面给出的 <span class="font-code-inline text-code-inline text-primary-container px-space-xxs py-0.5 bg-surface-container rounded">CookieSyncHelper</span> 工具类封装了 Native 响应头 Cookie 字符串解析、对 Web 内核的同步注入，以及强行落盘持久化（Flush）的完整范式：
+          </p>
+<!-- Structured ArkTS Code Block -->
+<div class="rounded-xl overflow-hidden bg-surface-container-lowest shadow-xl my-space-md font-code-block text-code-block">
+<!-- Code Bar -->
+<div class="flex items-center justify-between px-space-md py-space-xs bg-surface-variant text-on-surface">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-xs py-0.5 rounded bg-surface-container font-label-caps text-label-caps text-primary-container uppercase font-bold">ArkTS</span>
+<span class="text-on-surface-variant font-code-inline text-code-inline text-xs">src/main/ets/utils/CookieSyncHelper.ets</span>
+</div>
+<button class="flex items-center gap-space-xxs text-xs font-code-inline text-on-surface-variant hover:text-primary-container transition-colors" id="copyBtn" onclick="navigator.clipboard.writeText(document.getElementById('codeSource').innerText); this.innerHTML='已复制 ✓'; setTimeout(()=&gt;this.innerHTML='复制代码', 2000)">
+<span class="material-symbols-outlined text-[14px]">content_copy</span>
+<span>复制代码</span>
+</button>
+</div>
+<!-- Code Content with Line Numbers -->
+<div class="p-space-md overflow-x-auto flex text-xs sm:text-code-block leading-relaxed" id="codeSource">
+<!-- Line Numbers -->
+<div class="select-none text-outline-variant pr-space-md text-right font-code-inline opacity-50 flex flex-col">
+<span>01</span><span>02</span><span>03</span><span>04</span><span>05</span><span>06</span><span>07</span><span>08</span><span>09</span><span>10</span><span>11</span><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span><span>19</span><span>20</span><span>21</span><span>22</span>
+</div>
+<!-- Code Code Syntax Highlighted -->
+<pre class="font-code-block text-on-surface whitespace-pre"><code><span class="text-secondary-container">import</span> webview <span class="text-secondary-container">from</span> <span class="text-primary-fixed">'@ohos.web.webview'</span>;
+<span class="text-secondary-container">import</span> { BusinessError } <span class="text-secondary-container">from</span> <span class="text-primary-fixed">'@ohos.base'</span>;
+
+<span class="text-secondary-container">export class</span> <span class="text-primary-container">CookieSyncHelper</span> {
+  <span class="text-outline-variant italic">// 将 Native HTTP Set-Cookie 同步注入 ArkWeb</span>
+  <span class="text-secondary-container">public static</span> <span class="text-primary-fixed-dim">syncToWeb</span>(url: <span class="text-secondary">string</span>, rawCookies: <span class="text-secondary">string</span>[]): <span class="text-secondary">void</span> {
+    <span class="text-secondary-container">if</span> (!url || !rawCookies || rawCookies.length === <span class="text-secondary-container">0</span>) {
+      <span class="text-secondary-container">return</span>;
+    }
+    <span class="text-secondary-container">try</span> {
+      rawCookies.<span class="text-primary-fixed-dim">forEach</span>((item: <span class="text-secondary">string</span>) =&gt; {
+        <span class="text-outline-variant italic">// 同步注入单条 Cookie 条目</span>
+        webview.WebCookieManager.<span class="text-primary-container">setCookieSync</span>(url, item);
+      });
+      <span class="text-outline-variant italic">// 立即强制持久化落盘至沙箱 SQLite</span>
+      webview.WebCookieManager.<span class="text-primary-container">saveCookieSync</span>();
+    } <span class="text-secondary-container">catch</span> (error) {
+      <span class="text-secondary">let</span> err = error <span class="text-secondary-container">as</span> BusinessError;
+      console.<span class="text-primary-fixed-dim">error</span>(<span class="text-primary-fixed">`CookieSync failed code: ${err.code}, msg: ${err.message}`</span>);
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</section>
+<!-- Section 4 -->
+<section class="scroll-mt-24 mt-space-xl" id="section-4">
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-space-sm pb-space-xs flex items-center gap-space-xs">
+<span class="text-primary-container font-code-inline text-headline-sm">04.</span>
+            跨域与沙箱持久化避坑指南
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed">
+            在工程交付场景中，经常有同仁反馈虽然调用了 <span class="font-code-inline text-code-inline text-primary-container px-space-xxs py-0.5 bg-surface-container rounded">setCookieSync</span>，但在重新启动 APP 后状态依旧丢失。这通常由于两类隐匿机制引起：
+          </p>
+<div class="space-y-space-md">
+<div class="p-space-md rounded-lg bg-surface-container shadow-sm">
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-space-xxs flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
+                未调用 saveCookieSync 进行持久化落盘
+              </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                ArkWeb 内部维护了一层内存缓存，只执行注入并不会立即写入文件系统。若未及时执行 saveCookieSync，一旦进程因内存紧张被系统挂起（Freeze）或意外结束，未落盘的 Session 凭证将会彻底丢失。
+              </p>
+</div>
+<div class="p-space-md rounded-lg bg-surface-container shadow-sm">
+<h4 class="font-headline-sm text-headline-sm text-on-surface mb-space-xxs flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-secondary text-[18px]">check_circle</span>
+                URL 协议与顶级域（Domain）范围规范
+              </h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                注入的 URL 参数必须携带完整的协议前缀（如 <span class="font-code-inline text-code-inline text-primary-container">https://api.domain.com</span>），纯域名或者 IP 地址无法正确激活 Chromium 的有效域安全检查，会被内部静默丢弃。
+              </p>
+</div>
+</div>
+</section>
+<!-- Section 5 -->
+<section class="scroll-mt-24 mt-space-xl" id="section-5">
+<h2 class="font-headline-xl text-headline-xl text-on-surface mb-space-sm pb-space-xs flex items-center gap-space-xs">
+<span class="text-primary-container font-code-inline text-headline-sm">05.</span>
+            总结与生产效能指标
+          </h2>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md leading-relaxed">
+            借由该套双向同步范式，我们团队在商城核心业务混合架构重构中，杜绝了由于 Cookie 状态脱节导致的二次登录率，Native 唤起 Web 混合页面的鉴权同步损耗压缩在 <span class="font-code-inline text-code-inline text-primary-container">3.2ms</span> 以内。
+          </p>
+</section>
+<!-- Post Navigation (Prev / Next) -->
+<div class="mt-space-2xl pt-space-lg grid grid-cols-1 sm:grid-cols-2 gap-space-md">
+<!-- Prev Card -->
+<a class="p-space-md rounded-xl bg-surface-container hover:bg-surface-container-high transition-all group flex flex-col justify-between shadow-md" href="#">
+<div class="flex items-center gap-space-xxs text-on-surface-variant text-label-caps font-label-caps uppercase mb-space-xs group-hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined text-[16px]">arrow_back</span>
+<span>上一篇</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-container transition-colors line-clamp-2">
+              HarmonyOS NEXT 中 Stage 模型的应用生命周期演进深度剖析
+            </span>
+</a>
+<!-- Next Card -->
+<a class="p-space-md rounded-xl bg-surface-container hover:bg-surface-container-high transition-all group flex flex-col justify-between text-right shadow-md" href="#">
+<div class="flex items-center justify-end gap-space-xxs text-on-surface-variant text-label-caps font-label-caps uppercase mb-space-xs group-hover:text-primary-container transition-colors">
+<span>下一篇</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-container transition-colors line-clamp-2">
+              使用 ArkUI 状态管理 V2：@ObservedV2 与 @Trace 的实战陷阱
+            </span>
+</a>
+</div>
+<!-- Giscus Comments Section -->
+<section class="mt-space-2xl pt-space-lg">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-primary-container text-[24px]">chat</span>
+<h3 class="font-headline-lg text-headline-lg text-on-surface">讨论交流</h3>
+</div>
+<span class="font-code-inline text-code-inline text-on-surface-variant">Powered by Giscus</span>
+</div>
+<!-- Giscus Box Mock / Realistic Widget -->
+<div class="p-space-lg rounded-xl bg-surface-container shadow-md">
+<div class="flex items-center justify-between pb-space-sm mb-space-md">
+<span class="font-headline-sm text-headline-sm text-on-surface">4 条评论</span>
+<button class="px-space-sm py-space-xs rounded bg-surface-container-highest text-primary-container font-body-sm text-body-sm hover:bg-primary-container hover:text-on-primary-container transition-colors">
+                登录并发表想法
+              </button>
+</div>
+<!-- Thread List -->
+<div class="space-y-space-md">
+<div class="flex gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-variant flex items-center justify-center shrink-0 font-code-inline text-primary text-xs font-bold">
+                  H
+                </div>
+<div class="space-y-space-xxs flex-1">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-body-sm font-semibold text-on-surface">HOS_DevMaster</span>
+<span class="font-code-inline text-label-caps text-on-surface-variant">2天前</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                    赞！关于 <code>saveCookieSync</code> 在多进程架构中的落盘行为，主模块退出时是否会阻塞 UI 渲染？
+                  </p>
+</div>
+</div>
+<div class="flex gap-space-sm pl-space-md bg-surface-container-lowest/50 p-space-sm rounded-lg">
+<div class="w-7 h-7 rounded-full bg-primary flex items-center justify-center shrink-0 font-code-inline text-on-primary text-xs font-bold">
+                  F
+                </div>
+<div class="space-y-space-xxs flex-1">
+<div class="flex items-center gap-space-xs">
+<span class="font-headline-sm text-body-sm font-semibold text-primary-container">FEBIRDY (作者)</span>
+<span class="font-code-inline text-label-caps text-on-surface-variant">1天前</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                    测试来看是微秒级的内核写操作，耗时一般在 1~3ms 内，完全不会阻塞主线程 UI。但建议放到后台 TaskPool 异步调用更为安全！
+                  </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+</article>
+<!-- Sticky Table of Contents (TOC) Right Sidebar -->
+<aside class="hidden lg:block sticky top-24 w-full">
+<div class="bg-surface-container-low rounded-xl p-space-md shadow-lg">
+<div class="flex items-center gap-space-xs pb-space-sm mb-space-sm text-on-surface">
+<span class="material-symbols-outlined text-[18px] text-primary-container">format_list_bulleted</span>
+<span class="font-headline-sm text-headline-sm tracking-tight">目录导航</span>
+</div>
+<!-- TOC Links with minimal border rail -->
+<nav class="relative pl-space-sm flex flex-col gap-space-xs font-body-sm text-body-sm">
+<!-- Active Indicator Rail overlay -->
+<div class="absolute left-0 top-1 w-0.5 h-6 bg-primary-container rounded-full transition-all duration-300" id="tocIndicator"></div>
+<a class="toc-link py-1 text-primary-container font-medium transition-colors" data-target="section-1" href="#section-1">
+              01. 双向同步机制与底层全景
+            </a>
+<a class="toc-link py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-target="section-2" href="#section-2">
+              02. 同步策略与方案选型对比
+            </a>
+<a class="toc-link py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-target="section-3" href="#section-3">
+              03. 完整 ArkTS 模块实现与落盘
+            </a>
+<a class="toc-link py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-target="section-4" href="#section-4">
+              04. 跨域与沙箱持久化避坑指南
+            </a>
+<a class="toc-link py-1 text-on-surface-variant hover:text-on-surface transition-colors" data-target="section-5" href="#section-5">
+              05. 总结与生产效能指标
+            </a>
+</nav>
+<!-- Extra Meta / Floating Action in TOC -->
+<div class="mt-space-lg pt-space-md flex flex-col gap-space-xs">
+<button class="flex items-center justify-center gap-space-xs py-space-xs rounded bg-surface-container text-on-surface-variant hover:text-primary-container hover:bg-surface-container-high transition-colors font-code-inline text-code-inline" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+<span class="material-symbols-outlined text-[16px]">arrow_upward</span>
+<span>返回顶部</span>
+</button>
+<div class="text-center font-code-inline text-label-caps text-on-surface-variant mt-space-xxs">
+              STATUS: CONTINUOUS REVISION
+            </div>
+</div>
+</div>
+</aside>
+</div>
+</div>
+<!-- Interactive Intersection Observer for Dynamic TOC highlight -->
+<script>
+    (function() {
+      const links = document.querySelectorAll('.toc-link');
+      const indicator = document.getElementById('tocIndicator');
+      const sections = [];
+
+      links.forEach(link => {
+        const id = link.getAttribute('data-target');
+        const elem = document.getElementById(id);
+        if (elem) {
+          sections.push({ id, elem, link });
+        }
+      });
+
+      function updateActiveToc() {
+        let currentActive = sections[0];
+        const scrollPos = window.scrollY + 140;
+
+        for (let i = 0; i < sections.length; i++) {
+          if (sections[i].elem.offsetTop <= scrollPos) {
+            currentActive = sections[i];
+          }
+        }
+
+        if (currentActive) {
+          links.forEach(l => {
+            l.classList.remove('text-primary-container', 'font-medium');
+            l.classList.add('text-on-surface-variant');
+          });
+          currentActive.link.classList.add('text-primary-container', 'font-medium');
+          currentActive.link.classList.remove('text-on-surface-variant');
+
+          if (indicator) {
+            indicator.style.top = currentActive.link.offsetTop + 'px';
+            indicator.style.height = currentActive.link.offsetHeight + 'px';
+          }
+        }
+      }
+
+      window.addEventListener('scroll', updateActiveToc, { passive: true });
+      updateActiveToc();
+    })();
+  </script>
+</div></main><footer class="w-full bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)] py-space-xl mt-space-2xl"><div class="max-w-content-max-width mx-auto px-gutter-mobile lg:px-gutter-desktop flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="text-on-surface-variant font-body-sm text-body-sm text-center md:text-left"><span>© 2024 FEBIRDY BLOG · 不爱折腾的码农，不是好程序猿</span></div><div class="flex items-center gap-space-lg font-body-sm text-body-sm"><a class="text-on-surface-variant hover:text-primary-container transition-colors" href="https://github.com/febirdy" rel="noopener noreferrer" target="_blank">GitHub</a><a class="text-on-surface-variant hover:text-primary-container transition-colors" data-path="rss" href="#">RSS</a><a class="text-on-surface-variant hover:text-primary-container transition-colors" href="https://febirdy.com" rel="noopener noreferrer" target="_blank">个人传送门</a></div></div></footer></body></html>

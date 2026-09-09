@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="zh-CN"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&amp;family=Noto+Sans+SC:wght@400;500;700&amp;family=Space+Grotesk:wght@600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base { html, body { margin: 0; padding: 0; } body { overscroll-behavior: none; } main > :first-child { margin-top: 0 !important; } main > :last-child { margin-bottom: 0 !important; } } ::-webkit-scrollbar { display: none; }</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-fixed": "#91f1ff", "secondary": "#7bd0ff", "on-secondary-container": "#00374d", "background": "#051424", "on-primary-container": "#006771", "surface-container": "#122131", "surface-dim": "#051424", "tertiary-fixed-dim": "#b4c5ff", "inverse-on-surface": "#233143", "on-tertiary": "#002a78", "on-primary-fixed-variant": "#004f57", "on-error-container": "#ffdad6", "outline": "#869395", "tertiary-container": "cad5ff", "secondary-fixed-dim": "#7bd0ff", "surface-tint": "#54d8e8", "surface-variant": "#273647", "error": "#ffb4ab", "surface-container-highest": "#273647", "on-primary": "#00363c", "surface": "#051424", "on-secondary-fixed": "#001e2c", "surface-container-lowest": "#010f1f", "secondary-container": "#00a6e0", "tertiary": "#f1f2ff", "primary": "#d5f9ff", "primary-container": "#67e8f9", "on-background": "#d4e4fa", "surface-container-high": "#1c2b3c", "inverse-surface": "#d4e4fa", "outline-variant": "#3c494b", "error-container": "#93000a", "on-error": "#690005", "on-surface-variant": "#bcc9cb", "on-primary-fixed": "#001f23", "on-secondary": "#00354a", "on-surface": "#d4e4fa", "on-tertiary-fixed": "#00174b", "on-tertiary-container": "#0051d7", "on-tertiary-fixed-variant": "#003ea8", "inverse-primary": "#006973", "on-secondary-fixed-variant": "#004c69", "tertiary-fixed": "#dbe1ff", "surface-bright": "#2c3a4c", "primary-fixed-dim": "#54d8e8", "secondary-fixed": "#c4e7ff", "surface-container-low": "#0d1c2d" }, "borderRadius": { "DEFAULT": "0.125rem", "lg": "0.25rem", "xl": "0.5rem", "full": "0.75rem" }, "spacing": { "space-xs": "0.5rem", "space-sm": "0.75rem", "space-2xl": "3rem", "space-xxs": "0.25rem", "space-xl": "2rem", "gutter-mobile": "1rem", "space-3xl": "4.5rem", "reading-max-width": "48rem", "content-max-width": "75rem", "gutter-desktop": "1.5rem", "space-lg": "1.5rem", "space-md": "1rem" }, "fontFamily": { "headline-sm": ["Space Grotesk"], "code-block": ["JetBrains Mono"], "headline-xl": ["Space Grotesk"], "body-md": ["Noto Sans SC"], "code-inline": ["JetBrains Mono"], "headline-lg": ["Space Grotesk"], "headline-xl-mobile": ["Space Grotesk"], "label-caps": ["JetBrains Mono"], "body-sm": ["Noto Sans SC"], "display-hero-mobile": ["Space Grotesk"], "headline-md": ["Space Grotesk"], "body-lg": ["Noto Sans SC"], "display-hero": ["Space Grotesk"] }, "fontSize": { "headline-sm": ["18px", { "lineHeight": "26px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "code-block": ["14px", { "lineHeight": "24px", "letterSpacing": "0em", "fontWeight": "400" }], "headline-xl": ["36px", { "lineHeight": "44px", "letterSpacing": "-0.025em", "fontWeight": "700" }], "body-md": ["16px", { "lineHeight": "26px", "letterSpacing": "0em", "fontWeight": "400" }], "code-inline": ["13px", { "lineHeight": "20px", "letterSpacing": "-0.01em", "fontWeight": "500" }], "headline-lg": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-xl-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-caps": ["11px", { "lineHeight": "16px", "letterSpacing": "0.08em", "fontWeight": "600" }], "body-sm": ["14px", { "lineHeight": "22px", "letterSpacing": "0.01em", "fontWeight": "400" }], "display-hero-mobile": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "headline-md": ["22px", { "lineHeight": "30px", "letterSpacing": "-0.015em", "fontWeight": "600" }], "body-lg": ["18px", { "lineHeight": "30px", "letterSpacing": "0em", "fontWeight": "400" }], "display-hero": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.03em", "fontWeight": "700" }] } } } };</script></head><body class="bg-surface font-body-md text-on-surface antialiased min-h-screen flex flex-col justify-between"><header class="fixed top-0 left-0 right-0 z-50 bg-surface-container-lowest/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 max-w-[75rem] mx-auto px-gutter-desktop flex items-center justify-between"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-xs" href="#"><img alt="Brand logo. - Primary color: #67e8f9 - Font: spaceGrotesk - Mode: dark - Roundness: rounded-sm" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1Xc-hBxJd0LeFbPV4B794wdyjmd1f7-di6i5xrpaLKJAFmdV1Gy4pYMYJmG12_Nd08YupPk8mDbpeCPVJFQoiKXnhEIKu3fFf0yQh4PHCtl6GamCzHfoKQIyQnqpHSEFEAJaYKnyuDxWpcwo_dDh6IS0lHGrddZe0hHVoR8CgOL3BKymYEJQpKt-8m-L8ceZkjsUj3MzzAGj0qM-lNMO_uKTFZcSgLN22J-S2kgP4AblWabAVQ_upFPnVb8"/><span class="font-headline-sm text-headline-sm text-on-surface tracking-tight flex items-center">FEBIRDY<span class="text-primary-container ml-1">BLOG</span></span></a><nav class="hidden md:flex items-center gap-space-lg pl-space-xs" data-active-classes="text-primary-container font-headline-sm font-semibold"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="home" href="#">首页</a><a aria-current="page" class="transition-colors py-1 text-primary-container font-headline-sm font-semibold" data-path="archives" href="#">归档</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="categories" href="#">分类</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="tags" href="#">标签</a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-on-surface transition-colors py-1" data-path="about" href="#">关于</a></nav></div><div class="flex items-center gap-space-sm"><button class="hidden sm:flex items-center gap-space-xs px-space-sm py-1.5 rounded-lg bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-colors" type="button"><span class="material-symbols-outlined text-[16px]">search</span><span class="font-body-sm text-body-sm">搜索</span><kbd class="font-code-inline text-code-inline px-1 py-0.5 rounded bg-surface-container text-on-surface-variant">⌘K</kbd></button><button aria-label="Toggle Theme" class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center" type="button"><span class="material-symbols-outlined text-[20px]">dark_mode</span></button><a aria-label="RSS Feed" class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center" href="#"><span class="material-symbols-outlined text-[20px]">rss_feed</span></a><a aria-label="External Portal" class="p-1.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors flex items-center justify-center" href="#"><span class="material-symbols-outlined text-[20px]">open_in_new</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xxs"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-16 bg-surface flex-1"><div class="max-w-[75rem] w-full mx-auto px-gutter-desktop py-space-xl min-h-[calc(100vh-140px)]"><div class="flex flex-col w-full">
+<div class="relative w-full overflow-hidden rounded-xl bg-surface-container-low p-space-xl md:p-space-2xl mb-space-2xl shadow-xl">
+<div class="absolute -right-24 -top-24 w-96 h-96 rounded-full bg-primary-container/5 blur-3xl pointer-events-none"></div>
+<div class="relative z-10 flex flex-col md:flex-row md:items-end justify-between gap-space-lg">
+<div class="max-w-2xl">
+<div class="inline-flex items-center gap-2 px-space-xs py-1 rounded-lg bg-surface-container mb-space-md text-primary-container">
+<span class="material-symbols-outlined text-[16px]">folder_special</span>
+<span class="font-label-caps text-label-caps uppercase tracking-wider">Historical Archive</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-on-surface tracking-tight mb-space-xs">
+          文章归档
+        </h1>
+<p class="font-body-md text-body-md text-on-surface-variant">
+          共收录 <span class="font-headline-sm text-primary-container font-semibold">108</span> 篇技术沉淀，按年份与时间倒序排列
+        </p>
+</div>
+<div class="flex items-center gap-space-xs bg-surface-container-lowest p-1.5 rounded-xl self-start md:self-auto shadow-sm">
+<button class="px-space-md py-1.5 rounded-lg bg-surface-container-high text-primary-container font-code-inline text-code-inline flex items-center gap-1.5 transition-all">
+<span class="material-symbols-outlined text-[16px]">calendar_view_day</span>
+          全部 (108)
+        </button>
+<button class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-code-inline text-code-inline transition-colors flex items-center gap-1.5">
+<span>2024</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container text-[11px]">28</span>
+</button>
+<button class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-code-inline text-code-inline transition-colors flex items-center gap-1.5">
+<span>2023</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container text-[11px]">46</span>
+</button>
+<button class="px-space-md py-1.5 rounded-lg text-on-surface-variant hover:text-on-surface font-code-inline text-code-inline transition-colors flex items-center gap-1.5">
+<span>2022</span>
+<span class="px-1.5 py-0.5 rounded-full bg-surface-container text-[11px]">34</span>
+</button>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-2xl">
+<div class="lg:col-span-8 flex flex-col gap-space-2xl">
+<section class="flex flex-col">
+<div class="flex items-center justify-between pb-space-sm mb-space-lg">
+<div class="flex items-baseline gap-space-sm">
+<span class="font-headline-lg text-headline-lg text-primary-container tracking-tight">2024</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">YEAR RECORD</span>
+</div>
+<span class="font-code-inline text-code-inline px-2.5 py-1 rounded-full bg-surface-container text-secondary font-medium">
+            28 篇文章
+          </span>
+</div>
+<div class="relative pl-6 space-y-space-md">
+<div class="absolute left-2 top-3 bottom-3 w-0.5 bg-surface-container-high"></div>
+<article class="relative flex flex-col md:flex-row md:items-center justify-between gap-space-sm p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group shadow-sm">
+<span class="absolute -left-[19px] top-6 w-2.5 h-2.5 rounded-full bg-surface-container-high group-hover:bg-primary-container transition-colors shadow-sm"></span>
+<div class="flex items-start md:items-center gap-space-md min-w-0">
+<time class="font-code-inline text-code-inline text-on-surface-variant shrink-0 mt-0.5 md:mt-0 font-medium">03-18</time>
+<a class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-container transition-colors truncate" href="#">
+                HarmonyOS 中 ArkWeb 与 HTTP 请求的 Cookie 双向同步实践
+              </a>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-start md:self-auto pl-10 md:pl-0">
+<span class="font-code-inline text-code-inline px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant group-hover:text-secondary transition-colors">
+                鸿蒙HarmonyOS应用开发
+              </span>
+</div>
+</article>
+<article class="relative flex flex-col md:flex-row md:items-center justify-between gap-space-sm p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group shadow-sm">
+<span class="absolute -left-[19px] top-6 w-2.5 h-2.5 rounded-full bg-surface-container-high group-hover:bg-primary-container transition-colors shadow-sm"></span>
+<div class="flex items-start md:items-center gap-space-md min-w-0">
+<time class="font-code-inline text-code-inline text-on-surface-variant shrink-0 mt-0.5 md:mt-0 font-medium">03-09</time>
+<a class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-container transition-colors truncate" href="#">
+                深入理解 Android 14 跨进程通信 Binder 机制演进与线程调度倾斜排查
+              </a>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-start md:self-auto pl-10 md:pl-0">
+<span class="font-code-inline text-code-inline px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant group-hover:text-secondary transition-colors">
+                Android折腾之路
+              </span>
+</div>
+</article>
+<article class="relative flex flex-col md:flex-row md:items-center justify-between gap-space-sm p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group shadow-sm">
+<span class="absolute -left-[19px] top-6 w-2.5 h-2.5 rounded-full bg-surface-container-high group-hover:bg-primary-container transition-colors shadow-sm"></span>
+<div class="flex items-start md:items-center gap-space-md min-w-0">
+<time class="font-code-inline text-code-inline text-on-surface-variant shrink-0 mt-0.5 md:mt-0 font-medium">02-28</time>
+<a class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-container transition-colors truncate" href="#">
+                Swift 现代化并发模型实战避坑：Actor 重入与 Sendable 深度静态检查
+              </a>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-start md:self-auto pl-10 md:pl-0">
+<span class="font-code-inline text-code-inline px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant group-hover:text-secondary transition-colors">
+                iOS摸索之路
+              </span>
+</div>
+</article>
+<article class="relative flex flex-col md:flex-row md:items-center justify-between gap-space-sm p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group shadow-sm">
+<span class="absolute -left-[19px] top-6 w-2.5 h-2.5 rounded-full bg-surface-container-high group-hover:bg-primary-container transition-colors shadow-sm"></span>
+<div class="flex items-start md:items-center gap-space-md min-w-0">
+<time class="font-code-inline text-code-inline text-on-surface-variant shrink-0 mt-0.5 md:mt-0 font-medium">02-14</time>
+<a class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-container transition-colors truncate" href="#">
+                在 Mac M3 Max 本地基于 MLX 框架微调并量化部署 14B 代码大模型实战
+              </a>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-start md:self-auto pl-10 md:pl-0">
+<span class="font-code-inline text-code-inline px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant group-hover:text-secondary transition-colors">
+                瞎折腾系列
+              </span>
+</div>
+</article>
+<article class="relative flex flex-col md:flex-row md:items-center justify-between gap-space-sm p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group shadow-sm">
+<span class="absolute -left-[19px] top-6 w-2.5 h-2.5 rounded-full bg-surface-container-high group-hover:bg-primary-container transition-colors shadow-sm"></span>
+<div class="flex items-start md:items-center gap-space-md min-w-0">
+<time class="font-code-inline text-code-inline text-on-surface-variant shrink-0 mt-0.5 md:mt-0 font-medium">01-20</time>
+<a class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-container transition-colors truncate" href="#">
+                HarmonyOS NEXT 原生架构解析：Stage 模型与分布式协同机制
+              </a>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-start md:self-auto pl-10 md:pl-0">
+<span class="font-code-inline text-code-inline px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant group-hover:text-secondary transition-colors">
+                鸿蒙HarmonyOS应用开发
+              </span>
+</div>
+</article>
+<article class="relative flex flex-col md:flex-row md:items-center justify-between gap-space-sm p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group shadow-sm">
+<span class="absolute -left-[19px] top-6 w-2.5 h-2.5 rounded-full bg-surface-container-high group-hover:bg-primary-container transition-colors shadow-sm"></span>
+<div class="flex items-start md:items-center gap-space-md min-w-0">
+<time class="font-code-inline text-code-inline text-on-surface-variant shrink-0 mt-0.5 md:mt-0 font-medium">01-05</time>
+<a class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-container transition-colors truncate" href="#">
+                Tailscale + Headscale 私有内网穿透与跨端调试环境搭建指南
+              </a>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-start md:self-auto pl-10 md:pl-0">
+<span class="font-code-inline text-code-inline px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant group-hover:text-secondary transition-colors">
+                瞎折腾系列
+              </span>
+</div>
+</article>
+</div>
+</section>
+<section class="flex flex-col">
+<div class="flex items-center justify-between pb-space-sm mb-space-lg">
+<div class="flex items-baseline gap-space-sm">
+<span class="font-headline-lg text-headline-lg text-primary-container tracking-tight">2023</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">YEAR RECORD</span>
+</div>
+<span class="font-code-inline text-code-inline px-2.5 py-1 rounded-full bg-surface-container text-secondary font-medium">
+            46 篇文章
+          </span>
+</div>
+<div class="relative pl-6 space-y-space-md">
+<div class="absolute left-2 top-3 bottom-3 w-0.5 bg-surface-container-high"></div>
+<article class="relative flex flex-col md:flex-row md:items-center justify-between gap-space-sm p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group shadow-sm">
+<span class="absolute -left-[19px] top-6 w-2.5 h-2.5 rounded-full bg-surface-container-high group-hover:bg-primary-container transition-colors shadow-sm"></span>
+<div class="flex items-start md:items-center gap-space-md min-w-0">
+<time class="font-code-inline text-code-inline text-on-surface-variant shrink-0 mt-0.5 md:mt-0 font-medium">12-19</time>
+<a class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-container transition-colors truncate" href="#">
+                Android AOSP 14 编译全纪录与 Pixel 8 定制驱动适配
+              </a>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-start md:self-auto pl-10 md:pl-0">
+<span class="font-code-inline text-code-inline px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant group-hover:text-secondary transition-colors">
+                Android折腾之路
+              </span>
+</div>
+</article>
+<article class="relative flex flex-col md:flex-row md:items-center justify-between gap-space-sm p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group shadow-sm">
+<span class="absolute -left-[19px] top-6 w-2.5 h-2.5 rounded-full bg-surface-container-high group-hover:bg-primary-container transition-colors shadow-sm"></span>
+<div class="flex items-start md:items-center gap-space-md min-w-0">
+<time class="font-code-inline text-code-inline text-on-surface-variant shrink-0 mt-0.5 md:mt-0 font-medium">11-12</time>
+<a class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-container transition-colors truncate" href="#">
+                从 WebKit 到 Chromium：移动端混合开发内核演进与双向通信剖析
+              </a>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-start md:self-auto pl-10 md:pl-0">
+<span class="font-code-inline text-code-inline px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant group-hover:text-secondary transition-colors">
+                AppCan经验分享
+              </span>
+</div>
+</article>
+<article class="relative flex flex-col md:flex-row md:items-center justify-between gap-space-sm p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group shadow-sm">
+<span class="absolute -left-[19px] top-6 w-2.5 h-2.5 rounded-full bg-surface-container-high group-hover:bg-primary-container transition-colors shadow-sm"></span>
+<div class="flex items-start md:items-center gap-space-md min-w-0">
+<time class="font-code-inline text-code-inline text-on-surface-variant shrink-0 mt-0.5 md:mt-0 font-medium">09-30</time>
+<a class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-container transition-colors truncate" href="#">
+                深入剖析 iOS RunLoop 源码机制与卡顿监控落地
+              </a>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-start md:self-auto pl-10 md:pl-0">
+<span class="font-code-inline text-code-inline px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant group-hover:text-secondary transition-colors">
+                iOS摸索之路
+              </span>
+</div>
+</article>
+<article class="relative flex flex-col md:flex-row md:items-center justify-between gap-space-sm p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group shadow-sm">
+<span class="absolute -left-[19px] top-6 w-2.5 h-2.5 rounded-full bg-surface-container-high group-hover:bg-primary-container transition-colors shadow-sm"></span>
+<div class="flex items-start md:items-center gap-space-md min-w-0">
+<time class="font-code-inline text-code-inline text-on-surface-variant shrink-0 mt-0.5 md:mt-0 font-medium">08-15</time>
+<a class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-container transition-colors truncate" href="#">
+                Docker 与 Proxmox VE 搭建全流程本地私有开发云设施
+              </a>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-start md:self-auto pl-10 md:pl-0">
+<span class="font-code-inline text-code-inline px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant group-hover:text-secondary transition-colors">
+                瞎折腾系列
+              </span>
+</div>
+</article>
+</div>
+</section>
+<section class="flex flex-col">
+<div class="flex items-center justify-between pb-space-sm mb-space-lg">
+<div class="flex items-baseline gap-space-sm">
+<span class="font-headline-lg text-headline-lg text-primary-container tracking-tight">2022</span>
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">YEAR RECORD</span>
+</div>
+<span class="font-code-inline text-code-inline px-2.5 py-1 rounded-full bg-surface-container text-secondary font-medium">
+            34 篇文章
+          </span>
+</div>
+<div class="relative pl-6 space-y-space-md">
+<div class="absolute left-2 top-3 bottom-3 w-0.5 bg-surface-container-high"></div>
+<article class="relative flex flex-col md:flex-row md:items-center justify-between gap-space-sm p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group shadow-sm">
+<span class="absolute -left-[19px] top-6 w-2.5 h-2.5 rounded-full bg-surface-container-high group-hover:bg-primary-container transition-colors shadow-sm"></span>
+<div class="flex items-start md:items-center gap-space-md min-w-0">
+<time class="font-code-inline text-code-inline text-on-surface-variant shrink-0 mt-0.5 md:mt-0 font-medium">10-04</time>
+<a class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-container transition-colors truncate" href="#">
+                Android NDK 性能调优实战：JNI 内存泄露定位与 Native 崩溃分析
+              </a>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-start md:self-auto pl-10 md:pl-0">
+<span class="font-code-inline text-code-inline px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant group-hover:text-secondary transition-colors">
+                Android折腾之路
+              </span>
+</div>
+</article>
+<article class="relative flex flex-col md:flex-row md:items-center justify-between gap-space-sm p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-all group shadow-sm">
+<span class="absolute -left-[19px] top-6 w-2.5 h-2.5 rounded-full bg-surface-container-high group-hover:bg-primary-container transition-colors shadow-sm"></span>
+<div class="flex items-start md:items-center gap-space-md min-w-0">
+<time class="font-code-inline text-code-inline text-on-surface-variant shrink-0 mt-0.5 md:mt-0 font-medium">06-18</time>
+<a class="font-headline-sm text-headline-sm text-on-surface group-hover:text-primary-container transition-colors truncate" href="#">
+                移动端性能监控体系 APM 架构设计与线上治理
+              </a>
+</div>
+<div class="flex items-center gap-space-xs shrink-0 self-start md:self-auto pl-10 md:pl-0">
+<span class="font-code-inline text-code-inline px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant group-hover:text-secondary transition-colors">
+                Android折腾之路
+              </span>
+</div>
+</article>
+</div>
+</section>
+<div class="flex items-center justify-between pt-space-xl mt-space-md">
+<span class="font-code-inline text-code-inline text-on-surface-variant">显示 1-12 / 共 108 篇</span>
+<nav class="flex items-center gap-space-xs">
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors disabled:opacity-30 disabled:pointer-events-none" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-primary-container text-on-primary font-code-inline text-code-inline font-bold shadow-sm">
+            1
+          </button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-code-inline text-code-inline transition-colors">
+            2
+          </button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-code-inline text-code-inline transition-colors">
+            3
+          </button>
+<span class="w-9 h-9 flex items-center justify-center text-on-surface-variant font-code-inline text-code-inline">
+            ...
+          </span>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high font-code-inline text-code-inline transition-colors">
+            9
+          </button>
+<button class="w-9 h-9 flex items-center justify-center rounded-lg bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</nav>
+</div>
+</div>
+<aside class="lg:col-span-4 flex flex-col gap-space-xl">
+<div class="p-space-lg rounded-xl bg-surface-container-low flex flex-col shadow-sm">
+<div class="flex items-center gap-2 mb-space-md text-secondary">
+<span class="material-symbols-outlined text-[18px]">insights</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">年度沉淀分布</h2>
+</div>
+<div class="space-y-space-sm mb-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-code-inline text-code-inline">
+<span class="text-on-surface">2024</span>
+<span class="text-primary-container font-semibold">28 篇 (25.9%)</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" style="width: 25.9%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-code-inline text-code-inline">
+<span class="text-on-surface">2023</span>
+<span class="text-secondary font-semibold">46 篇 (42.6%)</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" style="width: 42.6%"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<div class="flex justify-between font-code-inline text-code-inline">
+<span class="text-on-surface">2022</span>
+<span class="text-on-surface-variant font-semibold">34 篇 (31.5%)</span>
+</div>
+<div class="h-2 w-full bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-surface-bright rounded-full" style="width: 31.5%"></div>
+</div>
+</div>
+</div>
+<div class="w-full h-32 rounded-lg bg-surface-container flex items-end justify-between p-3 gap-2">
+<div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end">
+<span class="font-label-caps text-[10px] text-on-surface-variant">34</span>
+<div class="w-full bg-surface-bright rounded-t" style="height: 74%"></div>
+<span class="font-code-inline text-[11px] text-on-surface-variant">'22</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end">
+<span class="font-label-caps text-[10px] text-secondary">46</span>
+<div class="w-full bg-secondary rounded-t" style="height: 100%"></div>
+<span class="font-code-inline text-[11px] text-secondary font-medium">'23</span>
+</div>
+<div class="flex-1 flex flex-col items-center gap-1.5 h-full justify-end">
+<span class="font-label-caps text-[10px] text-primary-container">28</span>
+<div class="w-full bg-primary-container rounded-t" style="height: 60%"></div>
+<span class="font-code-inline text-[11px] text-primary-container font-medium">'24</span>
+</div>
+</div>
+</div>
+<div class="p-space-lg rounded-xl bg-surface-container-low flex flex-col shadow-sm">
+<div class="flex items-center gap-2 mb-space-md text-secondary">
+<span class="material-symbols-outlined text-[18px]">category</span>
+<h2 class="font-headline-sm text-headline-sm text-on-surface">热门分类归档</h2>
+</div>
+<div class="flex flex-col gap-space-xs">
+<a class="flex items-center justify-between p-2 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors group" href="#">
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-primary-container transition-colors">Android折腾之路</span>
+<span class="font-code-inline text-[12px] px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant group-hover:text-on-surface">38 篇</span>
+</a>
+<a class="flex items-center justify-between p-2 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors group" href="#">
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-primary-container transition-colors">鸿蒙HarmonyOS应用开发</span>
+<span class="font-code-inline text-[12px] px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant group-hover:text-on-surface">24 篇</span>
+</a>
+<a class="flex items-center justify-between p-2 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors group" href="#">
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-primary-container transition-colors">瞎折腾系列</span>
+<span class="font-code-inline text-[12px] px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant group-hover:text-on-surface">21 篇</span>
+</a>
+<a class="flex items-center justify-between p-2 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors group" href="#">
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-primary-container transition-colors">iOS摸索之路</span>
+<span class="font-code-inline text-[12px] px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant group-hover:text-on-surface">15 篇</span>
+</a>
+<a class="flex items-center justify-between p-2 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors group" href="#">
+<span class="font-body-sm text-body-sm text-on-surface group-hover:text-primary-container transition-colors">AppCan经验分享</span>
+<span class="font-code-inline text-[12px] px-2 py-0.5 rounded bg-surface-container-high text-on-surface-variant group-hover:text-on-surface">10 篇</span>
+</a>
+</div>
+</div>
+<div class="relative overflow-hidden p-space-lg rounded-xl bg-surface-container-low shadow-sm">
+<div class="relative z-10 flex flex-col gap-space-xs">
+<span class="material-symbols-outlined text-primary-container text-[24px]">rss_feed</span>
+<h3 class="font-headline-sm text-headline-sm text-on-surface">订阅 RSS 提要</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mb-space-xs">
+            通过 Atom / RSS 协议获取本博客第一时间的硬核技术文章推送。
+          </p>
+<a class="inline-flex items-center justify-center gap-2 px-space-md py-2 rounded-lg bg-surface-container-high hover:bg-surface-bright text-primary font-code-inline text-code-inline transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]">feed</span>
+            复制订阅源地址
+          </a>
+</div>
+</div>
+</aside>
+</div>
+</div></div></main><footer class="w-full bg-surface-container-lowest"><div class="max-w-[75rem] mx-auto px-gutter-desktop py-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="font-body-sm text-body-sm text-on-surface-variant text-center md:text-left"><span>© 2024 FEBIRDY BLOG</span><span class="mx-space-xs text-outline-variant">·</span><span class="font-body-sm text-body-sm text-on-surface-variant">不爱折腾的码农，不是好程序猿</span></div><div class="flex items-center gap-space-lg"><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary-container transition-colors flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[16px]">code</span><span>GitHub</span></a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary-container transition-colors flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[16px]">rss_feed</span><span>RSS</span></a><a class="font-body-sm text-body-sm text-on-surface-variant hover:text-primary-container transition-colors flex items-center gap-1" href="#"><span class="material-symbols-outlined text-[16px]">travel_explore</span><span>个人传送门</span></a></div></div></footer></body></html>
