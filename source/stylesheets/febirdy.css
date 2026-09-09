@@ -97,3 +97,95 @@
 body.fb-search-open{overflow:hidden}
 @media(max-width:900px){.fb-taxonomy-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.fb-overview-head{align-items:flex-start;flex-direction:column}.fb-about{max-width:none}}
 @media(max-width:600px){.fb-search-trigger{width:auto;min-width:36px;padding:0 9px}.fb-search-trigger span{display:none}.fb-taxonomy-grid{grid-template-columns:1fr}.fb-overview-head{margin-bottom:25px}.fb-overview-stats{flex-wrap:wrap}.fb-tag-toolbar{align-items:stretch;flex-wrap:wrap}.fb-tag-toolbar input{flex-basis:100%;order:3}.fb-tag-toolbar-hint{margin-left:auto}.fb-about-hero{align-items:flex-start;gap:14px}.fb-about-mark{width:60px;height:60px;font-size:20px}.fb-about-hero h1{font-size:30px}.fb-about-quote{padding:18px;font-size:15px}.fb-about-card{padding:18px}.fb-about-focus small{display:none}.fb-about-links{grid-template-columns:1fr}.fb-error-page{padding-top:20px}.fb-error-actions{align-items:stretch;flex-direction:column;margin-bottom:48px}.fb-primary-button,.fb-secondary-button{width:100%}.fb-error-posts span{white-space:normal}.fb-search-modal{padding:76px 12px 20px}.fb-search-dialog-head{padding-left:18px;padding-right:18px}.fb-search-box{margin-left:18px;margin-right:18px}.fb-search-hint,.fb-search-unavailable{margin-left:18px;margin-right:18px}}
+
+/* 宽屏首页回归：扩大可用画布，同时保留设计稿的阅读比例与分页状态。 */
+:root {
+    --fb-width: 1920px;
+    --fb-content-gutter: clamp(48px, 8vw, 160px);
+}
+
+.fb-header-inner,
+.fb-container {
+    width: calc(100% - var(--fb-content-gutter));
+    max-width: var(--fb-width);
+}
+
+.fb-main {
+    grid-template-columns: minmax(0, 1fr) 310px;
+    gap: 40px;
+}
+
+.fb-intro {
+    padding-top: 12px;
+    padding-bottom: 34px;
+}
+
+.fb-intro h1 {
+    max-width: 900px;
+    font-size: clamp(28px, 2.4vw, 36px);
+}
+
+.fb-intro p {
+    max-width: 680px;
+}
+
+.fb-container .pagination .page-number.current {
+    border-color: var(--fb-cyan);
+    background: rgba(103, 232, 249, .12);
+    color: var(--fb-cyan);
+    box-shadow: 0 0 0 1px rgba(103, 232, 249, .06);
+}
+
+.fb-container .pagination .page-number:hover,
+.fb-container .pagination .extend:hover {
+    background: var(--fb-surface-2);
+}
+
+.fb-is-home .fb-container .pagination .extend {
+    width: 38px;
+    min-width: 38px;
+    padding: 0;
+    font-size: 0;
+}
+
+.fb-is-home .fb-container .pagination .extend::before {
+    color: var(--fb-muted);
+    font-size: 18px;
+    line-height: 1;
+}
+
+.fb-is-home .fb-container .pagination .extend.prev::before {
+    content: '‹';
+}
+
+.fb-is-home .fb-container .pagination .extend.next::before {
+    content: '›';
+}
+
+.fb-is-home .fb-container .pagination .extend:hover::before {
+    color: var(--fb-cyan);
+}
+
+.fb-footer {
+    padding-left: max(24px, calc((100vw - var(--fb-width)) / 2), calc(var(--fb-content-gutter) / 2));
+    padding-right: max(24px, calc((100vw - var(--fb-width)) / 2), calc(var(--fb-content-gutter) / 2));
+}
+
+@media(max-width:900px) {
+    .fb-main {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width:600px) {
+    .fb-header-inner,
+    .fb-container {
+        width: 100%;
+        max-width: none;
+    }
+
+    .fb-footer {
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+}

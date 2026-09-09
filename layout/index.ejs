@@ -6,5 +6,5 @@
   </section>
   <div class="fb-feed-label"><span>最新文章</span><small><%= site.posts.length %> 篇技术沉淀</small></div>
   <div class="index fb-article-list"><% page.posts.each(function(post){ %><%- partial('_partial/article-index', {post: post, index: true}) %><% }) %></div>
-  <% if (page.total > 1){ %><nav class="pagination"><%- paginator() %></nav><% } %>
+  <% if (page.total > 1){ %><nav class="pagination" aria-label="首页文章分页"><%- paginator({prev_text:'‹', next_text:'›', force_prev_next:true}) %></nav><% } %>
 </div>
