@@ -7,7 +7,7 @@ const { createRequire } = require('node:module');
 
 async function main() {
   const themeRoot = path.resolve(__dirname, '..');
-  const blogRoot = path.resolve(process.argv[2] || path.join(themeRoot, '../tech-blogs'));
+  const blogRoot = await resolveBlogRoot(themeRoot, process.argv[2]);
   const blogRequire = createRequire(path.join(blogRoot, 'package.json'));
   const Hexo = blogRequire('hexo');
   const yaml = blogRequire('js-yaml');
@@ -54,6 +54,33 @@ async function main() {
   } finally {
     await hexo.exit();
   }
+}
+
+// 主题既可以作为独立仓库运行，也可以作为 tech-blogs 的子模块运行。
+// 两种目录层级不同，不能只依赖一个固定的相对路径。
+async function resolveBlogRoot(themeRoot, explicitPath) {
+  const candidates = explicitPath
+    ? [path.resolve(explicitPath)]
+    : [
+        path.resolve(themeRoot, '../tech-blogs'),
+        path.resolve(themeRoot, '../..'),
+      ];
+
+  for (const candidate of candidates) {
+    try {
+      await Promise.all([
+        fs.access(path.join(candidate, 'package.json')),
+        fs.access(path.join(candidate, 'source')),
+      ]);
+      return candidate;
+    } catch {
+      // 继续尝试另一种受支持的仓库布局。
+    }
+  }
+
+  throw new Error(
+    `找不到博客根目录，请传入路径：node tools/preview.cjs /absolute/path/to/blog；已检查：${candidates.join(', ')}`,
+  );
 }
 
 // 预览页只写入隔离副本，用于验证主题提供的入口模板，不改变真实博客的 source/。
