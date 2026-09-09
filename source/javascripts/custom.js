@@ -210,8 +210,14 @@ import { addNewClass, removeClass, throttle } from './class-module'
     }
 
     // Viewer
+    // 全局 reduced-motion 规则会禁用 CSS transition，而 Viewer.js 的显示/关闭状态机
+    // 依赖 transitionend；在该偏好下关闭 Viewer.js 过渡，避免遮罩和图片状态卡住。
+    const prefersReducedMotion =
+        typeof window.matchMedia === 'function' &&
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches
     const viewerConfig = {
         title: false,
+        transition: !prefersReducedMotion,
         toolbar: {
             zoomIn: true,
             zoomOut: true,
@@ -225,9 +231,10 @@ import { addNewClass, removeClass, throttle } from './class-module'
     if (galleryViewer && galleryViewer.length > 0) {
         galleryViewer.viewer(viewerConfig)
     }
-    const articleEntryViewer = $('.article-entry')
-    if (articleEntryViewer && articleEntryViewer.length > 0) {
-        articleEntryViewer.viewer(viewerConfig)
+    // 同时兼容 Aomori 原始文章容器和 FEBIRDY 自定义正文容器。
+    const articleContentViewer = $('.article-entry, .fb-post-content')
+    if (articleContentViewer && articleContentViewer.length > 0) {
+        articleContentViewer.viewer(viewerConfig)
     }
     const photographyViewer = $('.photography-item')
     if (photographyViewer && photographyViewer.length > 0) {
