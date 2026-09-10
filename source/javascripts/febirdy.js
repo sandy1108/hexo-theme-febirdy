@@ -25,12 +25,111 @@ const getFocusable = (container) =>
 
 const isMobileViewport = () => window.matchMedia('(max-width: 900px)').matches
 
+const themeModes = ['auto', 'light', 'dark']
+const themeLabels = {
+    auto: '自动跟随系统',
+    light: '浅色主题',
+    dark: '深色主题',
+}
+
+// 主题选择同时写入 data-theme 和 data-theme-effective，前者保存用户意图，后者供 CSS 使用。
+const getThemeSelection = () => {
+    const selection = document.documentElement.getAttribute('data-theme')
+    return themeModes.includes(selection) ? selection : 'dark'
+}
+
+const getEffectiveTheme = (selection) => {
+    if (selection !== 'auto') return selection
+    const systemIsLight =
+        window.matchMedia &&
+        window.matchMedia('(prefers-color-scheme: light)').matches
+    return systemIsLight ? 'light' : 'dark'
+}
+
+let themeTransitionTimer
+
+// 主题切换时重新触发一次短暂的渐变光晕；首次加载不触发，避免页面闪烁。
+const startThemeTransition = () => {
+    const prefersReducedMotion = window.matchMedia(
+        '(prefers-reduced-motion: reduce)'
+    ).matches
+    if (prefersReducedMotion) return
+
+    const root = document.documentElement
+    root.classList.remove('fb-theme-transitioning')
+    void root.offsetWidth
+    root.classList.add('fb-theme-transitioning')
+    window.clearTimeout(themeTransitionTimer)
+    themeTransitionTimer = window.setTimeout(() => {
+        root.classList.remove('fb-theme-transitioning')
+    }, 1000)
+}
+
+const updateThemeControls = (selection, effective) => {
+    document.querySelectorAll('[data-theme-option]').forEach((option) => {
+        const isActive = option.dataset.themeOption === selection
+        option.classList.toggle('is-active', isActive)
+        option.setAttribute('aria-checked', String(isActive))
+        const modeLabel = themeLabels[option.dataset.themeOption]
+        option.setAttribute(
+            'title',
+            selection === 'auto' && option.dataset.themeOption === 'auto'
+                ? `${modeLabel}（当前${themeLabels[effective].replace(
+                      '主题',
+                      ''
+                  )}）`
+                : modeLabel
+        )
+    })
+}
+
+const applyTheme = (selection, { animate = false } = {}) => {
+    const normalizedSelection = themeModes.includes(selection)
+        ? selection
+        : 'dark'
+    const effectiveTheme = getEffectiveTheme(normalizedSelection)
+    const root = document.documentElement
+    if (animate) startThemeTransition()
+    root.setAttribute('data-theme', normalizedSelection)
+    root.setAttribute('data-theme-effective', effectiveTheme)
+    root.style.colorScheme =
+        normalizedSelection === 'auto' ? 'light dark' : normalizedSelection
+    updateThemeControls(normalizedSelection, effectiveTheme)
+}
+
 // 移动端导航保持原生、轻量，不依赖主题旧菜单结构。
 document.addEventListener('DOMContentLoaded', () => {
     const site = document.body
+    const themeOptions = document.querySelectorAll('[data-theme-option]')
+    const systemThemeMediaQuery = window.matchMedia(
+        '(prefers-color-scheme: light)'
+    )
     const menuButton = document.querySelector('.fb-menu-button')
     const mobileMenu = document.querySelector('.fb-mobile-nav')
     const menuMediaQuery = window.matchMedia('(max-width: 900px)')
+
+    applyTheme(getThemeSelection())
+    themeOptions.forEach((option) => {
+        option.addEventListener('click', () => {
+            const selection = option.dataset.themeOption
+            applyTheme(selection, { animate: true })
+            try {
+                window.localStorage.setItem('febirdy-theme', selection)
+            } catch (error) {
+                // 存储不可用时仍保留本次页面会话中的主题选择。
+            }
+        })
+    })
+    const syncSystemTheme = () => {
+        if (getThemeSelection() === 'auto') {
+            applyTheme('auto', { animate: true })
+        }
+    }
+    if (systemThemeMediaQuery.addEventListener) {
+        systemThemeMediaQuery.addEventListener('change', syncSystemTheme)
+    } else if (systemThemeMediaQuery.addListener) {
+        systemThemeMediaQuery.addListener(syncSystemTheme)
+    }
 
     // 导航打开时把焦点交给第一个链接，关闭时回到触发按钮，避免键盘用户迷失位置。
     const setMobileMenuState = (open, { restoreFocus = true } = {}) => {

@@ -266,3 +266,310 @@ body.fb-search-open{overflow:hidden}
         transition: none;
     }
 }
+
+
+/* 主题模式：保留深色科技感，同时为浅色模式提供一套有对比度的语义色。 */
+:root {
+    color-scheme: dark;
+    --fb-secondary-text: #cbd5e1;
+    --fb-content-text: #d5dce8;
+    --fb-on-accent: #06202a;
+    --fb-code-bg: #06101d;
+    --fb-code-text: #b9f5ff;
+    --fb-footer-bg: #020611;
+    --fb-chip-bg: #1a2a3c;
+    --fb-badge-bg: #172a3c;
+    --fb-header-bg: rgba(3, 7, 18, .9);
+    --fb-overlay: rgba(1, 8, 18, .72);
+    --fb-shadow: rgba(0, 0, 0, .45);
+    --fb-profile-note-bg: rgba(17, 24, 39, .65);
+    --fb-line-subtle: rgba(36, 48, 68, .7);
+    --fb-gradient-start: #b8eaf2;
+    --fb-accent-hover: #a4f4ff;
+    --fb-search-unavailable-bg: #06101d;
+    --fb-toc-overlay: rgba(3, 7, 18, .92);
+    --fb-inline-code-bg: rgba(103, 232, 249, .1);
+    --fb-count-bg: #06101d;
+}
+
+:root[data-theme='auto'] {
+    color-scheme: light dark;
+}
+
+:root[data-theme-effective='light'] {
+    color-scheme: light;
+    --fb-bg: #f3f7fb;
+    --fb-surface: #ffffff;
+    --fb-surface-2: #edf3f7;
+    --fb-line: #d7e1ea;
+    --fb-text: #0f172a;
+    --fb-muted: #64748b;
+    --fb-cyan: #0e7490;
+    --fb-blue: #0369a1;
+    --fb-secondary-text: #475569;
+    --fb-content-text: #334155;
+    --fb-on-accent: #f0fdff;
+    --fb-code-bg: #0f172a;
+    --fb-code-text: #dbeafe;
+    --fb-footer-bg: #e9f0f5;
+    --fb-chip-bg: #dbeef3;
+    --fb-badge-bg: #dff3f7;
+    --fb-header-bg: rgba(243, 247, 251, .92);
+    --fb-overlay: rgba(15, 23, 42, .42);
+    --fb-shadow: rgba(15, 23, 42, .18);
+    --fb-profile-note-bg: rgba(237, 243, 247, .92);
+    --fb-line-subtle: rgba(215, 225, 234, .92);
+    --fb-gradient-start: #0e7490;
+    --fb-accent-hover: #0b6178;
+    --fb-search-unavailable-bg: #eaf3f7;
+    --fb-toc-overlay: rgba(15, 23, 42, .42);
+    --fb-inline-code-bg: rgba(14, 116, 144, .1);
+    --fb-count-bg: #dbeef3;
+}
+
+:root[data-theme-effective='light'] .fb-header {
+    background: var(--fb-header-bg);
+}
+
+:root[data-theme-effective='light'] .fb-nav a,
+:root[data-theme-effective='light'] .fb-portal,
+:root[data-theme-effective='light'] .fb-mobile-nav a,
+:root[data-theme-effective='light'] .fb-excerpt,
+:root[data-theme-effective='light'] .widget-inner,
+:root[data-theme-effective='light'] .widget-inner a,
+:root[data-theme-effective='light'] .fb-archive-item,
+:root[data-theme-effective='light'] .fb-tag-pill,
+:root[data-theme-effective='light'] .fb-about-quote,
+:root[data-theme-effective='light'] .fb-about-card,
+:root[data-theme-effective='light'] .fb-about-focus > div,
+:root[data-theme-effective='light'] .fb-error-posts a,
+:root[data-theme-effective='light'] .fb-secondary-button {
+    color: var(--fb-secondary-text);
+}
+
+:root[data-theme-effective='light'] .fb-post-content,
+:root[data-theme-effective='light'] .fb-post-content blockquote,
+:root[data-theme-effective='light'] .fb-post .article-nav-title {
+    color: var(--fb-content-text);
+}
+
+:root[data-theme-effective='light'] .fb-post-content a,
+:root[data-theme-effective='light'] .fb-post-kicker a,
+:root[data-theme-effective='light'] .fb-post-tags a,
+:root[data-theme-effective='light'] .fb-post-content h2,
+:root[data-theme-effective='light'] .fb-taxonomy-index,
+:root[data-theme-effective='light'] .fb-taxonomy-count,
+:root[data-theme-effective='light'] .fb-taxonomy-link,
+:root[data-theme-effective='light'] .fb-about-hero p,
+:root[data-theme-effective='light'] .fb-about-focus b,
+:root[data-theme-effective='light'] .fb-about-links span,
+:root[data-theme-effective='light'] .fb-error-posts b,
+:root[data-theme-effective='light'] .fb-search-box .form-icon {
+    color: var(--fb-cyan);
+}
+
+:root[data-theme-effective='light'] .fb-card-footer {
+    border-top-color: var(--fb-line-subtle);
+}
+
+:root[data-theme-effective='light'] .fb-profile p {
+    background: var(--fb-profile-note-bg);
+    color: var(--fb-content-text);
+}
+
+:root[data-theme-effective='light'] .fb-pagination .current,
+:root[data-theme-effective='light'] .fb-container .pagination .page-number.current,
+:root[data-theme-effective='light'] #backtop {
+    border-color: var(--fb-cyan);
+    background: var(--fb-cyan);
+    color: var(--fb-on-accent);
+}
+
+:root[data-theme-effective='light'] .fb-footer {
+    background: var(--fb-footer-bg);
+}
+
+:root[data-theme-effective='light'] .fb-post-content pre {
+    background: var(--fb-code-bg);
+}
+
+:root[data-theme-effective='light'] .fb-post-content code {
+    background: var(--fb-inline-code-bg);
+    color: var(--fb-cyan);
+}
+
+:root[data-theme-effective='light'] .fb-post-content pre code {
+    background: none;
+    color: var(--fb-code-text);
+}
+
+:root[data-theme-effective='light'] .fb-tag-pill b {
+    background: var(--fb-count-bg);
+    color: var(--fb-muted);
+}
+
+:root[data-theme-effective='light'] .fb-about-tools span {
+    background: var(--fb-chip-bg);
+    color: var(--fb-content-text);
+}
+
+:root[data-theme-effective='light'] .fb-error-code {
+    background: linear-gradient(180deg, var(--fb-gradient-start) 0%, rgba(14, 116, 144, .15) 90%);
+}
+
+:root[data-theme-effective='light'] .fb-error-badge {
+    background: var(--fb-badge-bg);
+}
+
+:root[data-theme-effective='light'] .fb-search-modal {
+    background: var(--fb-overlay);
+}
+
+:root[data-theme-effective='light'] .fb-search-dialog {
+    box-shadow: 0 20px 80px var(--fb-shadow);
+}
+
+:root[data-theme-effective='light'] .fb-search-unavailable {
+    background: var(--fb-search-unavailable-bg);
+}
+
+:root[data-theme-effective='light'] .fb-site.fb-toc-open .sidebar {
+    background: var(--fb-toc-overlay);
+}
+
+:root[data-theme-effective='light'] .fb-primary-button {
+    color: var(--fb-on-accent);
+}
+
+:root[data-theme-effective='light'] .fb-primary-button:hover {
+    background: var(--fb-accent-hover);
+}
+
+:root[data-theme-effective='light'] .widget .widget-wrap .widget-title {
+    color: var(--fb-text);
+}
+
+:root[data-theme-effective='light'] .widget .widget-tags .tag-list .tag-list-item {
+    border-color: var(--fb-line);
+}
+
+:root[data-theme-effective='light'] .widget .widget-tags .tag-list .tag-list-item a {
+    color: var(--fb-content-text);
+}
+
+:root[data-theme-effective='light'] .widget .widget-tags .tag-list .tag-list-item:hover a {
+    color: var(--fb-cyan);
+}
+
+.fb-theme-switch {
+    display: inline-flex;
+    align-items: center;
+    gap: 2px;
+    padding: 3px;
+    border: 1px solid var(--fb-line);
+    border-radius: 999px;
+    background: var(--fb-surface-2);
+}
+
+.fb-theme-option {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    min-width: 30px;
+    height: 28px;
+    padding: 0 7px;
+    border: 0;
+    border-radius: 999px;
+    background: transparent;
+    color: var(--fb-muted);
+    font: inherit;
+    font-size: 12px;
+    line-height: 1;
+    cursor: pointer;
+    transition: background .18s, color .18s, box-shadow .18s;
+}
+
+.fb-theme-option:hover {
+    color: var(--fb-cyan);
+}
+
+.fb-theme-option.is-active {
+    background: var(--fb-cyan);
+    color: var(--fb-on-accent);
+    box-shadow: 0 0 12px rgba(103, 232, 249, .2);
+}
+
+.fb-theme-option:focus-visible {
+    outline: 2px solid var(--fb-cyan);
+    outline-offset: 2px;
+}
+
+@media(max-width:600px) {
+    .fb-actions {
+        gap: 8px;
+    }
+
+    .fb-theme-switch {
+        gap: 1px;
+        padding: 2px;
+    }
+
+    .fb-theme-option {
+        width: 29px;
+        min-width: 29px;
+        height: 28px;
+        padding: 0;
+        font-size: 14px;
+    }
+
+    .fb-theme-option-label {
+        display: none;
+    }
+}
+
+@media(prefers-reduced-motion:reduce) {
+    .fb-theme-option {
+        transition: none;
+    }
+}
+
+/* 主题切换动画只在用户主动切换或系统主题变化时启用，首次加载保持无闪烁。 */
+@media(prefers-reduced-motion:no-preference) {
+    :root.fb-theme-transitioning .fb-site,
+    :root.fb-theme-transitioning .fb-site *,
+    :root.fb-theme-transitioning .fb-site *::before,
+    :root.fb-theme-transitioning .fb-site *::after {
+        transition-property: background-color, color, border-color, box-shadow, fill, stroke !important;
+        transition-duration: 1s !important;
+        transition-timing-function: ease !important;
+    }
+
+    :root.fb-theme-transitioning .fb-site::before {
+        position: fixed;
+        z-index: 20;
+        inset: 0;
+        pointer-events: none;
+        content: '';
+        background:
+            radial-gradient(circle at 18% 12%, rgba(103, 232, 249, .18), transparent 34%),
+            linear-gradient(120deg, rgba(14, 116, 144, .12), transparent 64%);
+        animation: fb-theme-wash 1s ease-out both;
+    }
+
+    @keyframes fb-theme-wash {
+        0% {
+            opacity: 0;
+            transform: scale(1.02);
+        }
+
+        26% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+            transform: scale(1);
+        }
+    }
+}

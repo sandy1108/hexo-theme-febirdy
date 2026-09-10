@@ -13,6 +13,10 @@ febirdy_menu:
   标签: /tags/
   关于: /about/
 
+# 主题模式初始值：dark、light 或 auto；用户选择会保存在浏览器中。
+febirdy_theme:
+  default: dark
+
 # 关于页的个性化内容均为可选项；空数组不会写入任何虚构的个人资料。
 febirdy_about:
   name: ''

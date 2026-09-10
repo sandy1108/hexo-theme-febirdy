@@ -25,6 +25,32 @@
     <meta name="description" content="<%= page.description || page.excerpt || config.description || config.title %>">
     <meta name="keywords" content="<%= page.keywords || config.keywords %>">
 
+    <% var themeConfig = theme.febirdy_theme || {}; %>
+    <% var themeModes = ['auto', 'light', 'dark']; %>
+    <% var themeDefault = themeModes.indexOf(themeConfig.default) !== -1 ? themeConfig.default : 'dark'; %>
+    <meta name="color-scheme" content="light dark">
+    <script>
+        // 在样式加载前恢复主题，避免浅色模式首次绘制时短暂闪回深色。
+        (function () {
+            var modes = ['auto', 'light', 'dark']
+            var defaultMode = '<%= themeDefault %>'
+            var selectedMode = defaultMode
+            var systemIsLight = window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches
+
+            try {
+                var savedMode = window.localStorage.getItem('febirdy-theme')
+                if (modes.indexOf(savedMode) !== -1) selectedMode = savedMode
+            } catch (error) {
+                // 隐私模式或禁用存储时，使用主题配置中的默认值。
+            }
+
+            var effectiveMode = selectedMode === 'auto' && systemIsLight ? 'light' : selectedMode === 'auto' ? 'dark' : selectedMode
+            document.documentElement.setAttribute('data-theme', selectedMode)
+            document.documentElement.setAttribute('data-theme-effective', effectiveMode)
+            document.documentElement.style.colorScheme = selectedMode === 'auto' ? 'light dark' : selectedMode
+        })()
+    </script>
+
     <%- partial('_partial/meta') %>
 
     <% if (config.aomori_google_site && config.aomori_google_site.enable){ %>

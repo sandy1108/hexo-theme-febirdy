@@ -7,6 +7,11 @@
     </a>
     <nav class="fb-nav" aria-label="主导航"><% Object.keys(menus).forEach(function(label){ %><a href="<%- url_for(menus[label]) %>"><%= label %></a><% }) %></nav>
     <div class="fb-actions">
+      <div class="fb-theme-switch" role="radiogroup" aria-label="主题模式">
+        <button class="fb-theme-option" type="button" role="radio" data-theme-option="light" aria-checked="false" aria-label="浅色主题" title="浅色主题"><span class="fb-theme-option-icon" aria-hidden="true">☼</span><span class="fb-theme-option-label">浅色</span></button>
+        <button class="fb-theme-option" type="button" role="radio" data-theme-option="auto" aria-checked="false" aria-label="自动跟随系统" title="自动跟随系统"><span class="fb-theme-option-icon" aria-hidden="true">◐</span><span class="fb-theme-option-label">自动</span></button>
+        <button class="fb-theme-option" type="button" role="radio" data-theme-option="dark" aria-checked="false" aria-label="深色主题" title="深色主题"><span class="fb-theme-option-icon" aria-hidden="true">☾</span><span class="fb-theme-option-label">深色</span></button>
+      </div>
       <button class="fb-icon-button fb-search-trigger" type="button" aria-label="搜索">⌕ <span>搜索</span></button>
       <a class="fb-portal" href="https://febirdy.com" target="_blank" rel="noopener">传送门 ↗</a>
       <button class="fb-menu-button" type="button" aria-label="打开导航" aria-controls="fb-mobile-nav" aria-haspopup="true" aria-expanded="false">☰</button>
