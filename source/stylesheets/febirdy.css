@@ -267,6 +267,11 @@ body.fb-search-open{overflow:hidden}
     }
 }
 
+/* Aomori 的首个 widget 会清除顶部内边距；FEBIRDY 侧栏卡片需要与 Tags 对齐。 */
+.fb-sidebar-inner > #widget > .widget-wrap:first-child {
+    padding-top: 22px;
+}
+
 
 /* 主题模式：保留深色科技感，同时为浅色模式提供一套有对比度的语义色。 */
 :root {
