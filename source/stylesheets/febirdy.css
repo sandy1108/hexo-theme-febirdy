@@ -189,3 +189,80 @@ body.fb-search-open{overflow:hidden}
         padding-right: 16px;
     }
 }
+
+
+/* 移动端交互可访问性：保持焦点可见，并让隐藏面板不进入阅读顺序。 */
+.fb-mobile-nav[aria-hidden='true'],
+.fb-toc-panel[aria-hidden='true'] {
+    display: none;
+}
+
+
+.fb-menu-button,
+.fb-mobile-toc-trigger,
+.fb-toc-close {
+    cursor: pointer;
+}
+
+
+.fb-menu-button:focus-visible,
+.fb-mobile-nav a:focus-visible,
+.fb-mobile-toc-trigger:focus-visible,
+.fb-toc-close:focus-visible,
+.fb-toc-panel .toc a:focus-visible {
+    outline: 2px solid var(--fb-cyan);
+    outline-offset: 3px;
+}
+
+
+@media(max-width:900px) {
+    .fb-mobile-nav[aria-hidden='false'] {
+        display: grid;
+        padding: 12px 24px 20px;
+        border-top: 1px solid var(--fb-line);
+        gap: 4px;
+    }
+
+
+    .fb-toc-panel[aria-hidden='false'] {
+        display: block;
+    }
+
+
+    .fb-site.fb-toc-open {
+        overscroll-behavior: contain;
+    }
+
+
+    .fb-site.fb-toc-open .sidebar {
+        overscroll-behavior: contain;
+        padding-bottom: max(16px, env(safe-area-inset-bottom));
+    }
+
+
+    .fb-toc-close {
+        min-width: 36px;
+        min-height: 36px;
+    }
+}
+
+
+@media(prefers-reduced-motion:reduce) {
+    .fb-article-card:hover,
+    .fb-taxonomy-card:hover,
+    .fb-tag-pill:hover,
+    .fb-about-links a:hover {
+        transform: none;
+    }
+
+
+    .fb-menu-button,
+    .fb-mobile-nav,
+    .fb-mobile-nav a,
+    .fb-mobile-toc-trigger,
+    .fb-toc-panel,
+    .fb-toc-close {
+        animation: none;
+        transition: none;
+    }
+}

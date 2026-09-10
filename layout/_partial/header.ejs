@@ -9,11 +9,11 @@
     <div class="fb-actions">
       <button class="fb-icon-button fb-search-trigger" type="button" aria-label="搜索">⌕ <span>搜索</span></button>
       <a class="fb-portal" href="https://febirdy.com" target="_blank" rel="noopener">传送门 ↗</a>
-      <button class="fb-menu-button" type="button" aria-label="打开导航" aria-expanded="false">☰</button>
+      <button class="fb-menu-button" type="button" aria-label="打开导航" aria-controls="fb-mobile-nav" aria-haspopup="true" aria-expanded="false">☰</button>
     </div>
   </div>
-  <nav class="fb-mobile-nav" aria-label="移动端导航">
-    <% Object.keys(menus).forEach(function(label){ %><a href="<%- url_for(menus[label]) %>"><%= label %></a><% }) %>
-    <a href="https://febirdy.com">个人传送门 ↗</a>
+  <nav class="fb-mobile-nav" id="fb-mobile-nav" aria-label="移动端导航" aria-hidden="true">
+    <% Object.keys(menus).forEach(function(label){ %><a href="<%- url_for(menus[label]) %>" data-menu-link><%= label %></a><% }) %>
+    <a href="https://febirdy.com" data-menu-link>个人传送门 ↗</a>
   </nav>
 </header>
