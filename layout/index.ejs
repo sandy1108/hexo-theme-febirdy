@@ -1,10 +1,20 @@
+<%
+  const homeDefaults = {
+    eyebrow: '在这里填写博客定位或技术方向',
+    title: '在这里填写博客首页主标题',
+    description: '在这里填写博客简介、内容范围和写作方向。',
+    feed_title: '最新文章',
+    feed_count_suffix: '篇文章'
+  };
+  const home = Object.assign({}, homeDefaults, theme.febirdy_home || {}, config.febirdy_home || {});
+%>
 <div class="fb-home">
   <section class="fb-intro">
-    <span class="fb-eyebrow">移动终端与系统底层开发笔记</span>
-    <h1>记录代码、踩坑，以及每一次认真折腾的过程。</h1>
-    <p>专注 Android、HarmonyOS、iOS 与工程实践，记录真实问题、定位过程和可复用的解决方案。</p>
+    <span class="fb-eyebrow"><%= home.eyebrow %></span>
+    <h1><%= home.title %></h1>
+    <p><%= home.description %></p>
   </section>
-  <div class="fb-feed-label"><span>最新文章</span><small><%= site.posts.length %> 篇技术沉淀</small></div>
+  <div class="fb-feed-label"><span><%= home.feed_title %></span><small><%= site.posts.length %> <%= home.feed_count_suffix %></small></div>
   <div class="index fb-article-list"><% page.posts.each(function(post){ %><%- partial('_partial/article-index', {post: post, index: true}) %><% }) %></div>
   <% if (page.total > 1){ %><nav class="pagination" aria-label="首页文章分页"><%- paginator({prev_text:'‹', next_text:'›', force_prev_next:true}) %></nav><% } %>
 </div>

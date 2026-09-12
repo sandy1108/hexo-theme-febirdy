@@ -1,5 +1,14 @@
+<%
+  const siteDefaults = {
+    brand: 'YOUR BLOG',
+    brand_suffix: 'BLOG',
+    brand_mark: 'TB',
+    tagline: '在这里填写博客的一句话介绍'
+  };
+  const siteCopy = Object.assign({}, siteDefaults, theme.febirdy_site || {}, config.febirdy_site || {});
+%>
 <footer class="fb-footer">
-  <div><strong>FEBIRDY BLOG</strong><span>不爱折腾的码农，不是好程序猿</span></div>
+  <div><strong><%= siteCopy.brand %><% if (siteCopy.brand_suffix) { %> <%= siteCopy.brand_suffix %><% } %></strong><span><%= siteCopy.tagline %></span></div>
   <small>© <%= date(new Date(), 'YYYY') %> <%= config.author %> · Powered by Hexo · Based on Aomori</small>
 </footer>
 <script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>

@@ -38,6 +38,38 @@ sidebar: false
 
 `categories`、`tags` 和 `404` 页面只需把 `layout` 分别改为 `categories`、`tags`、`404`。关于页还可以在站点配置中按需填写 `febirdy_about` 的 `focus`、`tools` 和 `links`；不填写时主题只使用真实的作者、描述、分类、RSS 和站点 URL。
 
+## 站点文案配置
+
+主题不会把某个博客的个人介绍、传送门地址或首页宣传语写死在模板中。请在博客工程的 `_config.yml` 中覆盖这些配置；博客配置优先于主题 `_config.yml` 的通用占位值：
+
+```yml
+febirdy_site:
+  brand: YOUR BLOG
+  brand_suffix: BLOG
+  brand_mark: TB
+  tagline: 在这里填写博客的一句话介绍
+  portal:
+    url: https://example.com
+    label: 个人传送门
+
+febirdy_home:
+  eyebrow: 在这里填写博客定位或技术方向
+  title: 在这里填写博客首页主标题
+  description: 在这里填写博客简介、内容范围和写作方向。
+  feed_title: 最新文章
+  feed_count_suffix: 篇文章
+
+febirdy_about:
+  name: ''
+  tagline: ''
+  quote: 在这里填写想对读者说的一句话。
+  focus: []
+  tools: []
+  links: []
+```
+
+如果不需要个人传送门，将 `febirdy_site.portal.url` 留空即可。导航、搜索、分类、标签等属于主题界面文字，不需要写入站点配置。
+
 ## 后续步骤
 
 1. 补充移动端导航、文章目录抽屉、搜索弹层状态和键盘/无障碍回归检查。

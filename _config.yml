@@ -17,6 +17,24 @@ febirdy_menu:
 febirdy_theme:
   default: dark
 
+# 站点身份和传送门：博客工程的同名配置优先于这里的通用默认值。
+febirdy_site:
+  brand: 'YOUR BLOG'
+  brand_suffix: 'BLOG'
+  brand_mark: 'TB'
+  tagline: '在这里填写博客的一句话介绍'
+  portal:
+    url: ''
+    label: '个人传送门'
+
+# 首页文案：请在博客工程的 _config.yml 中按需覆盖。
+febirdy_home:
+  eyebrow: '在这里填写博客定位或技术方向'
+  title: '在这里填写博客首页主标题'
+  description: '在这里填写博客简介、内容范围和写作方向。'
+  feed_title: '最新文章'
+  feed_count_suffix: '篇文章'
+
 # 关于页的个性化内容均为可选项；空数组不会写入任何虚构的个人资料。
 febirdy_about:
   name: ''

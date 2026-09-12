@@ -1,16 +1,18 @@
 <%
   // 关于页不预设个人隐私资料；站点作者、正文和可选主题配置由博客维护者提供。
-  const about = theme.febirdy_about || {};
+  const siteDefaults = { brand: 'YOUR BLOG', brand_mark: 'TB', tagline: '在这里填写博客的一句话介绍' };
+  const siteCopy = Object.assign({}, siteDefaults, theme.febirdy_site || {}, config.febirdy_site || {});
+  const about = Object.assign({}, theme.febirdy_about || {}, config.febirdy_about || {});
   const focus = Array.isArray(about.focus) ? about.focus : [];
   const tools = Array.isArray(about.tools) ? about.tools : [];
   const links = Array.isArray(about.links) ? about.links : [];
-  const author = about.name || config.author || 'FEBIRDY';
-  const tagline = about.tagline || config.description || '记录代码、踩坑，以及每一次认真折腾的过程。';
-  const quote = about.quote || '把真实问题记录下来，让下一次排查少走一点弯路。';
+  const author = about.name || config.author || siteCopy.brand || 'YOUR BLOG';
+  const tagline = about.tagline || config.description || '在这里填写关于博客的一句话介绍。';
+  const quote = about.quote || '在这里填写想对读者说的一句话。';
 %>
 <div class="fb-about">
   <header class="fb-about-hero">
-    <span class="fb-about-mark">FB</span>
+    <span class="fb-about-mark"><%= siteCopy.brand_mark %></span>
     <div>
       <span class="fb-eyebrow">DEV LOG</span>
       <h1>关于 <%= author %></h1>

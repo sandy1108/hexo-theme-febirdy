@@ -1,12 +1,24 @@
+<%
+  const siteDefaults = {
+    brand: 'YOUR BLOG',
+    brand_suffix: 'BLOG',
+    brand_mark: 'TB',
+    tagline: '在这里填写博客的一句话介绍',
+    portal: { url: '', label: '个人传送门' }
+  };
+  const themeSite = theme.febirdy_site || {};
+  const siteCopy = Object.assign({}, siteDefaults, themeSite, config.febirdy_site || {});
+  const portal = Object.assign({}, siteDefaults.portal, themeSite.portal || {}, (config.febirdy_site || {}).portal || {});
+%>
 <aside class="fb-sidebar-inner">
   <% if (is_post() && page.layout !== 'tweet'){ %>
     <section class="fb-toc-panel" id="fb-toc-panel" aria-labelledby="fb-toc-title" tabindex="-1"><div class="fb-toc-panel-head"><div class="fb-side-title" id="fb-toc-title">文章目录</div><button class="fb-toc-close" type="button" aria-label="关闭文章目录" aria-controls="fb-toc-panel" data-toc-close>×</button></div><div class="toc post-toc-html"></div></section>
   <% } %>
   <section class="fb-profile">
-    <span class="fb-profile-mark">FB</span>
-    <div><strong>FEBIRDY</strong><small><%= config.author %> · 技术博客</small></div>
-    <p>不爱折腾的码农，不是好程序猿。</p>
-    <a href="https://febirdy.com" target="_blank" rel="noopener">个人传送门 ↗</a>
+    <span class="fb-profile-mark"><%= siteCopy.brand_mark %></span>
+    <div><strong><%= siteCopy.brand %></strong><small><%= config.author %> · 技术博客</small></div>
+    <p><%= siteCopy.tagline %></p>
+    <% if (portal.url) { %><a href="<%- portal.url %>" target="_blank" rel="noopener"><%= portal.label %> ↗</a><% } %>
   </section>
   <div class="widget" id="widget"><% ['category','tag','recent_posts'].forEach(function(widget){ %><%- partial('_widget/' + widget) %><% }) %></div>
   <div id="backtop" aria-label="返回顶部">↑</div>

@@ -1,9 +1,20 @@
-<% const menus = theme.febirdy_menu || {'首页':'/','归档':'/archives/','分类':'/categories/','标签':'/tags/','关于':'/about/'}; %>
+<%
+  const siteDefaults = {
+    brand: 'YOUR BLOG',
+    brand_suffix: 'BLOG',
+    brand_mark: 'TB',
+    portal: { url: '', label: '个人传送门' }
+  };
+  const themeSite = theme.febirdy_site || {};
+  const siteCopy = Object.assign({}, siteDefaults, themeSite, config.febirdy_site || {});
+  const portal = Object.assign({}, siteDefaults.portal, themeSite.portal || {}, (config.febirdy_site || {}).portal || {});
+  const menus = theme.febirdy_menu || {'首页':'/','归档':'/archives/','分类':'/categories/','标签':'/tags/','关于':'/about/'};
+%>
 <header class="fb-header">
   <div class="fb-header-inner">
-    <a class="fb-brand" href="<%- url_for('/') %>" aria-label="FEBIRDY BLOG 首页">
+    <a class="fb-brand" href="<%- url_for('/') %>" aria-label="<%= siteCopy.brand %> 首页">
       <svg class="fb-logo" viewBox="0 0 32 32" aria-hidden="true"><path d="M7 8l9 8 9-8v6l-9 8-9-8z"/><path d="M7 17l9 8 9-8"/></svg>
-      <span>FEBIRDY <b>BLOG</b></span>
+      <span><%= siteCopy.brand %><% if (siteCopy.brand_suffix) { %> <b><%= siteCopy.brand_suffix %></b><% } %></span>
     </a>
     <nav class="fb-nav" aria-label="主导航"><% Object.keys(menus).forEach(function(label){ %><a href="<%- url_for(menus[label]) %>"><%= label %></a><% }) %></nav>
     <div class="fb-actions">
@@ -13,12 +24,12 @@
         <button class="fb-theme-option" type="button" role="radio" data-theme-option="dark" aria-checked="false" aria-label="深色主题" title="深色主题"><span class="fb-theme-option-icon" aria-hidden="true">☾</span><span class="fb-theme-option-label">深色</span></button>
       </div>
       <button class="fb-icon-button fb-search-trigger" type="button" aria-label="搜索">⌕ <span>搜索</span></button>
-      <a class="fb-portal" href="https://febirdy.com" target="_blank" rel="noopener">传送门 ↗</a>
+      <% if (portal.url) { %><a class="fb-portal" href="<%- portal.url %>" target="_blank" rel="noopener"><%= portal.label %> ↗</a><% } %>
       <button class="fb-menu-button" type="button" aria-label="打开导航" aria-controls="fb-mobile-nav" aria-haspopup="true" aria-expanded="false">☰</button>
     </div>
   </div>
   <nav class="fb-mobile-nav" id="fb-mobile-nav" aria-label="移动端导航" aria-hidden="true">
     <% Object.keys(menus).forEach(function(label){ %><a href="<%- url_for(menus[label]) %>" data-menu-link><%= label %></a><% }) %>
-    <a href="https://febirdy.com" data-menu-link>个人传送门 ↗</a>
+    <% if (portal.url) { %><a href="<%- portal.url %>" target="_blank" rel="noopener" data-menu-link><%= portal.label %> ↗</a><% } %>
   </nav>
 </header>
