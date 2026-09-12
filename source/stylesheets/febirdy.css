@@ -279,8 +279,22 @@ body.fb-search-open{overflow:hidden}
     --fb-secondary-text: #cbd5e1;
     --fb-content-text: #d5dce8;
     --fb-on-accent: #06202a;
-    --fb-code-bg: #06101d;
-    --fb-code-text: #b9f5ff;
+    /* GitHub Dark 的代码块基础色，语法 token 在下方按语义着色。 */
+    --fb-code-bg: #0d1117;
+    --fb-code-border: #30363d;
+    --fb-code-text: #c9d1d9;
+    --fb-code-comment: #8b949e;
+    --fb-code-keyword: #ff7b72;
+    --fb-code-string: #a5d6ff;
+    --fb-code-number: #79c0ff;
+    --fb-code-title: #d2a8ff;
+    --fb-code-built-in: #ffa657;
+    --fb-code-attr: #79c0ff;
+    --fb-code-tag: #7ee787;
+    --fb-code-meta: #d2a8ff;
+    --fb-code-regexp: #a5d6ff;
+    --fb-code-addition: #aff5b4;
+    --fb-code-deletion: #ffdcd7;
     --fb-footer-bg: #020611;
     --fb-chip-bg: #1a2a3c;
     --fb-badge-bg: #172a3c;
@@ -314,8 +328,22 @@ body.fb-search-open{overflow:hidden}
     --fb-secondary-text: #475569;
     --fb-content-text: #334155;
     --fb-on-accent: #f0fdff;
-    --fb-code-bg: #0f172a;
-    --fb-code-text: #dbeafe;
+    /* GitHub Light 的代码块基础色，避免浅色页面中仍嵌一块深色代码区。 */
+    --fb-code-bg: #f6f8fa;
+    --fb-code-border: #d0d7de;
+    --fb-code-text: #24292f;
+    --fb-code-comment: #6e7781;
+    --fb-code-keyword: #cf222e;
+    --fb-code-string: #0a3069;
+    --fb-code-number: #0550ae;
+    --fb-code-title: #8250df;
+    --fb-code-built-in: #953800;
+    --fb-code-attr: #0550ae;
+    --fb-code-tag: #116329;
+    --fb-code-meta: #8250df;
+    --fb-code-regexp: #0a3069;
+    --fb-code-addition: #116329;
+    --fb-code-deletion: #82071e;
     --fb-footer-bg: #e9f0f5;
     --fb-chip-bg: #dbeef3;
     --fb-badge-bg: #dff3f7;
@@ -577,4 +605,183 @@ body.fb-search-open{overflow:hidden}
             transform: scale(1);
         }
     }
+}
+
+/*
+ * Hexo 的 figure.highlight 使用 table 排列行号和代码。
+ * 正文表格仍保留原有表格样式；这里只把代码块收敛为 GitHub 风格的单列代码区。
+ */
+.fb-post-content figure.highlight {
+    width: 100%;
+    max-width: 100%;
+    margin: 1.5em 0;
+    overflow: hidden;
+    border: 1px solid var(--fb-code-border);
+    border-radius: 8px;
+    background: var(--fb-code-bg);
+    color: var(--fb-code-text);
+}
+
+.fb-post-content figure.highlight table {
+    display: block;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    overflow: visible;
+    border: 0;
+    border-collapse: collapse;
+    background: transparent;
+}
+
+.fb-post-content figure.highlight tbody,
+.fb-post-content figure.highlight tr {
+    display: block;
+    width: 100%;
+    margin: 0;
+}
+
+.fb-post-content figure.highlight td {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    vertical-align: top;
+    white-space: normal;
+}
+
+/* post.css 对最后一行和奇数行有更高优先级，这里明确清掉它们遗留的表格底色与间距。 */
+.fb-post-content.post-inner-html figure.highlight table tbody tr td {
+    padding: 0;
+    border: 0;
+    background: transparent;
+}
+
+.fb-post-content figure.highlight .gutter {
+    display: none;
+}
+
+.fb-post-content figure.highlight .code {
+    width: 100%;
+}
+
+.fb-post-content figure.highlight pre {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding: 16px;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: var(--fb-code-text);
+    font-variant-ligatures: none;
+    white-space: pre;
+}
+
+.fb-post-content figure.highlight pre code {
+    display: block;
+    min-width: max-content;
+    padding: 0;
+    background: transparent;
+    color: inherit;
+    font-size: inherit;
+    line-height: inherit;
+}
+
+/* Hexo/Highlight.js 兼容的 token 语义色。 */
+.fb-post-content figure.highlight .comment,
+.fb-post-content figure.highlight .hljs-comment,
+.fb-post-content figure.highlight .quote,
+.fb-post-content figure.highlight .hljs-quote,
+.fb-post-content figure.highlight .doctag,
+.fb-post-content figure.highlight .hljs-doctag {
+    color: var(--fb-code-comment);
+    font-style: italic;
+}
+
+.fb-post-content figure.highlight .keyword,
+.fb-post-content figure.highlight .hljs-keyword,
+.fb-post-content figure.highlight .selector-tag,
+.fb-post-content figure.highlight .hljs-selector-tag,
+.fb-post-content figure.highlight .subst,
+.fb-post-content figure.highlight .hljs-subst {
+    color: var(--fb-code-keyword);
+}
+
+.fb-post-content figure.highlight .string,
+.fb-post-content figure.highlight .hljs-string,
+.fb-post-content figure.highlight .regexp,
+.fb-post-content figure.highlight .hljs-regexp,
+.fb-post-content figure.highlight .link,
+.fb-post-content figure.highlight .hljs-link {
+    color: var(--fb-code-string);
+}
+
+.fb-post-content figure.highlight .number,
+.fb-post-content figure.highlight .hljs-number,
+.fb-post-content figure.highlight .literal,
+.fb-post-content figure.highlight .hljs-literal,
+.fb-post-content figure.highlight .variable,
+.fb-post-content figure.highlight .hljs-variable,
+.fb-post-content figure.highlight .template-variable,
+.fb-post-content figure.highlight .hljs-template-variable {
+    color: var(--fb-code-number);
+}
+
+.fb-post-content figure.highlight .title,
+.fb-post-content figure.highlight .hljs-title,
+.fb-post-content figure.highlight .section,
+.fb-post-content figure.highlight .hljs-section {
+    color: var(--fb-code-title);
+}
+
+.fb-post-content figure.highlight .built_in,
+.fb-post-content figure.highlight .hljs-built_in,
+.fb-post-content figure.highlight .builtin-name,
+.fb-post-content figure.highlight .hljs-builtin-name,
+.fb-post-content figure.highlight .type,
+.fb-post-content figure.highlight .hljs-type,
+.fb-post-content figure.highlight .class_,
+.fb-post-content figure.highlight .hljs-class {
+    color: var(--fb-code-built-in);
+}
+
+.fb-post-content figure.highlight .attr,
+.fb-post-content figure.highlight .hljs-attr,
+.fb-post-content figure.highlight .property,
+.fb-post-content figure.highlight .hljs-attribute {
+    color: var(--fb-code-attr);
+}
+
+.fb-post-content figure.highlight .tag,
+.fb-post-content figure.highlight .hljs-tag,
+.fb-post-content figure.highlight .name,
+.fb-post-content figure.highlight .hljs-name {
+    color: var(--fb-code-tag);
+}
+
+.fb-post-content figure.highlight .meta,
+.fb-post-content figure.highlight .hljs-meta {
+    color: var(--fb-code-meta);
+}
+
+.fb-post-content figure.highlight .symbol,
+.fb-post-content figure.highlight .hljs-symbol,
+.fb-post-content figure.highlight .bullet,
+.fb-post-content figure.highlight .hljs-bullet {
+    color: var(--fb-code-built-in);
+}
+
+.fb-post-content figure.highlight .addition,
+.fb-post-content figure.highlight .hljs-addition {
+    background: color-mix(in srgb, var(--fb-code-addition) 18%, transparent);
+    color: var(--fb-code-addition);
+}
+
+.fb-post-content figure.highlight .deletion,
+.fb-post-content figure.highlight .hljs-deletion {
+    background: color-mix(in srgb, var(--fb-code-deletion) 18%, transparent);
+    color: var(--fb-code-deletion);
 }
