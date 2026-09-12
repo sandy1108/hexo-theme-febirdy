@@ -464,6 +464,20 @@ body.fb-search-open{overflow:hidden}
     color: var(--fb-code-text);
 }
 
+/* 覆盖 Aomori post.css 的高优先级规则，确保行内代码在两种主题下都清晰可读。 */
+.fb-post-content.post-inner-html p code {
+    padding: 3px 6px;
+    border: 1px solid var(--fb-code-border);
+    border-radius: 4px;
+    background: var(--fb-inline-code-bg);
+    color: var(--fb-code-text);
+    font-size: .88em;
+}
+
+:root[data-theme-effective='light'] .fb-post-content.post-inner-html p code {
+    color: var(--fb-cyan);
+}
+
 :root[data-theme-effective='light'] .fb-tag-pill b {
     background: var(--fb-count-bg);
     color: var(--fb-muted);
