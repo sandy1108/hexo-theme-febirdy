@@ -21,6 +21,34 @@
 .fb-post-kicker a{color:var(--fb-cyan)}.fb-post-kicker span+span:before,.fb-post-kicker time+span:before{content:"·";margin-right:12px}
 .fb-post-title{margin:18px 0 13px!important;color:var(--fb-text)!important;font-size:clamp(28px,4vw,46px)!important;line-height:1.25!important;letter-spacing:-.035em;font-weight:800!important}
 .fb-post-tags{display:flex;flex-wrap:wrap;gap:8px}.fb-post-tags a{padding:3px 9px;border:1px solid var(--fb-line);border-radius:4px;color:var(--fb-muted);font:11px ui-monospace,SFMono-Regular,Menlo,monospace}.fb-post-tags a:before{content:"#"}
+/* Hexo 的 list_tags 会在容器内生成 ul/li；把嵌套列表设为 flex，避免标签逐项纵向占位。 */
+.fb-post-tags .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+    max-height: 64px;
+    overflow-y: auto;
+    margin: 0;
+    padding: 0 2px 2px 0;
+    list-style: none;
+    scrollbar-width: thin;
+    scrollbar-color: var(--fb-line) transparent;
+    overscroll-behavior: contain;
+}
+
+.fb-post-tags .tag-list-item {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.fb-post-tags .tag-list a {
+    display: inline-flex;
+    align-items: center;
+    line-height: 1.4;
+    white-space: nowrap;
+}
 .fb-mobile-toc-trigger{display:none;margin-top:16px;padding:8px 12px;border:1px solid var(--fb-line);border-radius:6px;background:var(--fb-surface);color:var(--fb-cyan);font-family:inherit;font-size:12px;cursor:pointer}
 .fb-post-grid{max-width:760px;padding:34px 0 20px}.fb-post-content{color:#d5dce8;font-size:16px;line-height:1.9;overflow-wrap:anywhere}.fb-post-content h2,.fb-post-content h3,.fb-post-content h4{margin:2em 0 .7em;color:var(--fb-text);line-height:1.4}.fb-post-content h2{font-size:25px;border-left:3px solid var(--fb-cyan);padding-left:12px}.fb-post-content h3{font-size:20px}.fb-post-content p{margin:0 0 1.2em}.fb-post-content a{color:var(--fb-cyan);text-decoration:underline;text-decoration-color:rgba(103,232,249,.4);text-underline-offset:3px}.fb-post-content blockquote{margin:1.5em 0;padding:14px 18px;border-left:3px solid var(--fb-cyan);background:var(--fb-surface);color:#cbd5e1}.fb-post-content img{display:block;max-width:100%;height:auto;margin:1.5em auto;border-radius:7px}.fb-post-content pre{overflow:auto;margin:1.5em 0;padding:18px;background:#06101d;border:1px solid var(--fb-line);border-radius:8px;font-size:13px;line-height:1.7}.fb-post-content code{padding:.12em .35em;border-radius:4px;background:rgba(103,232,249,.1);color:#b9f5ff;font-size:.88em}.fb-post-content pre code{padding:0;background:none;color:inherit}.fb-post-content table{display:block;max-width:100%;overflow:auto;border-collapse:collapse}.fb-post-content th,.fb-post-content td{padding:8px 12px;border:1px solid var(--fb-line);white-space:nowrap}.fb-post-content th{color:var(--fb-cyan);background:var(--fb-surface)}
 .fb-toc-panel{padding:20px;border:1px solid var(--fb-line);border-radius:10px;background:var(--fb-surface)}.fb-toc-panel-head{display:flex;align-items:center;justify-content:space-between;gap:12px}.fb-side-title{padding-bottom:12px;border-bottom:1px solid var(--fb-line);font-weight:700}.fb-toc-close{display:none;border:0;background:transparent;color:var(--fb-muted);font-size:24px;line-height:1;cursor:pointer}.fb-toc-panel .toc{padding-top:14px}.fb-toc-panel .toc a{display:block;margin:7px 0;color:var(--fb-muted);font-size:13px}.fb-toc-panel .toc a:hover,.fb-toc-panel .toc .node-name--active{color:var(--fb-cyan)}
