@@ -6,7 +6,7 @@
 
 已导入本机博客曾使用的 Aomori 源码、预构建资源与原始 MIT 许可证，建立独立 master 仓库和隔离生成工具。当前已完成首页、文章详情、归档、分类/标签列表的 FEBIRDY 视觉迁移，并提供分类/标签总览、关于页、404 和搜索弹层模板；首页宽屏布局与分页视觉、文章详情页真实图片查看器均已完成真实内容回归。主题已通过博客 Submodule 接入 `tech-blogs`，并随博客 `master` 部署到线上；后续进入构建质量、移动端交互和搜索能力优化阶段。
 
-原始作者：LIN HONG。上游：https://github.com/lh1me/hexo-theme-aomori 。原始使用文档见 [docs/AOMORI-UPSTREAM.md](docs/AOMORI-UPSTREAM.md)。保留已有 aomori_* 配置兼容性。
+原始作者：LIN HONG。上游：https://github.com/lh1me/hexo-theme-aomori 。原始使用文档见 [docs/AOMORI-UPSTREAM.md](docs/AOMORI-UPSTREAM.md)。保留已有 aomori_* 配置兼容性；侧栏组件配置已改用 `febirdy_widgets`，不再读取 `aomori_widgets`。
 
 ## 本地验证
 
@@ -70,6 +70,20 @@ febirdy_about:
 ```
 
 如果不需要个人传送门，将 `febirdy_site.portal.url` 留空即可。导航、搜索、分类、标签等属于主题界面文字，不需要写入站点配置。
+
+## 侧栏组件配置
+
+侧栏组件可以在博客工程的 `_config.yml` 中通过 `febirdy_widgets` 覆盖主题默认顺序：
+
+```yml
+febirdy_widgets:
+  - category
+  - tag
+  - recent_posts
+  # - archive
+```
+
+目前支持 `category`（分类）、`tag`（标签）、`recent_posts`（最近文章）和 `archive`（按年份归档）。重复项会自动去重，未知组件会被忽略；配置为空数组时可以隐藏这些可选组件，但个人信息卡片仍会保留。文章目录由文章页独立渲染为桌面目录和移动端抽屉，因此不应加入 `toc`。
 
 ## 后续步骤
 
