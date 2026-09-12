@@ -28,6 +28,12 @@
     <% var themeConfig = theme.febirdy_theme || {}; %>
     <% var themeModes = ['auto', 'light', 'dark']; %>
     <% var themeDefault = themeModes.indexOf(themeConfig.default) !== -1 ? themeConfig.default : 'dark'; %>
+    <% var serializeClientConfig = function (value) {
+        return JSON.stringify(value)
+            .replace(/</g, '\\u003c')
+            .replace(/>/g, '\\u003e')
+            .replace(/&/g, '\\u0026');
+    }; %>
     <meta name="color-scheme" content="light dark">
     <script>
         // 在样式加载前恢复主题，避免浅色模式首次绘制时短暂闪回深色。
@@ -53,11 +59,11 @@
 
     <%- partial('_partial/meta') %>
 
-    <% if (config.aomori_google_site && config.aomori_google_site.enable){ %>
-    <meta name="google-site-verification" content="<%= config.aomori_google_site.id %>" />
+    <% if (config.febirdy_google_site && config.febirdy_google_site.enable){ %>
+    <meta name="google-site-verification" content="<%= config.febirdy_google_site.id %>" />
     <% } %>
 
-    <% if (config.aomori_search_algolia){ %>
+    <% if (config.febirdy_search_algolia){ %>
     <%- algolia_search_config() %>
     <% } %>
 
@@ -69,15 +75,15 @@
     <link rel="icon" href="<%- config.favicon %>">
     <% } %>
 
-    <% if (config.aomori_favicon){ %>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22><%- config.aomori_favicon %></text></svg>">
+    <% if (config.febirdy_favicon){ %>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22><%- config.febirdy_favicon %></text></svg>">
     <% } %>
 
-    <% if (config.aomori_gitalk){ %>
+    <% if (config.febirdy_gitalk){ %>
     <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
     <% } %>
 
-    <% if (config.aomori_disqusjs){ %>
+    <% if (config.febirdy_disqusjs){ %>
     <link rel="stylesheet" href="https://unpkg.com/disqusjs@1.3/dist/disqusjs.css">
     <% } %>
 
@@ -87,52 +93,57 @@
     <%- css(`/stylesheets/febirdy.css?v=${theme.version}`) %>
 
     <script>
-        window.isPost = <%- is_post() %>
-        window.aomori = {
-            <% if (config.aomori_gitalk){ %>
-            gitalk: {
-                enable: <%= config.aomori_gitalk.enable %>,
-                clientID: "<%= config.aomori_gitalk.clientID %>",
-                clientSecret: "<%= config.aomori_gitalk.clientSecret %>",
-                repo: "<%= config.aomori_gitalk.repo %>",
-                owner: "<%= config.aomori_gitalk.owner %>",
-                admin: [<% config.aomori_gitalk.admin.forEach(function(item){%>"<%=item %>",<% }) %>],
-                distractionFreeMode: <%= config.aomori_gitalk.distractionFreeMode %>  // Facebook-like distraction free mode
-            },
+        window.isPost = <%- serializeClientConfig(is_post()) %>
+        window.febirdy = {
+            <% if (config.febirdy_gitalk){ %>
+            gitalk: <%- serializeClientConfig({
+                enable: Boolean(config.febirdy_gitalk.enable),
+                clientID: config.febirdy_gitalk.clientID || '',
+                clientSecret: config.febirdy_gitalk.clientSecret || '',
+                repo: config.febirdy_gitalk.repo || '',
+                owner: config.febirdy_gitalk.owner || '',
+                admin: Array.isArray(config.febirdy_gitalk.admin) ? config.febirdy_gitalk.admin : [],
+                distractionFreeMode: Boolean(config.febirdy_gitalk.distractionFreeMode)
+            }) %>,
             <% } %>
-            <% if (config.aomori_valine){ %>
-            valine: {
-                enable: <%= config.aomori_valine.enable || false %>,
-                appId: "<%= config.aomori_valine.appId || '' %>",
-                appKey: "<%= config.aomori_valine.appKey || '' %>",
-                placeholder: "<%= config.aomori_valine.placeholder || 'Hello World!' %>",
-                avatar: "<%= config.aomori_valine.avatar || '' %>",
-                pageSize: "<%= config.aomori_valine.pageSize || '10' %>",
-                lang: "<%= config.aomori_valine.lang || 'zh-CN' %>",
-                visitor: <%= config.aomori_valine.visitor || false %>,
-                highlight: <%= config.aomori_valine.highlight || false %>,
-                recordIP: <%= config.aomori_valine.recordIP || false %>,
-                emojiCDN: "<%= config.aomori_valine.emojiCDN || '' %>",
-                enableQQ: <%= config.aomori_valine.enableQQ || false %>,
-                requiredFields: <%= config.aomori_valine.requiredFields || '[]' %>
-            },
+            <% if (config.febirdy_valine){ %>
+            valine: <%- serializeClientConfig({
+                enable: Boolean(config.febirdy_valine.enable),
+                appId: config.febirdy_valine.appId || '',
+                appKey: config.febirdy_valine.appKey || '',
+                placeholder: config.febirdy_valine.placeholder || 'Hello World!',
+                avatar: config.febirdy_valine.avatar || '',
+                pageSize: config.febirdy_valine.pageSize || '10',
+                lang: config.febirdy_valine.lang || 'zh-CN',
+                visitor: Boolean(config.febirdy_valine.visitor),
+                highlight: Boolean(config.febirdy_valine.highlight),
+                recordIP: Boolean(config.febirdy_valine.recordIP),
+                emojiCDN: config.febirdy_valine.emojiCDN || '',
+                enableQQ: Boolean(config.febirdy_valine.enableQQ),
+                requiredFields: Array.isArray(config.febirdy_valine.requiredFields) ? config.febirdy_valine.requiredFields : []
+            }) %>,
             <% } %>
-            <% if (config.aomori_disqusjs){ %>
-            disqusjs: {
-              enable: <%= config.aomori_disqusjs.enable || false %>,
-              shortname: "<%= config.aomori_disqusjs.shortname || '' %>",
-              siteName: "<%= config.aomori_disqusjs.siteName || '' %>",
-              api: "<%= config.aomori_disqusjs.api || 'https://disqus.skk.moe/disqus/' %>",
-              apikey: "<%= config.aomori_disqusjs.apikey || '' %>",
-              nesting: "<%= config.aomori_disqusjs.nesting || 4 %>",
-              nocomment: "<%= config.aomori_disqusjs.nocomment || '这里冷冷清清的，一条评论都没有' %>",
-              admin: "<%= config.aomori_disqusjs.admin || '' %>",
-              adminLabel: "<%= config.aomori_disqusjs.adminLabel || '' %>",
-            },
+            <% if (config.febirdy_disqusjs){ %>
+            disqusjs: <%- serializeClientConfig({
+                enable: Boolean(config.febirdy_disqusjs.enable),
+                shortname: config.febirdy_disqusjs.shortname || '',
+                siteName: config.febirdy_disqusjs.siteName || '',
+                api: config.febirdy_disqusjs.api || 'https://disqus.skk.moe/disqus/',
+                apikey: config.febirdy_disqusjs.apikey || '',
+                nesting: config.febirdy_disqusjs.nesting || 4,
+                nocomment: config.febirdy_disqusjs.nocomment || '这里冷冷清清的，一条评论都没有',
+                admin: config.febirdy_disqusjs.admin || '',
+                adminLabel: config.febirdy_disqusjs.adminLabel || ''
+            }) %>,
             <% } %>
         }
-        window.aomori_logo_typed_animated = <%= config.aomori_logo_typed_animated || false %>
-        window.aomori_search_algolia = <%= config.aomori_search_algolia || false %>
+        window.febirdy_logo_typed_animated = <%- serializeClientConfig(Boolean(config.febirdy_logo_typed_animated)) %>
+        window.febirdy_search_algolia = <%- serializeClientConfig(Boolean(config.febirdy_search_algolia)) %>
+
+        // 兼容仍引用旧全局对象的评论插件或站点自定义脚本。
+        window.aomori = window.febirdy
+        window.aomori_logo_typed_animated = window.febirdy_logo_typed_animated
+        window.aomori_search_algolia = window.febirdy_search_algolia
 
     </script>
 

@@ -2,6 +2,16 @@ import $ from 'jquery'
 import dayjs from 'dayjs'
 import { addNewClass, removeClass, throttle } from './class-module'
 ;(function () {
+    // 主题开关优先从 FEBIRDY 命名读取，同时兼容外部旧脚本注入的 Aomori 全局变量。
+    const logoTypedAnimated =
+        typeof window.febirdy_logo_typed_animated !== 'undefined'
+            ? window.febirdy_logo_typed_animated
+            : window.aomori_logo_typed_animated
+    const searchAlgoliaEnabled =
+        typeof window.febirdy_search_algolia !== 'undefined'
+            ? window.febirdy_search_algolia
+            : window.aomori_search_algolia
+
     let toggles = document.querySelectorAll('.cases .item')
     toggles.forEach((toggle) => {
         toggle.addEventListener(
@@ -138,7 +148,7 @@ import { addNewClass, removeClass, throttle } from './class-module'
     _widget && new PerfectScrollbar(_widget)
 
     // Typed
-    if (window.aomori_logo_typed_animated) {
+    if (logoTypedAnimated) {
         const typed = new Typed('#typed', {
             stringsElement: '#typed-strings',
             fadeOut: true,
@@ -149,7 +159,7 @@ import { addNewClass, removeClass, throttle } from './class-module'
     }
 
     // Algolia
-    if (window.aomori_search_algolia) {
+    if (searchAlgoliaEnabled) {
         const _searchPs = document.querySelector('#search-ps')
         _searchPs && new PerfectScrollbar(_searchPs)
 

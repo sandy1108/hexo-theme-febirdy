@@ -1,7 +1,8 @@
 ;(function () {
-    if (window.aomori && window.aomori.gitalk) {
-        window.aomori.gitalk.id = md5(window.location.href)
-        const gitalk = new Gitalk(window.aomori.gitalk)
+    const themeRuntime = window.febirdy || window.aomori || {}
+    if (themeRuntime.gitalk) {
+        themeRuntime.gitalk.id = md5(window.location.href)
+        const gitalk = new Gitalk(themeRuntime.gitalk)
         gitalk.render('gitalk-container')
     }
 })()

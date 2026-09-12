@@ -1,4 +1,4 @@
-<% if (config.aomori_disqus_shortname){ %>
+<% if (config.febirdy_disqus_shortname){ %>
 <section class="comments comments-disqus">
     <div id="disqus_thread"></div>
     <script>
@@ -7,7 +7,7 @@
             var d = document,
                 s = d.createElement('script')
             s.src =
-                'https://<%- config.aomori_disqus_shortname %>.disqus.com/embed.js'
+                'https://<%- config.febirdy_disqus_shortname %>.disqus.com/embed.js'
             s.setAttribute('data-timestamp', +new Date())
             ;(d.head || d.body).appendChild(s)
         })()
@@ -15,36 +15,36 @@
 </section>
 <% } %>
 
-<% if (config.aomori_disqusjs){ %>
+<% if (config.febirdy_disqusjs){ %>
 <section class="comments comments-disqusjs">
     <div id="disqus_thread"></div>
 </section>
 <% } %>
 
-<% if (config.aomori_gitalk){ %>
+<% if (config.febirdy_gitalk){ %>
 <section class="comments">
     <div id="gitalk-container"></div>
 </section>
 <% } %>
 
-<% if (config.aomori_valine && config.aomori_valine.enable){ %>
+<% if (config.febirdy_valine && config.febirdy_valine.enable){ %>
 <section class="comments">
     <div id="valine-container"></div>
 </section>
 <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 <% } %>
 
-<% if (config.aomori_remark42 && config.aomori_remark42.enable){ %>
+<% if (config.febirdy_remark42 && config.febirdy_remark42.enable){ %>
 <section id="remark42"></section>
 <script>
     (function() {
         window.remark_config = {
-            host: "<%= config.aomori_remark42.host || '' %>",
-            site_id: "<%= config.aomori_remark42.site_id || '' %>",
-            max_shown_comments: "<%= config.aomori_remark42.max_shown_comments || 15 %>",
-            theme: "<%= config.aomori_remark42.theme || 'dark' %>",
-            locale: "<%= config.aomori_remark42.locale || 'en' %>",
-            show_email_subscription: "<%= config.aomori_remark42.show_email_subscription || false %>",
+            host: "<%= config.febirdy_remark42.host || '' %>",
+            site_id: "<%= config.febirdy_remark42.site_id || '' %>",
+            max_shown_comments: "<%= config.febirdy_remark42.max_shown_comments || 15 %>",
+            theme: "<%= config.febirdy_remark42.theme || 'dark' %>",
+            locale: "<%= config.febirdy_remark42.locale || 'en' %>",
+            show_email_subscription: "<%= config.febirdy_remark42.show_email_subscription || false %>",
             components: ['embed']
         }
         var d = document, s = d.createElement('script');
@@ -55,20 +55,20 @@
 </script>
 <% } %>
 
-<% if (config.aomori_giscus && config.aomori_giscus.enable){ %>
+<% if (config.febirdy_giscus && config.febirdy_giscus.enable){ %>
 <section class="comments">
     <div class="giscus"></div>
 </section>
 <script src="https://giscus.app/client.js"
-    data-repo="<%= config.aomori_giscus.repo || '' %>"
-    data-repo-id="<%= config.aomori_giscus.repoId || '' %>"
-    data-category="<%= config.aomori_giscus.category || '' %>"
-    data-category-id="<%= config.aomori_giscus.categoryId || '' %>"
-    data-mapping="<%= config.aomori_giscus.mapping || 'pathname' %>"
-    data-reactions-enabled="<%= config.aomori_giscus.reactionsEnabled || '1' %>"
-    data-emit-metadata="<%= config.aomori_giscus.emitMetadata || '0' %>"
-    data-theme="<%= config.aomori_giscus.theme || 'light' %>"
-    data-lang="<%= config.aomori_giscus.lang || 'zh-CN' %>"
+    data-repo="<%= config.febirdy_giscus.repo || '' %>"
+    data-repo-id="<%= config.febirdy_giscus.repoId || '' %>"
+    data-category="<%= config.febirdy_giscus.category || '' %>"
+    data-category-id="<%= config.febirdy_giscus.categoryId || '' %>"
+    data-mapping="<%= config.febirdy_giscus.mapping || 'pathname' %>"
+    data-reactions-enabled="<%= config.febirdy_giscus.reactionsEnabled || '1' %>"
+    data-emit-metadata="<%= config.febirdy_giscus.emitMetadata || '0' %>"
+    data-theme="<%= config.febirdy_giscus.theme || 'light' %>"
+    data-lang="<%= config.febirdy_giscus.lang || 'zh-CN' %>"
     crossorigin="anonymous"
     async>
 </script>

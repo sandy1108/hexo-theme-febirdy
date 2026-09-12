@@ -4,7 +4,7 @@
   "private": true,
   "description": "基于 Aomori 的 FEBIRDY 个人技术博客主题",
   "license": "MIT",
-  "files": ["layout", "languages", "source", "_config.yml", "LICENSE", "README.md"],
+  "files": ["layout", "languages", "scripts", "source", "_config.yml", "LICENSE", "README.md"],
   "scripts": {
     "preview:build": "node tools/preview.cjs",
     "dev": "gulp",

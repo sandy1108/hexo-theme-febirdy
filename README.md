@@ -6,7 +6,7 @@
 
 已导入本机博客曾使用的 Aomori 源码、预构建资源与原始 MIT 许可证，建立独立 master 仓库和隔离生成工具。当前已完成首页、文章详情、归档、分类/标签列表的 FEBIRDY 视觉迁移，并提供分类/标签总览、关于页、404 和搜索弹层模板；首页宽屏布局与分页视觉、文章详情页真实图片查看器均已完成真实内容回归。主题已通过博客 Submodule 接入 `tech-blogs`，并随博客 `master` 部署到线上；后续进入构建质量、移动端交互和搜索能力优化阶段。
 
-原始作者：LIN HONG。上游：https://github.com/lh1me/hexo-theme-aomori 。原始使用文档见 [docs/AOMORI-UPSTREAM.md](docs/AOMORI-UPSTREAM.md)。保留已有 aomori_* 配置兼容性；侧栏组件配置已改用 `febirdy_widgets`，不再读取 `aomori_widgets`。
+原始作者：LIN HONG。上游：https://github.com/lh1me/hexo-theme-aomori 。原始使用文档见 [docs/AOMORI-UPSTREAM.md](docs/AOMORI-UPSTREAM.md)。主题配置以 `febirdy_*` 为正式命名；除已移除的 `aomori_widgets` 外，其他历史 Aomori 字段暂时保留读取回退。
 
 ## 本地验证
 
@@ -84,6 +84,30 @@ febirdy_widgets:
 ```
 
 目前支持 `category`（分类）、`tag`（标签）、`recent_posts`（最近文章）和 `archive`（按年份归档）。重复项会自动去重，未知组件会被忽略；配置为空数组时可以隐藏这些可选组件，但个人信息卡片仍会保留。文章目录由文章页独立渲染为桌面目录和移动端抽屉，因此不应加入 `toc`。
+
+## 配置命名迁移
+
+为便于主题公共化，主题配置逐步从 Aomori 前缀迁移到 FEBIRDY 前缀。博客工程应优先使用右侧的新名称：
+
+| 历史名称 | 正式名称 |
+| --- | --- |
+| `aomori_logo` | `febirdy_logo` |
+| `aomori_logo_typed_animated` | `febirdy_logo_typed_animated` |
+| `aomori_search_algolia` | `febirdy_search_algolia` |
+| `aomori_social` | `febirdy_social` |
+| `aomori_favicon` | `febirdy_favicon` |
+| `aomori_google_site` | `febirdy_google_site` |
+| `aomori_gitalk` | `febirdy_gitalk` |
+| `aomori_valine` | `febirdy_valine` |
+| `aomori_disqusjs` | `febirdy_disqusjs` |
+| `aomori_disqus_shortname` | `febirdy_disqus_shortname` |
+| `aomori_remark42` | `febirdy_remark42` |
+| `aomori_giscus` | `febirdy_giscus` |
+| `aomori_google_ads` | `febirdy_google_ads` |
+| `aomori_copyright` | `febirdy_copyright` |
+| `aomori_busuanzi` | `febirdy_busuanzi` |
+
+除 `aomori_widgets` 外，当前版本会通过 `scripts/config-normalizer.js` 在生成前读取历史名称作为回退，布局层还保留同样的兜底逻辑；新配置优先级更高。浏览器端正式命名空间为 `window.febirdy`，同时保留 `window.aomori` 兼容别名。后续稳定版本可再评估移除兼容层。
 
 ## 后续步骤
 

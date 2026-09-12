@@ -8,6 +8,11 @@
             .replace(/>/g, '\\u003e')
             .replace(/&/g, '\\u0026');
     };
+    var logoPath = config.febirdy_logo || config.favicon || '/favicon.ico';
+    var logoUrl = logoPath;
+    if (!/^(?:[a-z][a-z0-9+.-]*:|\/\/)/i.test(logoPath)) {
+        logoUrl = (config.url || '').replace(/\/$/, '') + '/' + logoPath.replace(/^\//, '');
+    }
     if (is_archive()){
         title = __('Archive');
         if (is_month()){
@@ -42,7 +47,7 @@
             '@type': 'Organization',
             logo: {
                 '@type': 'ImageObject',
-                url: config.url + config.aomori_logo
+                url: logoUrl
             },
             name: config.author
         },

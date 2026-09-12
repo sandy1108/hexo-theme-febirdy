@@ -1,3 +1,30 @@
+<%
+    // 主题公开配置统一使用 febirdy_*；历史 Aomori 字段仅作为非破坏性回退。
+    // scripts/config-normalizer.js 会在生成前完成映射；这里保留兜底，兼容安全模式等特殊加载路径。
+    const legacyConfigAliases = {
+        febirdy_logo: 'aomori_logo',
+        febirdy_logo_typed_animated: 'aomori_logo_typed_animated',
+        febirdy_search_algolia: 'aomori_search_algolia',
+        febirdy_social: 'aomori_social',
+        febirdy_favicon: 'aomori_favicon',
+        febirdy_google_site: 'aomori_google_site',
+        febirdy_gitalk: 'aomori_gitalk',
+        febirdy_valine: 'aomori_valine',
+        febirdy_disqusjs: 'aomori_disqusjs',
+        febirdy_disqus_shortname: 'aomori_disqus_shortname',
+        febirdy_remark42: 'aomori_remark42',
+        febirdy_giscus: 'aomori_giscus',
+        febirdy_google_ads: 'aomori_google_ads',
+        febirdy_copyright: 'aomori_copyright',
+        febirdy_busuanzi: 'aomori_busuanzi'
+    };
+    Object.keys(legacyConfigAliases).forEach(function (newKey) {
+        const legacyKey = legacyConfigAliases[newKey];
+        if (typeof config[newKey] === 'undefined' && typeof config[legacyKey] !== 'undefined') {
+            config[newKey] = config[legacyKey];
+        }
+    });
+%>
 <%- partial('_partial/head') %>
 
 <body class="fb-site <% if (is_home()){ %>fb-is-home<% } %>">
@@ -15,7 +42,7 @@
             </section>
 
             <% if (page.sidebar !== false){ %>
-            <aside class="sidebar <% if (config.aomori_search_algolia){ %>sidebar-search-fix<% } %>">
+            <aside class="sidebar <% if (config.febirdy_search_algolia){ %>sidebar-search-fix<% } %>">
                 <%- partial('_partial/sidebar') %>
             </aside>
             <% } %>

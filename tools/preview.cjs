@@ -21,7 +21,7 @@ async function main() {
   const themeCopy = path.join(base, 'themes/febirdy');
   await fs.mkdir(themeCopy, { recursive: true });
   // 不链接整个主题根目录，否则 Hexo 会沿 .preview 再次进入自身。
-  for (const entry of ['layout', 'languages', 'source', '_config.yml']) {
+  for (const entry of ['layout', 'languages', 'scripts', 'source', '_config.yml']) {
     await fs.cp(path.join(themeRoot, entry), path.join(themeCopy, entry), { recursive: true });
   }
   // Hexo 支持 YAML 中的缩进制表符，预览解析时与其行为保持一致。
@@ -67,6 +67,10 @@ async function validateStructuredData(publicRoot) {
 
   for (const file of htmlFiles) {
     const html = await fs.readFile(file, 'utf8');
+    if (!html.trim()) {
+      failures.push(`${path.relative(publicRoot, file)}: HTML 为空`);
+      continue;
+    }
     let match;
     while ((match = pattern.exec(html))) {
       scriptCount += 1;
@@ -80,6 +84,9 @@ async function validateStructuredData(publicRoot) {
 
   if (failures.length) {
     throw new Error(`JSON-LD 解析失败：\n${failures.join('\n')}`);
+  }
+  if (!scriptCount) {
+    throw new Error('未找到 JSON-LD，可能所有页面渲染均失败或元数据模板未生效');
   }
 
   return scriptCount;
