@@ -1,5 +1,13 @@
 <%
     var title = page.title;
+    // 统一序列化结构化数据，避免站点文案中的引号、换行破坏 JSON-LD。
+    // 同时转义 HTML 原始文本中的危险字符，避免文案意外闭合 script 标签。
+    var serializeJsonLd = function (data) {
+        return JSON.stringify(data)
+            .replace(/</g, '\\u003c')
+            .replace(/>/g, '\\u003e')
+            .replace(/&/g, '\\u0026');
+    };
     if (is_archive()){
         title = __('Archive');
         if (is_month()){
@@ -25,29 +33,27 @@
     <meta property="og:description" content="<%= page.description || page.excerpt || config.description || config.title %>" />
     <meta name="twitter:title" content="<% if (title){ %><%= title %> | <% } %><%= config.title %>"/>
     <meta name="twitter:description" content="<%= page.description || page.excerpt || config.description || config.title %>"/>
-    <script type="application/ld+json">
-        {
-            "description": "<%= page.description || page.excerpt || config.description || config.title %>",
-            "author": { "@type": "Person", "name": "<%= config.author %>" },
-            "@type": "BlogPosting",
-            "url": "<%= url %>",
-            "publisher": {
-            "@type": "Organization",
-            "logo": {
-                "@type": "ImageObject",
-                "url": "<%= config.url + config.aomori_logo %>"
+    <script type="application/ld+json"><%- serializeJsonLd({
+        description: page.description || page.excerpt || config.description || config.title,
+        author: { '@type': 'Person', name: config.author },
+        '@type': 'BlogPosting',
+        url: url,
+        publisher: {
+            '@type': 'Organization',
+            logo: {
+                '@type': 'ImageObject',
+                url: config.url + config.aomori_logo
             },
-            "name": "<%= config.author%>"
-            },
-            "headline": "<% if (title){ %><%= title %> | <% } %><%= config.title %>",
-            "datePublished": "<%= page.date.toISOString() %>",
-            "mainEntityOfPage": {
-                "@type": "WebPage",
-                "@id": "<%= url %>"
-            },
-            "@context": "http://schema.org"
-        }
-    </script>
+            name: config.author
+        },
+        headline: (title ? title + ' | ' : '') + config.title,
+        datePublished: page.date.toISOString(),
+        mainEntityOfPage: {
+            '@type': 'WebPage',
+            '@id': url
+        },
+        '@context': 'https://schema.org'
+    }) %></script>
 <% } %>
 
 <% if(is_home() || is_page()){ %>
@@ -59,16 +65,14 @@
     <meta property="og:url" content="<%= url %>" />
     <meta property="og:site_name" content="<%= config.author%>" />
     <meta property="article:publisher" content="<%= config.publisher%>" />
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "<%= page.title %>",
-            "description": "<%= page.description %>",
-            "publisher": {
-                "@type": "Organization",
-                "name": "<%= config.author%>"
-            },
+    <script type="application/ld+json"><%- serializeJsonLd({
+        '@context': 'https://schema.org',
+        '@type': 'WebPage',
+        name: page.title,
+        description: page.description,
+        publisher: {
+            '@type': 'Organization',
+            name: config.author
         }
-    </script>
+    }) %></script>
 <% } %>

@@ -19,6 +19,7 @@ node tools/preview.cjs /absolute/path/to/blog
 ```
 
 每次在 `.preview/site-*` 新建隔离副本，复制文章、配置和主题运行文件，只读复用博客依赖；生成结果路径由命令输出。不会修改原博客配置、文章或 public 目录，也不会执行部署。预览副本含博客内容，不应发布或提交。修改主题后需重新运行生成命令；如果自动识别失败，也可以显式传入博客绝对路径。
+预览还会逐个解析生成页面中的 JSON-LD；任一结构化数据无效时命令会失败，避免错误直到上线后才被搜索引擎发现。
 
 主题 `npm run build` 是 Gulp 资源编译流程，需先安装主题自身开发依赖。当前 ESLint、Stylelint、CSS 和 JavaScript 构建均可通过；Dart Sass 仍会输出 legacy API 与 `@import` 的未来弃用警告，后续单独处理，不与视觉功能改动混合。
 

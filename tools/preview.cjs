@@ -36,6 +36,7 @@ async function main() {
   try {
     await hexo.init();
     await hexo.call('generate');
+    const structuredDataScripts = await validateStructuredData(path.join(base, 'public'));
     const routes = hexo.route.list();
     for (const route of [
       'index.html', 'archives/index.html', 'categories/index.html', 'tags/index.html',
@@ -49,11 +50,53 @@ async function main() {
     console.log(JSON.stringify({
       theme: hexo.config.theme, themeDirectory: hexo.theme_dir,
       posts: hexo.locals.get('posts').length, routes: routes.length,
+      structuredDataScripts,
       article: article.path, output: path.join(base, 'public'),
     }, null, 2));
   } finally {
     await hexo.exit();
   }
+}
+
+// 预览生成的每个页面都必须能解析自己的 JSON-LD，避免搜索引擎只在上线后才发现模板错误。
+async function validateStructuredData(publicRoot) {
+  const htmlFiles = await listFiles(publicRoot, file => file.endsWith('.html'));
+  const failures = [];
+  let scriptCount = 0;
+  const pattern = /<script\b[^>]*type=["']application\/ld\+json["'][^>]*>([\s\S]*?)<\/script>/gi;
+
+  for (const file of htmlFiles) {
+    const html = await fs.readFile(file, 'utf8');
+    let match;
+    while ((match = pattern.exec(html))) {
+      scriptCount += 1;
+      try {
+        JSON.parse(match[1]);
+      } catch (error) {
+        failures.push(`${path.relative(publicRoot, file)}: ${error.message}`);
+      }
+    }
+  }
+
+  if (failures.length) {
+    throw new Error(`JSON-LD 解析失败：\n${failures.join('\n')}`);
+  }
+
+  return scriptCount;
+}
+
+async function listFiles(directory, predicate) {
+  const entries = await fs.readdir(directory, { withFileTypes: true });
+  const files = [];
+  for (const entry of entries) {
+    const file = path.join(directory, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...await listFiles(file, predicate));
+    } else if (predicate(file)) {
+      files.push(file);
+    }
+  }
+  return files;
 }
 
 // 主题既可以作为独立仓库运行，也可以作为 tech-blogs 的子模块运行。
