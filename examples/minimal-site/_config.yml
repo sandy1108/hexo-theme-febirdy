@@ -1,0 +1,27 @@
+title: FEBIRDY Fixture
+description: 用于验证主题公共安装和页面生成的最小 Hexo 站点
+author: Fixture Author
+language: zh
+timezone: Asia/Shanghai
+url: https://example.com
+root: /
+permalink: :year/:month/:day/:title/
+source_dir: source
+public_dir: public
+theme: febirdy
+deploy: {}
+febirdy_site:
+  portal:
+    url: https://example.com/portal
+    label: 示例传送门
+febirdy_giscus:
+  enable: true
+  repo: example/fixture
+  repoId: R_fixture
+  category: General
+  categoryId: DIC_fixture
+febirdy_gitalk:
+  enable: true
+  clientID: fixture-client
+  repo: example/fixture
+  owner: fixture

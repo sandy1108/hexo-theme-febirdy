@@ -4,13 +4,39 @@
   "private": true,
   "description": "基于 Aomori 的 FEBIRDY 个人技术博客主题",
   "license": "MIT",
-  "files": ["layout", "languages", "scripts", "source", "_config.yml", "LICENSE", "README.md"],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sandy1108/hexo-theme-febirdy.git"
+  },
+  "homepage": "https://github.com/sandy1108/hexo-theme-febirdy#readme",
+  "bugs": {
+    "url": "https://github.com/sandy1108/hexo-theme-febirdy/issues"
+  },
+  "keywords": ["hexo", "hexo-theme", "blog-theme", "febirdy", "aomori"],
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "files": [
+    "layout",
+    "languages",
+    "scripts",
+    "source",
+    "tools",
+    "docs/AOMORI-UPSTREAM.md",
+    "_config.yml",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "preview:build": "node tools/preview.cjs",
     "dev": "gulp",
     "build": "gulp build",
     "lint": "eslint ./source/javascripts/ --ext .js --fix",
+    "lint:check": "eslint ./source/javascripts/ --ext .js",
     "stylelint": "stylelint source/stylesheets/**/*.scss --fix",
+    "stylelint:check": "stylelint 'source/stylesheets/**/*.scss'",
+    "test:fixture": "node tools/verify-fixture.cjs",
+    "test": "npm run lint:check && npm run stylelint:check && npm run build && npm run test:fixture",
     "release": "standard-version -s"
   },
   "dependencies": {
@@ -28,6 +54,13 @@
     "@ronilaukkarinen/gulp-stylelint": "^14.0.6",
     "babel-eslint": "^10.1.0",
     "browser-sync": "^2.27.10",
+    "hexo": "^8.1.2",
+    "hexo-generator-archive": "^2.0.0",
+    "hexo-generator-category": "^2.0.0",
+    "hexo-generator-index": "^4.0.0",
+    "hexo-generator-tag": "^2.0.0",
+    "hexo-renderer-ejs": "^2.0.0",
+    "hexo-renderer-marked": "^7.0.1",
     "eslint": "7.32.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "3.4.0",
