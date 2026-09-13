@@ -536,6 +536,11 @@ body.fb-search-open{overflow:hidden}
     color: var(--fb-cyan);
 }
 
+/* 侧栏标签只保留列表项的虚线边框，避免链接内层实线形成双重边框。 */
+.fb-sidebar-inner .widget-tags .tag-list .tag-list-item a {
+    border: 0;
+}
+
 .fb-theme-switch {
     display: inline-flex;
     align-items: center;
