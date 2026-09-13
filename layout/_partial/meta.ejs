@@ -25,22 +25,28 @@
     } else if (is_tag()){
         title = __('Tag') + ' | ' + page.tag;
     }
+    var siteTitle = config.title || config.author || 'Blog';
+    var pageTitle = title || siteTitle;
+    var fullTitle = pageTitle === siteTitle ? siteTitle : pageTitle + ' | ' + siteTitle;
+    var descriptionSource = page.description || page.excerpt || config.description || siteTitle;
+    var description = strip_html(String(descriptionSource)).replace(/\s+/g, ' ').trim();
+    var siteName = config.siteName || siteTitle;
+    var publisherName = config.publisher || config.author || siteTitle;
 %>
 <% if(is_post()){ %>
     <meta property="og:locale" content="<%= config.language %>" />
     <meta property="og:type" content="article" />
-    <meta property="og:title" content= "<% if (title){ %><%= title %> | <% } %><%= config.title %>"  />
-    <meta property="og:description" content= "<%= page.description || page.excerpt || config.description || config.title %>" />
+    <meta property="og:title" content="<%= fullTitle %>" />
+    <meta property="og:description" content="<%= description %>" />
     <meta property="og:url" content="<%= url %>" />
-    <meta property="og:site_name" content="<%= config.siteName %>" />
-    <meta property="article:author" content="<%= config.author %>" />
-    <meta property="article:publisher" content="<%= config.publisher %>" />
-    <meta property="og:description" content="<%= page.description || page.excerpt || config.description || config.title %>" />
-    <meta name="twitter:title" content="<% if (title){ %><%= title %> | <% } %><%= config.title %>"/>
-    <meta name="twitter:description" content="<%= page.description || page.excerpt || config.description || config.title %>"/>
+    <meta property="og:site_name" content="<%= siteName %>" />
+    <meta property="article:author" content="<%= config.author || publisherName %>" />
+    <meta property="article:publisher" content="<%= publisherName %>" />
+    <meta name="twitter:title" content="<%= fullTitle %>"/>
+    <meta name="twitter:description" content="<%= description %>"/>
     <script type="application/ld+json"><%- serializeJsonLd({
-        description: page.description || page.excerpt || config.description || config.title,
-        author: { '@type': 'Person', name: config.author },
+        description: description,
+        author: { '@type': 'Person', name: config.author || publisherName },
         '@type': 'BlogPosting',
         url: url,
         publisher: {
@@ -49,9 +55,9 @@
                 '@type': 'ImageObject',
                 url: logoUrl
             },
-            name: config.author
+            name: publisherName
         },
-        headline: (title ? title + ' | ' : '') + config.title,
+        headline: pageTitle,
         datePublished: page.date.toISOString(),
         mainEntityOfPage: {
             '@type': 'WebPage',
@@ -63,21 +69,20 @@
 
 <% if(is_home() || is_page()){ %>
     <meta property="og:type" content="website"/>
-    <meta property="og:title" content="<%= page.title %>"/>
-    <meta property="og:description" content="<%= page.description %>"/>
+    <meta property="og:title" content="<%= fullTitle %>"/>
+    <meta property="og:description" content="<%= description %>"/>
     <meta property="og:locale" content="<%= config.language %>" />
-    <meta property="og:type" content="article" />
     <meta property="og:url" content="<%= url %>" />
-    <meta property="og:site_name" content="<%= config.author%>" />
-    <meta property="article:publisher" content="<%= config.publisher%>" />
+    <meta property="og:site_name" content="<%= siteName %>" />
     <script type="application/ld+json"><%- serializeJsonLd({
         '@context': 'https://schema.org',
-        '@type': 'WebPage',
-        name: page.title,
-        description: page.description,
+        '@type': is_home() ? 'WebSite' : 'WebPage',
+        url: url,
+        name: pageTitle,
+        description: description,
         publisher: {
             '@type': 'Organization',
-            name: config.author
+            name: publisherName
         }
     }) %></script>
 <% } %>
