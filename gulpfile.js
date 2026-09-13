@@ -24,6 +24,8 @@ const stylelint = require('@ronilaukkarinen/gulp-stylelint')
 const yaml = require('js-yaml');
 const fs   = require('fs');
 
+let isWatching = false
+
 /* -------------------------------------------------------- */
 
 // 清理旧文件
@@ -37,7 +39,7 @@ const fs   = require('fs');
 /* ------------------------  CSS  ------------------------- */
 
 gulp.task('css', async function () {
-    gulp
+    const vendorStream = gulp
         .src([
             'source/stylesheets/normalize.css',
             'source/stylesheets/spectre.min.css',
@@ -57,17 +59,22 @@ gulp.task('css', async function () {
         .pipe(cleanCSS())
         .pipe(gulp.dest('source/dist'))
 
-    gulp
+    let customStream = gulp
         .src([
             'source/stylesheets/base.scss',
             'source/stylesheets/style.scss',
         ])
-        .pipe(
+
+    // 正式构建必须暴露 Sass 错误；watch 模式则保留错误提示并继续监听。
+    if (isWatching) {
+        customStream = customStream.pipe(
             plumber({
                 errorHandler: errorAlert,
             })
         )
-        .pipe(
+    }
+
+    customStream = customStream.pipe(
             sass({
                 outputStyle: 'expanded',
             })
@@ -76,6 +83,11 @@ gulp.task('css', async function () {
         .pipe(concat('custom.css'))
         .pipe(cleanCSS())
         .pipe(gulp.dest('source/dist'))
+
+    await Promise.all([
+        waitForStream(vendorStream),
+        waitForStream(customStream),
+    ])
 })
 
 gulp.task('build-css', gulp.series('css'))
@@ -104,7 +116,7 @@ gulp.task('js', async function () {
         file: './source/dist/custom.js',
         format: 'umd',
     })
-    gulp.src([
+    const vendorStream = gulp.src([
         'source/modules/algoliasearch-lite.umd.js',
         'source/modules/highlight.min.js',
         'source/modules/md5.min.js',
@@ -118,6 +130,8 @@ gulp.task('js', async function () {
     ])
         .pipe(concat('build.js'))
         .pipe(gulp.dest('source/dist'))
+
+    await waitForStream(vendorStream)
 
     const doc = yaml.load(fs.readFileSync('_config.yml', 'utf8'));
     doc.version = (new Date()).getTime()
@@ -156,6 +170,8 @@ gulp.task('stylelint', () => {
 
 //监测任务
 gulp.task('watch', function () {
+    isWatching = true
+
     // Watch .scss
     const cssVendors = ['source/stylesheets/*.css', 'source/stylesheets/*.scss']
 
@@ -187,4 +203,12 @@ function errorAlert(error) {
     })(error)
     console.log(error.toString())
     this.emit('end')
+}
+
+// 将 Gulp stream 转为 Promise，确保异步任务在文件真正写完后才结束。
+function waitForStream(stream) {
+    return new Promise((resolve, reject) => {
+        stream.once('finish', resolve)
+        stream.once('error', reject)
+    })
 }
