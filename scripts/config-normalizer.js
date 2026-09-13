@@ -27,3 +27,9 @@ Object.keys(legacyConfigAliases).forEach(function (newKey) {
         config[newKey] = config[legacyKey]
     }
 })
+
+// 兼容旧版“存在配置对象即启用”的写法，同时确保显式 enable: false 一定生效。
+hexo.extend.helper.register('febirdy_feature_enabled', function (value) {
+    if (value === true) return true
+    return Boolean(value && typeof value === 'object' && value.enable !== false)
+})

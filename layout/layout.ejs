@@ -42,7 +42,7 @@
             </section>
 
             <% if (page.sidebar !== false){ %>
-            <aside class="sidebar <% if (config.febirdy_search_algolia){ %>sidebar-search-fix<% } %>">
+            <aside class="sidebar <% if (febirdy_feature_enabled(config.febirdy_search_algolia)){ %>sidebar-search-fix<% } %>">
                 <%- partial('_partial/sidebar') %>
             </aside>
             <% } %>

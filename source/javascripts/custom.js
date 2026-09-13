@@ -180,17 +180,50 @@ import { addNewClass, removeClass, throttle } from './class-module'
                     $('.search-result').slideDown()
 
                     if (hits.length) {
-                        let searchOutputHtml = ''
+                        const searchOutput = document.createDocumentFragment()
                         hits.forEach((item) => {
-                            searchOutputHtml += `<a class="search-result-item" href="${
-                                item.permalink
-                            }"><h1>${item.title}</h1><p>${dayjs(
-                                item.date
-                            ).format('YYYY-MM-DD')}</p></a>`
+                            if (!item || !item.permalink) return
+
+                            const resultItem = document.createElement('a')
+                            const resultTitle = document.createElement('h1')
+                            const resultDate = document.createElement('p')
+                            let resultUrl
+
+                            try {
+                                resultUrl = new URL(
+                                    String(item.permalink || ''),
+                                    window.location.origin
+                                )
+                            } catch (error) {
+                                return
+                            }
+                            if (
+                                !['http:', 'https:'].includes(
+                                    resultUrl.protocol
+                                )
+                            ) {
+                                return
+                            }
+
+                            resultItem.className = 'search-result-item'
+                            resultItem.href = resultUrl.href
+                            resultTitle.textContent = String(item.title || '')
+                            resultDate.textContent = dayjs(item.date).format(
+                                'YYYY-MM-DD'
+                            )
+                            resultItem.append(resultTitle, resultDate)
+                            searchOutput.appendChild(resultItem)
                         })
-                        $('.search-result').html(searchOutputHtml)
+                        const searchResult =
+                            document.querySelector('.search-result')
+                        if (searchOutput.childNodes.length) {
+                            searchResult.replaceChildren(searchOutput)
+                        } else {
+                            searchResult.textContent = 'Nothing at all.'
+                        }
                     } else {
-                        $('.search-result').html('Nothing at all.')
+                        document.querySelector('.search-result').textContent =
+                            'Nothing at all.'
                     }
                 })
             })

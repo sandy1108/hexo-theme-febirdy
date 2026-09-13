@@ -15,19 +15,19 @@
 </section>
 <% } %>
 
-<% if (config.febirdy_disqusjs){ %>
+<% if (febirdy_feature_enabled(config.febirdy_disqusjs)){ %>
 <section class="comments comments-disqusjs">
     <div id="disqus_thread"></div>
 </section>
 <% } %>
 
-<% if (config.febirdy_gitalk){ %>
+<% if (febirdy_feature_enabled(config.febirdy_gitalk)){ %>
 <section class="comments">
     <div id="gitalk-container"></div>
 </section>
 <% } %>
 
-<% if (config.febirdy_valine && config.febirdy_valine.enable){ %>
+<% if (febirdy_feature_enabled(config.febirdy_valine)){ %>
 <section class="comments">
     <div id="valine-container"></div>
 </section>
