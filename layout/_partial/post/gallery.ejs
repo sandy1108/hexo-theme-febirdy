@@ -1,10 +1,14 @@
-<% if (post.photos && post.photos.length){ %>
+<%
+  const galleryPhotos = Array.isArray(post.photos) ? post.photos.filter(Boolean) : [];
+  const galleryAlt = post.title || config.title || '文章图片';
+%>
+<% if (galleryPhotos.length){ %>
 
 <div class="swiper-container article-gallery">
   <div class="swiper-wrapper">
-    <% post.photos.forEach(function(photo, i){ %>
+    <% galleryPhotos.forEach(function(photo, i){ %>
       <div class="swiper-slide">
-        <img src="<%- url_for(photo) %>" itemprop="image">
+        <img src="<%- url_for(photo) %>" itemprop="image" alt="<%= galleryAlt %>">
       </div>
     <% }) %>
   </div>

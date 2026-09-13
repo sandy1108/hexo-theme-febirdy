@@ -1,3 +1,12 @@
+<%
+    const giscusConfig = config.febirdy_giscus || {};
+    const themeMode = theme && theme.febirdy_theme ? theme.febirdy_theme.default : 'dark';
+    // Giscus 只接受 light/dark/preferred_color_scheme；初始值与主题默认模式保持一致，运行时再同步用户选择。
+    const giscusInitialTheme = themeMode === 'light'
+        ? 'light'
+        : (themeMode === 'auto' ? 'preferred_color_scheme' : 'dark');
+%>
+
 <% if (config.febirdy_disqus_shortname){ %>
 <section class="comments comments-disqus">
     <div id="disqus_thread"></div>
@@ -34,7 +43,7 @@
 <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
 <% } %>
 
-<% if (config.febirdy_remark42 && config.febirdy_remark42.enable){ %>
+<% if (febirdy_feature_enabled(config.febirdy_remark42)){ %>
 <section id="remark42"></section>
 <script>
     (function() {
@@ -55,20 +64,20 @@
 </script>
 <% } %>
 
-<% if (config.febirdy_giscus && config.febirdy_giscus.enable){ %>
+<% if (febirdy_feature_enabled(giscusConfig)){ %>
 <section class="comments">
     <div class="giscus"></div>
 </section>
 <script src="https://giscus.app/client.js"
-    data-repo="<%= config.febirdy_giscus.repo || '' %>"
-    data-repo-id="<%= config.febirdy_giscus.repoId || '' %>"
-    data-category="<%= config.febirdy_giscus.category || '' %>"
-    data-category-id="<%= config.febirdy_giscus.categoryId || '' %>"
-    data-mapping="<%= config.febirdy_giscus.mapping || 'pathname' %>"
-    data-reactions-enabled="<%= config.febirdy_giscus.reactionsEnabled || '1' %>"
-    data-emit-metadata="<%= config.febirdy_giscus.emitMetadata || '0' %>"
-    data-theme="<%= config.febirdy_giscus.theme || 'light' %>"
-    data-lang="<%= config.febirdy_giscus.lang || 'zh-CN' %>"
+    data-repo="<%= giscusConfig.repo || '' %>"
+    data-repo-id="<%= giscusConfig.repoId || '' %>"
+    data-category="<%= giscusConfig.category || '' %>"
+    data-category-id="<%= giscusConfig.categoryId || '' %>"
+    data-mapping="<%= giscusConfig.mapping || 'pathname' %>"
+    data-reactions-enabled="<%= typeof giscusConfig.reactionsEnabled === 'undefined' ? '1' : giscusConfig.reactionsEnabled %>"
+    data-emit-metadata="<%= typeof giscusConfig.emitMetadata === 'undefined' ? '0' : giscusConfig.emitMetadata %>"
+    data-theme="<%= giscusInitialTheme %>"
+    data-lang="<%= giscusConfig.lang || 'zh-CN' %>"
     crossorigin="anonymous"
     async>
 </script>

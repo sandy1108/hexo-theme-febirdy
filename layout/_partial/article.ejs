@@ -22,4 +22,4 @@
 </article>
 <%- partial('post/ad') %>
 <%- partial('post/comments') %>
-<% if (config.febirdy_busuanzi){ %><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><% } %>
+<% if (febirdy_feature_enabled(config.febirdy_busuanzi)){ %><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><% } %>

@@ -1,4 +1,4 @@
-<% if (config.febirdy_google_ads && config.febirdy_google_ads.enable && config.febirdy_google_ads.post){ %>
+<% if (febirdy_feature_enabled(config.febirdy_google_ads) && config.febirdy_google_ads.post){ %>
 <section class="ad-post">
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=<%- config.febirdy_google_ads.id %>"
      crossorigin="anonymous"></script>

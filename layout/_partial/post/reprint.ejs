@@ -2,7 +2,7 @@
 <div class="article-reprint hairline">
   <% post.link_reprint.forEach(function(item, i){ %>
     <p>
-      文章转载自 <a target="_blank" href="<%= item.url %>"><%= item.title %></a>
+      文章转载自 <a target="_blank" rel="noopener noreferrer" href="<%= item.url %>"><%= item.title %></a>
     </p>
   <% }) %>
 </div>

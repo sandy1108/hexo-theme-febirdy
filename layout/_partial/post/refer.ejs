@@ -3,7 +3,7 @@
     <h3> <%= __('link_refer') %> </h3>
     <% post.link_refer.forEach(function(item, i){ %>
     <p>
-      <a target="_blank" rel="nofollow" href="<%= item.url %>"><%= item.title %></a>
+      <a target="_blank" rel="nofollow noopener noreferrer" href="<%= item.url %>"><%= item.title %></a>
     </p>
     <% }) %>
   </div>

@@ -54,30 +54,35 @@ import { addNewClass, removeClass, throttle } from './class-module'
             headingSelector: 'h1, h2, h3',
         })
 
-    // NProgress
-    var totalH =
-        document.body.scrollHeight || document.documentElement.scrollHeight // 页面总高
-    var clientH = window.innerHeight || document.documentElement.clientHeight // 可视高
-    window.addEventListener(
-        'scroll',
-        throttle(() => {
-            // 计算有效高
-            var validH = totalH - clientH
-            // 滚动条卷去高度
-            var scrollH =
-                document.body.scrollTop || document.documentElement.scrollTop
-            // 百分比
-            var result = scrollH / validH
-            NProgress.set(result)
-        })
-    )
+    // NProgress：短页面没有可滚动距离时不写入 NaN，并把进度限制在 0～1。
+    const updateNProgress = () => {
+        const totalH = Math.max(
+            document.body.scrollHeight || 0,
+            document.documentElement.scrollHeight || 0
+        )
+        const clientH =
+            window.innerHeight || document.documentElement.clientHeight
+        const validH = totalH - clientH
+        if (validH <= 0) {
+            NProgress.remove()
+            return
+        }
+        const scrollH =
+            document.body.scrollTop || document.documentElement.scrollTop
+        const result = Math.min(1, Math.max(0, scrollH / validH))
+        if (Number.isFinite(result)) NProgress.set(result)
+    }
     NProgress.configure({
         showSpinner: false,
         minimum: 0,
     })
+    window.addEventListener('scroll', throttle(updateNProgress))
+    window.addEventListener('resize', throttle(updateNProgress))
+    updateNProgress()
 
     // Back to Top
-    $('#backtop').click(function () {
+    const backtop = $('#backtop')
+    backtop.click(function () {
         $('html, body').animate({ scrollTop: 0 }, 800)
     })
 
@@ -133,12 +138,12 @@ import { addNewClass, removeClass, throttle } from './class-module'
                 // 边栏绝对定位
                 addNewClass('.sidebar', 'sidebar-fixed')
                 // 返回顶部按钮显示
-                $('#backtop').fadeIn(300)
+                backtop.attr('aria-hidden', 'false').fadeIn(300)
             } else {
                 // 取消边栏定位
                 removeClass('.sidebar', 'sidebar-fixed')
                 // 返回顶部按钮消失
-                $('#backtop').fadeOut(300)
+                backtop.attr('aria-hidden', 'true').fadeOut(300)
             }
         })
     )

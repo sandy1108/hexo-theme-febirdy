@@ -3,7 +3,7 @@
         class="lazy"
         data-src="<%= item.thumbnail || item.photo %>"
         data-original="<%= item.photo || item.thumbnail %>"
-        alt="<%= item.title || config.title || '' %>"
+        alt="<%= item.title || config.title || '摄影作品' %>"
     />
     <div class="photography-item-wrapper"></div>
 
@@ -22,7 +22,7 @@
 
     <% if (item.icon && item.icon.name) { %>
     <div class="photography-item-icon">
-        <% if (item.icon.url) { %><a target="_blank" href="<%- item.icon.url %>"><% } %>
+        <% if (item.icon.url) { %><a target="_blank" rel="noopener noreferrer" href="<%- item.icon.url %>"><% } %>
             <ion-icon name="<%- item.icon.name %>"></ion-icon>
         <% if (item.icon.url) { %></a><% } %> 
     </div>

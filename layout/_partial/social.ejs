@@ -1,7 +1,7 @@
 <% Object.keys(config.febirdy_social || {}).forEach(function (key){ %>
     <% var social = config.febirdy_social[key]; %>
     <% if (social){ %>
-        <a class="social" target="_blank" href="<%- social.url %>">
+        <a class="social" target="_blank" rel="noopener noreferrer" href="<%- social.url %>">
             <ion-icon name="<%- social.icon %>"></ion-icon>
         </a>
     <% } %>

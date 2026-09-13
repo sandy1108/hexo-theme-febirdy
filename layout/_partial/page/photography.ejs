@@ -1,26 +1,35 @@
+<%
+    const photographyItems = site.data && Array.isArray(site.data.photography)
+        ? site.data.photography.filter(Boolean)
+        : [];
+%>
+<% if (photographyItems.length) { %>
 <div class="columns clearfix">
         <div class="column col-md-12">
-            <% site.data.photography.forEach(function(item, index){ %>
+            <% photographyItems.forEach(function(item, index){ %>
                 <% if (((index) % 3) === 0) { %>
                     <%- partial('photography-item', {item}) %>
                 <% } %> 
             <% }) %>
         </div>
         <div class="column col-md-12">
-            <% site.data.photography.forEach(function(item, index){ %>
+            <% photographyItems.forEach(function(item, index){ %>
                 <% if (((index) % 3) === 1) { %>
                     <%- partial('photography-item', {item}) %>
                 <% } %> 
             <% }) %>
         </div>
         <div class="column col-md-12">
-            <% site.data.photography.forEach(function(item, index){ %>
+            <% photographyItems.forEach(function(item, index){ %>
                 <% if (((index) % 3) === 2) { %>
                     <%- partial('photography-item', {item}) %>
                 <% } %> 
             <% }) %>
         </div>
 </div>
+<% } else { %>
+<div class="fb-empty-state">暂无摄影作品。</div>
+<% } %>
 
 <style>
 .main .inner {

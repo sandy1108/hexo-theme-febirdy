@@ -541,6 +541,20 @@ body.fb-search-open{overflow:hidden}
     border: 0;
 }
 
+.fb-sidebar-inner .widget-tags .tag-list .tag-list-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 1.4em;
+    margin-left: 5px;
+    padding: 1px 5px;
+    border-radius: 999px;
+    background: var(--fb-count-bg);
+    color: var(--fb-muted);
+    font: 11px ui-monospace, SFMono-Regular, Menlo, monospace;
+    line-height: 1.2;
+}
+
 .fb-theme-switch {
     display: inline-flex;
     align-items: center;
@@ -831,4 +845,16 @@ body.fb-search-open{overflow:hidden}
 .fb-post-content figure.highlight .hljs-deletion {
     background: color-mix(in srgb, var(--fb-code-deletion) 18%, transparent);
     color: var(--fb-code-deletion);
+}
+
+/* 返回顶部使用真实按钮语义；保留 Aomori 的定位和显示规则，仅补齐浏览器默认按钮样式。 */
+#backtop {
+    border: 0;
+    font: inherit;
+    cursor: pointer;
+}
+
+#backtop:focus-visible {
+    outline: 2px solid var(--fb-cyan);
+    outline-offset: 3px;
 }

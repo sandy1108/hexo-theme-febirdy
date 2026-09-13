@@ -1,9 +1,26 @@
+<%
+    // Hexo 允许使用 cn、zh 等简写；输出标准 BCP 47 语言标记供浏览器和辅助技术识别。
+    var configuredLanguage = Array.isArray(config.language)
+        ? config.language[0]
+        : (config.language || (theme && theme.language) || 'en');
+    var languageAliases = {
+        cn: 'zh-CN',
+        zh: 'zh-CN',
+        'zh-cn': 'zh-CN',
+        'zh-tw': 'zh-TW',
+        en: 'en',
+        ja: 'ja',
+        it: 'it'
+    };
+    var normalizedLanguage = String(configuredLanguage || 'en').replace('_', '-').toLowerCase();
+    var htmlLanguage = languageAliases[normalizedLanguage] || normalizedLanguage || 'en';
+%>
 <!DOCTYPE html>
-<html>
+<html lang="<%= htmlLanguage %>">
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <%
         var title = page.title;

@@ -9,7 +9,7 @@
   <p>你访问的文章或链接可能已经变更，或者页面并不存在。可以返回首页，或从下面的最新文章继续浏览。</p>
   <div class="fb-error-actions">
     <a class="fb-primary-button" href="<%- url_for('/') %>">← 返回博客首页</a>
-    <button class="fb-secondary-button fb-search-trigger" type="button">⌕ 全站搜索</button>
+    <button class="fb-secondary-button fb-search-trigger" type="button" aria-controls="fb-search-modal" aria-expanded="false">⌕ 全站搜索</button>
   </div>
 
   <% if (recentPosts.length) { %>

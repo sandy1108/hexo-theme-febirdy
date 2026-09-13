@@ -46,6 +46,57 @@ const getEffectiveTheme = (selection) => {
     return systemIsLight ? 'light' : 'dark'
 }
 
+// Giscus iframe 不会自动读取 FEBIRDY 的手动主题选择，必须通过官方 postMessage 接口同步。
+const syncGiscusTheme = () => {
+    const iframe = document.querySelector('iframe.giscus-frame')
+    if (!iframe || !iframe.contentWindow) return false
+    // 只有 iframe 自己触发 load 后才发送消息；插入瞬间 contentWindow 仍可能指向当前页。
+    if (iframe.dataset.febirdyGiscusReady !== 'true') return false
+    // Giscus 客户端刚插入 iframe 时，浏览器可能仍把目标视为当前页面源；
+    // 先确认 src 已切到 giscus.app，避免 postMessage 因目标源尚未就绪而产生警告。
+    let iframeOrigin
+    try {
+        iframeOrigin = new URL(iframe.src, window.location.href).origin
+    } catch (error) {
+        return false
+    }
+    if (iframeOrigin !== 'https://giscus.app') return false
+    iframe.contentWindow.postMessage(
+        {
+            giscus: {
+                setConfig: { theme: getEffectiveTheme(getThemeSelection()) },
+            },
+        },
+        'https://giscus.app'
+    )
+    return true
+}
+
+// Giscus iframe 是异步插入的；监听容器变化并在 iframe ready 后补发一次主题配置。
+const watchGiscusTheme = () => {
+    const container = document.querySelector('.giscus')
+    if (!container) return
+
+    const bindFrame = () => {
+        const iframe = container.querySelector('iframe.giscus-frame')
+        if (!iframe) return false
+        if (iframe.dataset.febirdyThemeSync !== 'true') {
+            iframe.addEventListener('load', () => {
+                iframe.dataset.febirdyGiscusReady = 'true'
+                syncGiscusTheme()
+            })
+            iframe.dataset.febirdyThemeSync = 'true'
+        }
+        return true
+    }
+
+    if (bindFrame() || typeof MutationObserver === 'undefined') return
+    const observer = new MutationObserver(() => {
+        if (bindFrame()) observer.disconnect()
+    })
+    observer.observe(container, { childList: true, subtree: true })
+}
+
 let themeTransitionTimer
 
 // 主题切换时重新触发一次短暂的渐变光晕；首次加载不触发，避免页面闪烁。
@@ -95,6 +146,7 @@ const applyTheme = (selection, { animate = false } = {}) => {
     root.style.colorScheme =
         normalizedSelection === 'auto' ? 'light dark' : normalizedSelection
     updateThemeControls(normalizedSelection, effectiveTheme)
+    syncGiscusTheme()
 }
 
 // 移动端导航保持原生、轻量，不依赖主题旧菜单结构。
@@ -109,6 +161,16 @@ document.addEventListener('DOMContentLoaded', () => {
     const menuMediaQuery = window.matchMedia('(max-width: 900px)')
 
     applyTheme(getThemeSelection())
+    watchGiscusTheme()
+    window.addEventListener('message', (event) => {
+        if (
+            event.origin === 'https://giscus.app' &&
+            event.data &&
+            event.data.giscus
+        ) {
+            syncGiscusTheme()
+        }
+    })
     themeOptions.forEach((option) => {
         option.addEventListener('click', () => {
             const selection = option.dataset.themeOption
@@ -161,29 +223,81 @@ document.addEventListener('DOMContentLoaded', () => {
         })
     }
 
+    // 移动菜单打开时把 Tab 限制在导航链接内，关闭后由 setMobileMenuState 恢复到按钮。
+    const trapFocus = (event, container) => {
+        if (event.key !== 'Tab' || !container) return false
+        const focusable = getFocusable(container)
+        if (!focusable.length) {
+            event.preventDefault()
+            container.focus()
+            return true
+        }
+        const first = focusable[0]
+        const last = focusable[focusable.length - 1]
+        if (!container.contains(document.activeElement)) {
+            event.preventDefault()
+            first.focus()
+        } else if (event.shiftKey && document.activeElement === first) {
+            event.preventDefault()
+            last.focus()
+        } else if (!event.shiftKey && document.activeElement === last) {
+            event.preventDefault()
+            first.focus()
+        }
+        return true
+    }
+
     // 搜索弹层同时服务 Algolia 已配置和未配置两种状态，避免按钮变成无响应装饰。
     const searchModal = document.querySelector('#fb-search-modal')
     const searchTriggers = document.querySelectorAll('.fb-search-trigger')
-    const closeSearch = () => {
+    let searchReturnFocus
+    const setSearchTriggerState = (expanded) => {
+        searchTriggers.forEach((trigger) =>
+            trigger.setAttribute('aria-expanded', String(expanded))
+        )
+    }
+    const closeSearch = ({ restoreFocus = true } = {}) => {
         if (!searchModal) return
         searchModal.hidden = true
+        searchModal.setAttribute('aria-hidden', 'true')
         site.classList.remove('fb-search-open')
+        setSearchTriggerState(false)
+        if (
+            restoreFocus &&
+            searchReturnFocus &&
+            typeof searchReturnFocus.focus === 'function'
+        ) {
+            searchReturnFocus.focus()
+        }
+        searchReturnFocus = null
     }
-    const openSearch = () => {
+    const openSearch = (trigger) => {
         if (!searchModal) return
+        const activeElement = document.activeElement
+        searchReturnFocus =
+            trigger ||
+            (searchModal.contains(activeElement) ||
+            activeElement === document.body
+                ? searchTriggers[0]
+                : activeElement)
         searchModal.hidden = false
+        searchModal.setAttribute('aria-hidden', 'false')
         site.classList.add('fb-search-open')
+        setSearchTriggerState(true)
         const input = searchModal.querySelector('#search')
-        if (input) input.focus()
+        const initialFocus =
+            input || searchModal.querySelector('.fb-search-close')
+        if (initialFocus) initialFocus.focus()
+        else searchModal.focus()
     }
     searchTriggers.forEach((trigger) =>
-        trigger.addEventListener('click', openSearch)
+        trigger.addEventListener('click', () => openSearch(trigger))
     )
     if (searchModal) {
         searchModal
             .querySelectorAll('[data-search-close]')
             .forEach((trigger) => {
-                trigger.addEventListener('click', closeSearch)
+                trigger.addEventListener('click', () => closeSearch())
             })
     }
 
@@ -299,6 +413,20 @@ document.addEventListener('DOMContentLoaded', () => {
                 return
             }
             if (searchModal && !searchModal.hidden) closeSearch()
+            return
+        }
+
+        if (
+            event.key === 'Tab' &&
+            menuButton &&
+            menuButton.getAttribute('aria-expanded') === 'true'
+        ) {
+            trapFocus(event, mobileMenu)
+            return
+        }
+
+        if (event.key === 'Tab' && searchModal && !searchModal.hidden) {
+            trapFocus(event, searchModal.querySelector('.fb-search-dialog'))
             return
         }
 

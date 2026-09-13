@@ -1,15 +1,26 @@
-<% site.data.friends.forEach((items) => { %>
+<%
+    const friendGroups = site.data && Array.isArray(site.data.friends)
+        ? site.data.friends.filter(Boolean)
+        : [];
+%>
+<% if (friendGroups.length) { %>
+<% friendGroups.forEach((items) => {
+    const links = items && Array.isArray(items.data) ? items.data.filter(Boolean) : [];
+%>
     <div class="friends-category">
         <div class="friends-category-title">
-            <%= items.category %>
+            <%= items.category || '友情链接' %>
         </div>
         <div class="friends-category-inner clearfix">
-            <% items.data.forEach((item) => { %>
-                <a href="<%= item.url %>" rel="nofollow" target="_blank"> <%= item.name %> </a>
+            <% links.forEach((item) => { %>
+                <% if (item.url && item.name) { %><a href="<%= item.url %>" rel="nofollow noopener noreferrer" target="_blank"> <%= item.name %> </a><% } %>
             <% }) %>
         </div>
     </div>
 <% }) %>
+<% } else { %>
+    <div class="fb-empty-state">暂无友情链接。</div>
+<% } %>
 
 <% if (post.content){ %>
 <article

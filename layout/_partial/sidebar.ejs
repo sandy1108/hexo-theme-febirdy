@@ -27,8 +27,8 @@
     <span class="fb-profile-mark"><%= siteCopy.brand_mark %></span>
     <div><strong><%= siteCopy.brand %></strong><small><%= config.author %> · 技术博客</small></div>
     <p><%= siteCopy.tagline %></p>
-    <% if (portal.url) { %><a href="<%- portal.url %>" target="_blank" rel="noopener"><%= portal.label %> ↗</a><% } %>
+    <% if (portal.url) { %><a href="<%- portal.url %>" target="_blank" rel="noopener noreferrer"><%= portal.label %> ↗</a><% } %>
   </section>
   <div class="widget" id="widget"><% widgets.forEach(function(widget){ %><%- partial('_widget/' + widget) %><% }) %></div>
-  <div id="backtop" aria-label="返回顶部">↑</div>
+  <button type="button" id="backtop" aria-label="返回顶部" aria-hidden="true">↑</button>
 </aside>

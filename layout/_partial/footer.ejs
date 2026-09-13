@@ -12,6 +12,9 @@
   <small>© <%= date(new Date(), 'YYYY') %> <%= config.author %> · Powered by Hexo · Based on Aomori</small>
 </footer>
 <script type="module" src="https://unpkg.com/ionicons@6.0.2/dist/ionicons/ionicons.esm.js"></script>
+<% if (febirdy_feature_enabled(config.febirdy_gitalk)){ %>
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
+<% } %>
 <%- js('dist/build.js?' + theme.version) %>
 <%- js('dist/custom.js?' + theme.version) %>
 <%- js('javascripts/febirdy.js?' + theme.version) %>

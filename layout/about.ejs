@@ -64,10 +64,10 @@
       <h2><span>@</span> 找到我</h2>
       <div class="fb-about-links">
         <% links.forEach(function (link) { %>
-          <% if (link.url && link.label) { %><a href="<%- link.url %>" target="_blank" rel="noopener"><strong><%= link.label %></strong><small><%= link.url %></small><span>↗</span></a><% } %>
+          <% if (link.url && link.label) { %><a href="<%- link.url %>" target="_blank" rel="noopener noreferrer"><strong><%= link.label %></strong><small><%= link.url %></small><span>↗</span></a><% } %>
         <% }); %>
         <% if (config.rss) { %><a href="<%- url_for(config.rss) %>"><strong>RSS 订阅</strong><small><%= url_for(config.rss) %></small><span>↗</span></a><% } %>
-        <% if (config.url) { %><a href="<%- config.url %>" target="_blank" rel="noopener"><strong>博客地址</strong><small><%= config.url %></small><span>↗</span></a><% } %>
+        <% if (config.url) { %><a href="<%- config.url %>" target="_blank" rel="noopener noreferrer"><strong>博客地址</strong><small><%= config.url %></small><span>↗</span></a><% } %>
       </div>
     </section>
   <% } %>
