@@ -2,7 +2,7 @@
   "name": "hexo-theme-febirdy",
   "version": "0.1.0",
   "private": true,
-  "description": "基于 Aomori 的 FEBIRDY 个人技术博客主题",
+  "description": "基于 Aomori 演进的现代 Hexo 主题，支持响应式布局、深浅色模式和可配置的搜索与评论",
   "license": "MIT",
   "repository": {
     "type": "git",

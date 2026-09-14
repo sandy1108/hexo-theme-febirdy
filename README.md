@@ -1,16 +1,16 @@
 # hexo-theme-febirdy
 
-基于 Aomori 1.36.0 的独立 Hexo 主题。视觉目标为深色背景、青蓝强调色与适合中文长文阅读的布局，设计基准见 [ui-design/README.md](ui-design/README.md)。
+基于 Aomori 1.36.0 演进的独立 Hexo 主题。视觉目标为深色背景、青蓝强调色与适合中文长文阅读的布局，同时支持浅色、自动和深色三档主题模式；设计基准见 [ui-design/README.md](ui-design/README.md)。
 
 ## 当前阶段
 
-已导入本机博客曾使用的 Aomori 源码、预构建资源与原始 MIT 许可证，建立独立 master 仓库和隔离生成工具。当前已完成首页、文章详情、归档、分类/标签列表的 FEBIRDY 视觉迁移，并提供分类/标签总览、关于页、404 和搜索弹层模板；首页宽屏布局与分页视觉、文章详情页真实图片查看器均已完成真实内容回归。主题已通过博客 Submodule 接入 `tech-blogs`，并随博客 `master` 部署到线上；后续进入构建质量、移动端交互和搜索能力优化阶段。
+已导入 Aomori 源码、预构建资源与原始 MIT 许可证，建立独立 master 仓库和隔离生成工具。当前已完成首页、文章详情、归档、分类/标签列表的 FEBIRDY 视觉迁移，并提供分类/标签总览、关于页、404、搜索弹层和可配置侧栏模板；首页宽屏布局与分页视觉、文章详情页真实图片查看器、无障碍交互、Algolia 搜索和真实内容回归均已完成。主题已通过博客 Submodule 接入 `tech-blogs`，并随博客 `master` 部署到线上；当前版本准备通过 GitHub Release 对外提供。
 
 原始作者：LIN HONG。上游：https://github.com/lh1me/hexo-theme-aomori 。原始使用文档见 [docs/AOMORI-UPSTREAM.md](docs/AOMORI-UPSTREAM.md)。主题配置以 `febirdy_*` 为正式命名；除已移除的 `aomori_widgets` 外，其他历史 Aomori 字段暂时保留读取回退。
 
 ## 安装主题
 
-当前版本先通过 GitHub 源码使用，尚未发布到 npm；`package.json` 暂时保留 `private: true`，避免在首个稳定版本前误发布。把主题放入 Hexo 站点的 `themes/febirdy` 目录，并在站点 `_config.yml` 中指定：
+当前版本通过 GitHub 源码或 Release 使用，暂未发布到 npm；`package.json` 继续保留 `private: true`，避免误执行 npm 发布。把主题放入 Hexo 站点的 `themes/febirdy` 目录，并在站点 `_config.yml` 中指定：
 
 ```sh
 # 方案一：作为 Git Submodule（便于跟踪主题版本）
@@ -25,6 +25,13 @@ theme: febirdy
 ```
 
 主题按 `master` 维护。更新 Submodule 后，需要在博客仓库提交新的子模块指针；不要把主题仓库的文件复制到博客文章目录，也不要提交主题预览生成的 `.preview/` 内容。
+
+## 版本与发布
+
+- 当前版本：`0.1.0`。
+- GitHub：源码和 Release 是当前推荐的使用方式；Release 会固定对应的主题提交，便于站点锁定版本。
+- npm：当前暂不发布。若未来发布 npm，需要先移除 `private: true`，再单独完成包安装、版本和发布凭据验收。
+- 衍生关系：主题保留 Aomori 的 MIT 许可证、原作者和来源说明；FEBIRDY 的新增和重做部分按本仓库维护。
 
 ## 兼容版本
 
@@ -183,9 +190,9 @@ ALGOLIA_ADMIN_API_KEY='YOUR_RESTRICTED_INDEXING_KEY' npx hexo algolia
 
 ## 后续步骤
 
-1. P1 无障碍与第三方联动已经在本地完成并通过最小样例、真实博客隔离预览和固定视口浏览器检查；用户验收后再提交和推送。
-2. Algolia 接入已具备主题、博客配置和 Actions 索引步骤；首次真实索引后，需要回归搜索弹层的命中、无结果、中文关键词和键盘操作状态。
-3. 侧栏 Tags 已显示关联文章数量；博客工程的 `per_page` 与站点地图配置生效审计已在本地完成，后续随博客配置提交并观察线上生成结果。
-4. 真实内容验收持续稳定后，再评估 Aomori 可选模块的针对性清理。
+1. 持续维护 FEBIRDY 配置命名和 Aomori 兼容回退；删除兼容层前先完成资源引用矩阵和陌生站点迁移验证。
+2. 继续观察 Algolia 索引、Search Console 收录和真实站点性能；索引写入凭据只保存在 GitHub Actions Secret 中。
+3. 依赖漏洞按依赖链逐项评估，不使用 `npm audit fix --force` 一次性升级。
+4. GitHub Release 稳定后，再单独评估 npm 发布和陌生站点安装验收。
 
-当前博客已启用 Giscus，线上评论已验证可发布和显示；Algolia 的搜索可用性还需要完成首次真实索引并通过线上回归。站点地图属于博客插件，继续由博客生成。
+当前博客已启用 Giscus，线上评论已验证可发布和显示；Algolia 搜索已完成首次真实索引并验证可用。站点地图属于博客插件，继续由博客生成。
