@@ -4,7 +4,6 @@
 const gulp = require('gulp')
 const concat = require('gulp-concat') // 合并文件
 const plumber = require('gulp-plumber')
-const notify = require('gulp-notify') // Gulp 提示工具
 
 // CSS
 const autoprefixer = require('gulp-autoprefixer') // CSS自动添加前缀
@@ -15,9 +14,9 @@ const rollup = require('rollup') // JS打包工具
 const { babel } = require('@rollup/plugin-babel'); // JS babel
 const commonjs = require('@rollup/plugin-commonjs') // Common JS
 const { nodeResolve } = require('@rollup/plugin-node-resolve'); // 使 Rollup 支持 NPM 模块
-const { terser } = require('rollup-plugin-terser'); // Rollup plugin to minify generated es bundle
+const terser = require('@rollup/plugin-terser'); // Rollup plugin to minify generated es bundle
 
-const eslint = require('gulp-eslint')
+const eslint = require('gulp-eslint-new')
 const stylelint = require('@ronilaukkarinen/gulp-stylelint')
 
 // Other
@@ -196,12 +195,9 @@ gulp.task('default', gulp.series('dev'))
 
 // handle errors
 function errorAlert(error) {
-    notify.onError({
-        title: "Error in plugin '" + error.plugin + "'",
-        message: 'Check your terminal',
-        sound: 'Sosumi',
-    })(error)
-    console.log(error.toString())
+    // 不依赖桌面通知，确保 CI 和无图形环境仍能看到完整错误。
+    console.error(`Error in plugin '${error.plugin}'`)
+    console.error(error.toString())
     this.emit('end')
 }
 
