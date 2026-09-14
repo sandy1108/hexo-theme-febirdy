@@ -8,7 +8,7 @@
             </div>
             <button class="fb-search-close" type="button" aria-label="关闭搜索" data-search-close>×</button>
         </header>
-        <% if (febirdy_feature_enabled(config.febirdy_search_algolia)) { %>
+        <% if (febirdy_algolia_enabled()) { %>
             <div class="search fb-search-box">
                 <div class="has-icon-right">
                     <input type="search" class="form-input" id="search" aria-label="搜索关键词" placeholder="输入关键词搜索…" autocomplete="off">
@@ -20,7 +20,7 @@
         <% } else { %>
             <div class="fb-search-unavailable">
                 <strong>搜索尚未启用</strong>
-                <p>当前博客没有配置 Algolia。主题保留了搜索入口，接入 Algolia 后即可在这里使用全文搜索。</p>
+                <p>当前博客没有配置 Algolia。主题保留了搜索入口，接入 Algolia 后即可按已配置字段搜索文章。</p>
             </div>
         <% } %>
     </section>

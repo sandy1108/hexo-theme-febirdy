@@ -25,3 +25,16 @@ febirdy_gitalk:
   clientID: fixture-client
   repo: example/fixture
   owner: fixture
+febirdy_search_algolia:
+  enable: true
+algolia:
+  appId: FIXTURE_APP
+  apiKey: fixture-search-only
+  indexName: fixture-index
+  fields:
+    - title
+    - excerpt:strip:truncate,0,500
+    - tags
+    - categories
+    - permalink
+    - date

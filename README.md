@@ -124,6 +124,39 @@ febirdy_widgets:
 目前支持 `category`（分类）、`tag`（标签）、`recent_posts`（最近文章）和 `archive`（按年份归档）。重复项会自动去重，未知组件会被忽略；配置为空数组时可以隐藏这些可选组件，但个人信息卡片仍会保留。文章目录由文章页独立渲染为桌面目录和移动端抽屉，因此不应加入 `toc`。
 标签组件默认在每个标签后显示该标签关联的文章数量；数量来自 Hexo 的标签集合，不需要在主题或文章之外维护第二份数据。
 
+## Algolia 搜索（可选）
+
+主题内置 Algolia Lite 客户端，但不会替博客创建索引，也不会要求主题仓库保存写入凭据。需要启用搜索时，在博客工程的 `_config.yml` 中填写公开配置并显式打开开关：
+
+```yml
+febirdy_search_algolia:
+  enable: true
+
+algolia:
+  appId: YOUR_APPLICATION_ID
+  apiKey: YOUR_SEARCH_ONLY_API_KEY
+  indexName: tech-blogs-production
+  fields:
+    - title
+    - excerpt:strip:truncate,0,500
+    - tags
+    - categories
+    - permalink
+    - date
+```
+
+`appId`、Search-only `apiKey` 和 `indexName` 会以 HTML `data-*` 属性提供给浏览器，因此 Search-only key 不属于需要隐藏的写入凭据；不要把 Admin API key 或 indexing key 写入站点配置、主题仓库或生成的 HTML。索引字段示例刻意不包含 `content`，只上传标题、摘要、分类、标签、链接和日期。
+
+索引插件使用 `hexo-algoliasearch`，在博客工程安装后可手动执行：
+
+```sh
+ALGOLIA_ADMIN_API_KEY='YOUR_RESTRICTED_INDEXING_KEY' npx hexo algolia
+```
+
+这里的环境变量名沿用插件约定，但值应是只授予目标索引写入权限的受限 indexing key，不是完整 Admin API key。命令默认会先清空再重建索引；确认无误后可用 `npx hexo algolia --no-clear` 做增量写入。持续集成时建议把同一个受限 key 保存为 GitHub Actions Secret `ALGOLIA_ADMIN_API_KEY`，工作流仅在 Secret 存在时运行索引步骤。
+
+若缺少开关、Application ID、Search-only key 或索引名，主题会关闭 Algolia 搜索并显示未启用提示，不会输出不完整的 meta 配置。
+
 ## 配置命名迁移
 
 为便于主题公共化，主题配置逐步从 Aomori 前缀迁移到 FEBIRDY 前缀。博客工程应优先使用右侧的新名称：
@@ -151,8 +184,8 @@ febirdy_widgets:
 ## 后续步骤
 
 1. P1 无障碍与第三方联动已经在本地完成并通过最小样例、真实博客隔离预览和固定视口浏览器检查；用户验收后再提交和推送。
-2. 直接配置 Algolia 后，回归搜索弹层的命中、无结果和键盘操作状态；当前优先级低于已完成的 P1 回归。
+2. Algolia 接入已具备主题、博客配置和 Actions 索引步骤；首次真实索引后，需要回归搜索弹层的命中、无结果、中文关键词和键盘操作状态。
 3. 侧栏 Tags 已显示关联文章数量；博客工程的 `per_page` 与站点地图配置生效审计已在本地完成，后续随博客配置提交并观察线上生成结果。
 4. 真实内容验收持续稳定后，再评估 Aomori 可选模块的针对性清理。
 
-当前博客已启用 Giscus，线上评论已验证可发布和显示；Algolia 仍未配置启用，搜索不能视为已经可用。站点地图属于博客插件，继续由博客生成。
+当前博客已启用 Giscus，线上评论已验证可发布和显示；Algolia 的搜索可用性还需要完成首次真实索引并通过线上回归。站点地图属于博客插件，继续由博客生成。

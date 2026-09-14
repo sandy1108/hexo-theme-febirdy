@@ -28,8 +28,46 @@ Object.keys(legacyConfigAliases).forEach(function (newKey) {
     }
 })
 
+function isPlainObject(value) {
+    return Boolean(value && typeof value === 'object' && !Array.isArray(value))
+}
+
+function normalizedString(value) {
+    return typeof value === 'string' ? value.trim() : ''
+}
+
+function readAlgoliaConfig() {
+    const algolia = isPlainObject(config.algolia) ? config.algolia : {}
+    return {
+        // applicationID/applicationId 是旧配置中可能出现的写法，appId 为插件文档中的正式写法。
+        applicationId: normalizedString(
+            algolia.appId || algolia.applicationId || algolia.applicationID
+        ),
+        // 这里只读取前端 Search-only key；绝不把 adminApiKey 暴露给模板。
+        apiKey: normalizedString(algolia.apiKey || algolia.searchOnlyApiKey),
+        indexName: normalizedString(algolia.indexName),
+    }
+}
+
+function featureEnabled(value) {
+    if (value === true) return true
+    return isPlainObject(value) && value.enable !== false
+}
+
 // 兼容旧版“存在配置对象即启用”的写法，同时确保显式 enable: false 一定生效。
 hexo.extend.helper.register('febirdy_feature_enabled', function (value) {
-    if (value === true) return true
-    return Boolean(value && typeof value === 'object' && value.enable !== false)
+    return featureEnabled(value)
+})
+
+// Algolia 只有在显式开关和三项公开配置都有效时才输出，缺配置时安全降级为未启用。
+hexo.extend.helper.register('febirdy_algolia_config', function () {
+    return readAlgoliaConfig()
+})
+
+hexo.extend.helper.register('febirdy_algolia_enabled', function () {
+    const algolia = readAlgoliaConfig()
+    return (
+        featureEnabled(config.febirdy_search_algolia) &&
+        Boolean(algolia.applicationId && algolia.apiKey && algolia.indexName)
+    )
 })

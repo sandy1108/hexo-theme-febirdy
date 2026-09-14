@@ -45,7 +45,8 @@
     <% var themeConfig = theme.febirdy_theme || {}; %>
     <% var themeModes = ['auto', 'light', 'dark']; %>
     <% var themeDefault = themeModes.indexOf(themeConfig.default) !== -1 ? themeConfig.default : 'dark'; %>
-    <% var searchAlgoliaEnabled = febirdy_feature_enabled(config.febirdy_search_algolia); %>
+    <% var algoliaConfig = febirdy_algolia_config(); %>
+    <% var searchAlgoliaEnabled = febirdy_algolia_enabled(); %>
     <% var gitalkEnabled = febirdy_feature_enabled(config.febirdy_gitalk); %>
     <% var valineEnabled = febirdy_feature_enabled(config.febirdy_valine); %>
     <% var disqusjsEnabled = febirdy_feature_enabled(config.febirdy_disqusjs); %>
@@ -85,7 +86,10 @@
     <% } %>
 
     <% if (searchAlgoliaEnabled){ %>
-    <%- algolia_search_config() %>
+    <meta property="algolia:search"
+        data-application-id="<%= algoliaConfig.applicationId %>"
+        data-api-key="<%= algoliaConfig.apiKey %>"
+        data-index-name="<%= algoliaConfig.indexName %>">
     <% } %>
 
     <% if (config.rss){ %>

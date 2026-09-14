@@ -42,6 +42,12 @@ async function validateFixtureMarkup(tempRoot, routes) {
     if (!/<div\s+class="fb-search-modal"[^>]*id="fb-search-modal"[^>]*aria-hidden="true"/i.test(articleHtml)) {
         failures.push('文章页：搜索弹层缺少初始 aria-hidden 状态')
     }
+    if (!/<meta\s+property="algolia:search"[\s\S]*data-application-id="FIXTURE_APP"[\s\S]*data-api-key="fixture-search-only"[\s\S]*data-index-name="fixture-index"/i.test(articleHtml)) {
+        failures.push('文章页：Algolia 公开配置 meta 缺失或字段不完整')
+    }
+    if (/adminApiKey|ALGOLIA_ADMIN_API_KEY|fixture-admin/i.test(articleHtml)) {
+        failures.push('文章页：不应向浏览器输出 Algolia indexing/admin key')
+    }
     if (!/<button\b[^>]*class="[^"]*fb-mobile-toc-trigger[^\"]*"[^>]*aria-controls="fb-toc-panel"[^>]*aria-expanded="false"/i.test(articleHtml)) {
         failures.push('文章页：移动端目录触发按钮缺少初始 ARIA 状态')
     }
